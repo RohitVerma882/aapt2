@@ -401,8 +401,3 @@ namespace yy {
 
 
 #endif // !YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED
-
-
-// add these two lines at the end of the file
-typedef union yy::parser::value_type YYSTYPE;
-typedef yy::parser::location_type YYLTYPE;
