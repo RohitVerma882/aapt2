@@ -61,6 +61,9 @@ add_executable(aidl
     ${SRC_PATH}/aidl/main.cpp
     ${BISON_LangParser_OUTPUTS}
     ${FLEX_LangScanner_OUTPUTS})
+
+target_compile_definitions(aidl PRIVATE
+    -DPLATFORM_TOOLS_VERSION="${TOOLS_VERSION}")
     
 target_include_directories(aidl PRIVATE
     ${SRC_PATH}/libbase/include
