@@ -11,8 +11,9 @@ target_compile_definitions(libziparchive PRIVATE
     -D_FILE_OFFSET_BITS=64
     -DZIPARCHIVE_DISABLE_CALLBACK_API=1)
     
-target_include_directories(libziparchive PUBLIC
+target_include_directories(libziparchive PRIVATE
     ${SRC_PATH}/libziparchive/include
+    ${SRC}/libziparchive/incfs_support/include
     ${SRC_PATH}/libbase/include 
     ${SRC_PATH}/liblog/include
     ${SRC_PATH}/googletest/googletest/include)
