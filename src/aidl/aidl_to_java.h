@@ -39,18 +39,24 @@ using std::vector;
 
 // This header provides functions that translate AIDL things to Java things.
 
-std::string ConstantValueDecorator(const AidlTypeSpecifier& type, const std::string& raw_value);
+std::string ConstantValueDecorator(
+    const AidlTypeSpecifier& type,
+    const std::variant<std::string, std::vector<std::string>>& raw_value);
 
 // Returns the Java type signature of the AIDL type spec
 // This includes generic type parameters with array modifiers.
-string JavaSignatureOf(const AidlTypeSpecifier& aidl, const AidlTypenames& typenames);
+string JavaSignatureOf(const AidlTypeSpecifier& aidl);
+
+// Returns the Java boxing type of the AIDL type spec.
+// aidl type should be a primitive type.
+string JavaBoxingTypeOf(const AidlTypeSpecifier& aidl);
 
 // Returns the instantiable Jva type signature of the AIDL type spec
 // This includes generic type parameters, but excludes array modifiers.
-string InstantiableJavaSignatureOf(const AidlTypeSpecifier& aidl, const AidlTypenames& typenames);
+string InstantiableJavaSignatureOf(const AidlTypeSpecifier& aidl);
 
 // Returns the default Java value of the AIDL type spec
-string DefaultJavaValueOf(const AidlTypeSpecifier& aidl, const AidlTypenames& typenames);
+string DefaultJavaValueOf(const AidlTypeSpecifier& aidl);
 
 // This carries information that is required to generate code for
 // marshalling and unmarshalling a method argument or a parcelable field
@@ -60,12 +66,12 @@ struct CodeGeneratorContext {
   const AidlTypeSpecifier& type;
   const string parcel;
   const string var;
-
-  // Set to true when the marshalled data will be returned to the client
+  const uint32_t min_sdk_version;
+  // Set PARCELABLE_WRITE_RETURN_VALUE when the marshalled data will be returned to the client.
   // This is given as a hint to the Parcelable that is being marshalled
   // so that the Parcelable can release its resource after the marshalling
   // is done.
-  const bool is_return_value;
+  const string write_to_parcel_flag;
 
   // Most of the variables created by AIDL compiler are typed, i.e., the code
   // knows exactly what type of object is in the parcel -- because the parcel
@@ -83,13 +89,10 @@ struct CodeGeneratorContext {
   // We emit the code at most once per an AIDL method, otherwise we are wasting
   // time doing the same thing multiple time.
   bool* const is_classloader_created;
-
-  // for error message printing
-  const string filename;
 };
 
 // Writes code fragment that writes a variable to the parcel.
-bool WriteToParcelFor(const CodeGeneratorContext& c);
+void WriteToParcelFor(const CodeGeneratorContext& c);
 
 // Writes code fragment that reads data from the parcel into a variable. When
 // the variable type is array or List, the array or List is created.
@@ -102,6 +105,10 @@ bool ReadFromParcelFor(const CodeGeneratorContext& c);
 // Writes an expression that returns the string representation of a field
 // in a parcelable
 void ToStringFor(const CodeGeneratorContext& c);
+
+// Generates create/read/write helper functions which are missing in Parcel.
+void GenerateParcelHelpers(CodeWriter& out, const AidlDefinedType& defined_type,
+                           const AidlTypenames& typenames, const Options& options);
 
 }  // namespace java
 }  // namespace aidl

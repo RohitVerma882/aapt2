@@ -455,6 +455,7 @@ status_t _FileAsset::openChunk(incfs::IncFsFileMap&& dataMap, base::unique_fd fd
 {
     assert(mFp == NULL);    // no reopen
     assert(!mMap.has_value());
+    assert(dataMap != NULL);
 
     mMap = std::move(dataMap);
     mStart = -1;            // not used
@@ -593,7 +594,12 @@ void _FileAsset::close(void)
  */
 const void* _FileAsset::getBuffer(bool aligned)
 {
-    return getIncFsBuffer(aligned).unsafe_ptr();
+    auto buffer = getIncFsBuffer(aligned);
+    if (mBuf != NULL)
+        return mBuf;
+    if (!buffer.convert<uint8_t>().verify(mLength))
+        return NULL;
+    return buffer.unsafe_ptr();
 }
 
 incfs::map_ptr<void> _FileAsset::getIncFsBuffer(bool aligned)
@@ -794,6 +800,7 @@ status_t _CompressedAsset::openChunk(incfs::IncFsFileMap&& dataMap, size_t uncom
 {
     assert(mFd < 0);        // no re-open
     assert(!mMap.has_value());
+    assert(dataMap != NULL);
 
     mMap = std::move(dataMap);
     mStart = -1;        // not used

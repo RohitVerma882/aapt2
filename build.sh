@@ -48,14 +48,14 @@ compile() {
 
     "$NDK_TOOLCHAIN/bin/llvm-strip" --strip-unneeded "cmake/aapt"
     "$NDK_TOOLCHAIN/bin/llvm-strip" --strip-unneeded "cmake/aapt2"
-    # "$NDK_TOOLCHAIN/bin/llvm-strip" --strip-unneeded "cmake/aidl"
+    "$NDK_TOOLCHAIN/bin/llvm-strip" --strip-unneeded "cmake/aidl"
     "$NDK_TOOLCHAIN/bin/llvm-strip" --strip-unneeded "cmake/zipalign"
     
     mkdir -p "$outdir"
     
     mv "cmake/aapt" "$outdir"
     mv "cmake/aapt2" "$outdir"
-    # mv "cmake/aidl" "$outdir"
+    mv "cmake/aidl" "$outdir"
     mv "cmake/zipalign" "$outdir"
     
     cd "$currentdir" || exit 1

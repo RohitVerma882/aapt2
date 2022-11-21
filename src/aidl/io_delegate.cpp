@@ -183,14 +183,6 @@ unique_ptr<CodeWriter> IoDelegate::GetCodeWriter(
   }
 }
 
-void IoDelegate::RemovePath(const std::string& file_path) const {
-#ifdef _WIN32
-  _unlink(file_path.c_str());
-#else
-  unlink(file_path.c_str());
-#endif
-}
-
 #ifdef _WIN32
 Result<vector<string>> IoDelegate::ListFiles(const string&) const {
   return Error() << "File listing not implemented on Windows";

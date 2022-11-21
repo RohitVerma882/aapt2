@@ -50,7 +50,7 @@ ssize_t socket_send_buffers(cutils_socket_t sock,
     return writev(sock, iovec_buffers, num_buffers);
 }
 
-#if 0
+#if defined(__ANDROID__)
 int android_get_control_socket(const char* name) {
     int fd = __android_get_control_from_env(ANDROID_SOCKET_ENV_PREFIX, name);
 

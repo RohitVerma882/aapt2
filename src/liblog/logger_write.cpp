@@ -39,8 +39,6 @@
 #include "logger.h"
 #include "uio.h"
 
-#undef __ANDROID__
-
 #ifdef __ANDROID__
 #include "logd_writer.h"
 #include "pmsg_writer.h"
@@ -62,7 +60,7 @@ using android::base::ErrnoRestorer;
 static int check_log_uid_permissions() {
   uid_t uid = getuid();
 
-  /* Matches clientHasLogCredentials() in logd */
+  /* Matches clientCanWriteSecurityLog() in logd */
   if ((uid != AID_SYSTEM) && (uid != AID_ROOT) && (uid != AID_LOG)) {
     uid = geteuid();
     if ((uid != AID_SYSTEM) && (uid != AID_ROOT) && (uid != AID_LOG)) {
@@ -83,7 +81,8 @@ static int check_log_uid_permissions() {
           }
           num_groups = getgroups(num_groups, groups);
           while (num_groups > 0) {
-            if (groups[num_groups - 1] == AID_LOG) {
+            if (groups[num_groups - 1] == AID_LOG ||
+                groups[num_groups - 1] == AID_SECURITY_LOG_WRITER) {
               break;
             }
             --num_groups;

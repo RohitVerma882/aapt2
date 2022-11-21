@@ -2,9 +2,9 @@
 #define yyHEADER_H 1
 #define yyIN_HEADER 1
 
-#line 5 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.h"
+#line 5 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.h"
 
-#line 7 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.h"
+#line 7 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.h"
 
 #define  YY_INT_ALIGNED short int
 
@@ -519,9 +519,9 @@ extern int yylex \
 #undef yyTABLES_NAME
 #endif
 
-#line 159 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 166 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 
 
-#line 525 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.h"
+#line 525 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.h"
 #undef yyIN_HEADER
 #endif /* yyHEADER_H */

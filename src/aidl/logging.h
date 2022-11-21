@@ -43,7 +43,7 @@ class AidlErrorLog {
 
   // btw, making it movable so that functions can return it.
   AidlErrorLog(AidlErrorLog&&) = default;
-  AidlErrorLog& operator=(AidlErrorLog&&) = default;
+  AidlErrorLog& operator=(AidlErrorLog&&) = delete;
 
   template <typename T>
   AidlErrorLog& operator<<(T&& arg) {

@@ -91,7 +91,7 @@ int property_get(const char* key, char* value, const char* default_value) {
     return len;
 }
 
-#if 0
+#if __has_include(<sys/system_properties.h>)
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -106,8 +106,6 @@ static void trampoline(void* raw_data, const char* name, const char* value, unsi
     data->callback(name, value, data->cookie);
 }
 
-#if 0
-
 static void property_list_callback(const prop_info* pi, void* data) {
     __system_property_read_callback(pi, trampoline, data);
 }
@@ -116,7 +114,5 @@ int property_list(void (*fn)(const char* name, const char* value, void* cookie),
     callback_data data = {fn, cookie};
     return __system_property_foreach(property_list_callback, &data);
 }
-
-#endif
 
 #endif

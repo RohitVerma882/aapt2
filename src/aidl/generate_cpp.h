@@ -22,7 +22,6 @@
 #include "aidl_language.h"
 #include "aidl_to_cpp.h"
 #include "aidl_to_cpp_common.h"
-#include "ast_cpp.h"
 #include "options.h"
 
 namespace android {
@@ -32,28 +31,6 @@ namespace cpp {
 bool GenerateCpp(const string& output_file, const Options& options, const AidlTypenames& typenames,
                  const AidlDefinedType& parsed_doc, const IoDelegate& io_delegate);
 
-namespace internals {
-std::unique_ptr<Document> BuildClientSource(const AidlTypenames& typenames,
-                                            const AidlInterface& parsed_doc,
-                                            const Options& options);
-std::unique_ptr<Document> BuildServerSource(const AidlTypenames& typenames,
-                                            const AidlInterface& parsed_doc,
-                                            const Options& options);
-std::unique_ptr<Document> BuildInterfaceSource(const AidlTypenames& typenames,
-                                               const AidlInterface& parsed_doc,
-                                               const Options& options);
-std::unique_ptr<Document> BuildClientHeader(const AidlTypenames& typenames,
-                                            const AidlInterface& parsed_doc,
-                                            const Options& options);
-std::unique_ptr<Document> BuildServerHeader(const AidlTypenames& typenames,
-                                            const AidlInterface& parsed_doc,
-                                            const Options& options);
-std::unique_ptr<Document> BuildInterfaceHeader(const AidlTypenames& typenames,
-                                               const AidlInterface& parsed_doc,
-                                               const Options& options);
-std::unique_ptr<Document> BuildEnumHeader(const AidlTypenames& typenames,
-                                          const AidlEnumDeclaration& parsed_doc);
-}
 }  // namespace cpp
 }  // namespace aidl
 }  // namespace android

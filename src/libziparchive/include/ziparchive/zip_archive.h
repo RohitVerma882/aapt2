@@ -296,6 +296,12 @@ int32_t ExtractEntryToFile(ZipArchiveHandle archive, const ZipEntry* entry, int 
 int32_t ExtractToMemory(ZipArchiveHandle archive, const ZipEntry* entry, uint8_t* begin,
                         size_t size);
 
+//
+// This gets defined for the version of the library that need to control all
+// code accessing the zip file. Details in incfs_support/signal_handling.h
+//
+#if !ZIPARCHIVE_DISABLE_CALLBACK_API
+
 #if !defined(_WIN32)
 typedef bool (*ProcessZipEntryFunction)(const uint8_t* buf, size_t buf_size, void* cookie);
 
@@ -307,7 +313,9 @@ int32_t ProcessZipEntryContents(ZipArchiveHandle archive, const ZipEntry* entry,
                                 ProcessZipEntryFunction func, void* cookie);
 int32_t ProcessZipEntryContents(ZipArchiveHandle archive, const ZipEntry64* entry,
                                 ProcessZipEntryFunction func, void* cookie);
-#endif
+#endif  // !defined(_WIN32)
+
+#endif  // !ZIPARCHIVE_DISABLE_CALLBACK_API
 
 namespace zip_archive {
 
@@ -337,6 +345,12 @@ class Reader {
   void operator=(const Reader&) = delete;
 };
 
+//
+// This gets defined for the version of the library that need to control all
+// code accessing the zip file. Details in incfs_support/signal_handling.h
+//
+#if !ZIPARCHIVE_DISABLE_CALLBACK_API
+
 /**
  * Uncompress a given zip entry to given |writer|.
  *
@@ -344,6 +358,8 @@ class Reader {
  */
 int32_t ExtractToWriter(ZipArchiveHandle handle, const ZipEntry64* entry,
                         zip_archive::Writer* writer);
+
+#endif  // !ZIPARCHIVE_DISABLE_CALLBACK_API
 
 /*
  * Inflates the first |compressed_length| bytes of |reader| to a given |writer|.
@@ -355,7 +371,12 @@ int32_t ExtractToWriter(ZipArchiveHandle handle, const ZipEntry64* entry,
  *
  * If |crc_out| is not nullptr, it is set to the crc32 checksum of the
  * uncompressed data.
+ *
+ * NOTE: in the IncFS version of the library this function remains
+ * unprotected, because the data |reader| is supplying is under the full reader's
+ * control; it's the reader's duty to ensure it is available and OK to access.
  */
 int32_t Inflate(const Reader& reader, const uint64_t compressed_length,
                 const uint64_t uncompressed_length, Writer* writer, uint64_t* crc_out);
+
 }  // namespace zip_archive

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "aapt2_jni.h"
+#include "com_android_tools_aapt2_Aapt2Jni.h"
 
 #include <algorithm>
 #include <memory>
@@ -27,7 +27,6 @@
 #include "Diagnostics.h"
 #include "cmd/Compile.h"
 #include "cmd/Link.h"
-#include "cmd/Convert.h"
 #include "util/Util.h"
 
 using android::StringPiece;
@@ -118,7 +117,7 @@ class JniDiagnostics : public aapt::IDiagnostics {
   DISALLOW_COPY_AND_ASSIGN(JniDiagnostics);
 };
 
-JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_compile(
+JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_nativeCompile(
     JNIEnv* env, jclass aapt_obj, jobject arguments_obj, jobject diagnostics_obj) {
   std::vector<ScopedUtfChars> compile_args_jni =
       list_to_utfchars(env, arguments_obj);
@@ -127,7 +126,7 @@ JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_compile(
   return aapt::CompileCommand(&diagnostics).Execute(compile_args, &std::cerr);
 }
 
-JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_link(JNIEnv* env,
+JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_nativeLink(JNIEnv* env,
                                                                         jclass aapt_obj,
                                                                         jobject arguments_obj,
                                                                         jobject diagnostics_obj) {
@@ -138,16 +137,7 @@ JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_link(JNIEnv* env,
   return aapt::LinkCommand(&diagnostics).Execute(link_args, &std::cerr);
 }
 
-JNIEXPORT jint JNICALL Java_com_android_tools_aapt2_Aapt2Jni_convert(JNIEnv* env,
-                                                                        jclass aapt_obj,
-                                                                        jobject arguments_obj) {
-  std::vector<ScopedUtfChars> convert_args_jni =
-      list_to_utfchars(env, arguments_obj);
-  std::vector<StringPiece> convert_args = extract_pieces(convert_args_jni);
-  return aapt::ConvertCommand().Execute(convert_args, &std::cerr);
-}
-
 JNIEXPORT void JNICALL Java_com_android_tools_aapt2_Aapt2Jni_ping(
         JNIEnv *env, jclass aapt_obj) {
-  // This is just a dummy method to see if the library has been loaded.
+  // This is just a no-op method to see if the library has been loaded.
 }

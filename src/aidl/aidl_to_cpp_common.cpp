@@ -19,15 +19,16 @@
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 
+#include <limits>
 #include <set>
 #include <unordered_map>
 
-#include "ast_cpp.h"
 #include "comments.h"
 #include "logging.h"
 #include "os.h"
 
 using ::android::base::Join;
+using ::android::base::Split;
 
 namespace android {
 namespace aidl {
@@ -66,6 +67,8 @@ string ClassName(const AidlDefinedType& defined_type, ClassNames type) {
       return "I" + base_name + "Default";
     case ClassNames::BASE:
       return base_name;
+    case ClassNames::DELEGATOR_IMPL:
+      return "I" + base_name + "Delegator";
     case ClassNames::RAW:
       [[fallthrough]];
     default:
@@ -75,19 +78,21 @@ string ClassName(const AidlDefinedType& defined_type, ClassNames type) {
 
 std::string HeaderFile(const AidlDefinedType& defined_type, ClassNames class_type,
                        bool use_os_sep) {
-  std::string file_path = defined_type.GetPackage();
-  for (char& c : file_path) {
-    if (c == '.') {
-      c = (use_os_sep) ? OS_PATH_SEPARATOR : '/';
-    }
+  // For a nested type, we need to include its top-most parent type's header.
+  const AidlDefinedType* toplevel = &defined_type;
+  for (auto parent = toplevel->GetParentType(); parent;) {
+    // When including the parent's header, it should be always RAW
+    class_type = ClassNames::RAW;
+    toplevel = parent;
+    parent = toplevel->GetParentType();
   }
-  if (!file_path.empty()) {
-    file_path += (use_os_sep) ? OS_PATH_SEPARATOR : '/';
-  }
-  file_path += ClassName(defined_type, class_type);
-  file_path += ".h";
+  AIDL_FATAL_IF(toplevel->GetParentType() != nullptr, defined_type)
+      << "Can't find a top-level decl";
 
-  return file_path;
+  char separator = (use_os_sep) ? OS_PATH_SEPARATOR : '/';
+  vector<string> paths = toplevel->GetSplitPackage();
+  paths.push_back(ClassName(*toplevel, class_type));
+  return Join(paths, separator) + ".h";
 }
 
 void EnterNamespace(CodeWriter& out, const AidlDefinedType& defined_type) {
@@ -196,24 +201,102 @@ const string GenLogAfterExecute(const string className, const AidlInterface& int
   return code;
 }
 
+// Returns Parent1::Parent2::Self. Namespaces are not included.
+string GetQualifiedName(const AidlDefinedType& type, ClassNames class_names) {
+  string q_name = ClassName(type, class_names);
+  for (auto parent = type.GetParentType(); parent; parent = parent->GetParentType()) {
+    q_name = parent->GetName() + "::" + q_name;
+  }
+  return q_name;
+}
+
+// Generates enum's class declaration. This should be called in a proper scope. For example, in its
+// namespace or parent type.
+void GenerateEnumClassDecl(CodeWriter& out, const AidlEnumDeclaration& enum_decl,
+                           const std::string& backing_type, ConstantValueDecorator decorator) {
+  out << "enum class";
+  GenerateDeprecated(out, enum_decl);
+  out << " " << enum_decl.GetName() << " : " << backing_type << " {\n";
+  out.Indent();
+  for (const auto& enumerator : enum_decl.GetEnumerators()) {
+    out << enumerator->GetName();
+    GenerateDeprecated(out, *enumerator);
+    out << " = " << enumerator->ValueString(enum_decl.GetBackingType(), decorator) << ",\n";
+  }
+  out.Dedent();
+  out << "};\n";
+}
+
+static bool IsEnumDeprecated(const AidlEnumDeclaration& enum_decl) {
+  if (enum_decl.IsDeprecated()) {
+    return true;
+  }
+  for (const auto& e : enum_decl.GetEnumerators()) {
+    if (e->IsDeprecated()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// enum_values template value is defined in its own namespace (android::internal or ndk::internal),
+// so the enum_decl type should be fully qualified.
 std::string GenerateEnumValues(const AidlEnumDeclaration& enum_decl,
                                const std::vector<std::string>& enclosing_namespaces_of_enum_decl) {
   const auto fq_name =
       Join(Append(enclosing_namespaces_of_enum_decl, enum_decl.GetSplitPackage()), "::") +
-      "::" + enum_decl.GetName();
+      "::" + GetQualifiedName(enum_decl);
   const auto size = enum_decl.GetEnumerators().size();
   std::ostringstream code;
   code << "#pragma clang diagnostic push\n";
   code << "#pragma clang diagnostic ignored \"-Wc++17-extensions\"\n";
+  if (IsEnumDeprecated(enum_decl)) {
+    code << "#pragma clang diagnostic ignored \"-Wdeprecated-declarations\"\n";
+  }
   code << "template <>\n";
   code << "constexpr inline std::array<" << fq_name << ", " << size << ">";
-  GenerateDeprecated(code, enum_decl);
   code << " enum_values<" << fq_name << "> = {\n";
   for (const auto& enumerator : enum_decl.GetEnumerators()) {
     code << "  " << fq_name << "::" << enumerator->GetName() << ",\n";
   }
   code << "};\n";
   code << "#pragma clang diagnostic pop\n";
+  return code.str();
+}
+
+// toString(enum_type) is defined in the same namespace of the type.
+// So, if enum_decl is nested in parent type(s), it should be qualified with parent type(s).
+std::string GenerateEnumToString(const AidlEnumDeclaration& enum_decl,
+                                 const std::string& backing_type) {
+  const auto q_name = GetQualifiedName(enum_decl);
+  std::ostringstream code;
+  bool is_enum_deprecated = IsEnumDeprecated(enum_decl);
+  if (is_enum_deprecated) {
+    code << "#pragma clang diagnostic push\n";
+    code << "#pragma clang diagnostic ignored \"-Wdeprecated-declarations\"\n";
+  }
+  code << "[[nodiscard]] static inline std::string toString(" + q_name + " val) {\n";
+  code << "  switch(val) {\n";
+  std::set<std::string> unique_cases;
+  for (const auto& enumerator : enum_decl.GetEnumerators()) {
+    std::string c = enumerator->ValueString(enum_decl.GetBackingType(), AidlConstantValueDecorator);
+    // Only add a case if its value has not yet been used in the switch
+    // statement. C++ does not allow multiple cases with the same value, but
+    // enums does allow this. In this scenario, the first declared
+    // enumerator with the given value is printed.
+    if (unique_cases.count(c) == 0) {
+      unique_cases.insert(c);
+      code << "  case " << q_name << "::" << enumerator->GetName() << ":\n";
+      code << "    return \"" << enumerator->GetName() << "\";\n";
+    }
+  }
+  code << "  default:\n";
+  code << "    return std::to_string(static_cast<" << backing_type << ">(val));\n";
+  code << "  }\n";
+  code << "}\n";
+  if (is_enum_deprecated) {
+    code << "#pragma clang diagnostic pop\n";
+  }
   return code.str();
 }
 
@@ -232,6 +315,39 @@ std::string TemplateDecl(const AidlParcelable& defined_type) {
 
 void GenerateParcelableComparisonOperators(CodeWriter& out, const AidlParcelable& parcelable) {
   std::set<string> operators{"<", ">", "==", ">=", "<=", "!="};
+
+  if (parcelable.AsUnionDeclaration() && parcelable.IsFixedSize()) {
+    auto name = parcelable.GetName();
+    auto max_tag = parcelable.GetFields().back()->GetName();
+    auto min_tag = parcelable.GetFields().front()->GetName();
+    auto tmpl = R"--(static int _cmp(const {name}& _lhs, const {name}& _rhs) {{
+  return _cmp_value(_lhs.getTag(), _rhs.getTag()) || _cmp_value_at<{max_tag}>(_lhs, _rhs);
+}}
+template <Tag _Tag>
+static int _cmp_value_at(const {name}& _lhs, const {name}& _rhs) {{
+  if constexpr (_Tag == {min_tag}) {{
+    return _cmp_value(_lhs.get<_Tag>(), _rhs.get<_Tag>());
+  }} else {{
+    return (_lhs.getTag() == _Tag)
+      ? _cmp_value(_lhs.get<_Tag>(), _rhs.get<_Tag>())
+      : _cmp_value_at<static_cast<Tag>(static_cast<size_t>(_Tag)-1)>(_lhs, _rhs);
+  }}
+}}
+template <typename _Type>
+static int _cmp_value(const _Type& _lhs, const _Type& _rhs) {{
+  return (_lhs == _rhs) ? 0 : (_lhs < _rhs) ? -1 : 1;
+}}
+)--";
+    out << fmt::format(tmpl, fmt::arg("name", name), fmt::arg("min_tag", min_tag),
+                       fmt::arg("max_tag", max_tag));
+    for (const auto& op : operators) {
+      out << "inline bool operator" << op << "(const " << name << "&_rhs) const {\n";
+      out << "  return _cmp(*this, _rhs) " << op << " 0;\n";
+      out << "}\n";
+    }
+    return;
+  }
+
   bool is_empty = false;
 
   auto comparable = [&](const string& prefix) {
@@ -309,9 +425,16 @@ void GenerateToString(CodeWriter& out, const AidlUnionDecl& parcelable) {
   out << "os << \"" + parcelable.GetName() + "{\";\n";
   out << "switch (getTag()) {\n";
   for (const auto& f : parcelable.GetFields()) {
+    if (f->IsDeprecated()) {
+      out << "#pragma clang diagnostic push\n";
+      out << "#pragma clang diagnostic ignored \"-Wdeprecated-declarations\"\n";
+    }
     const string tag = f->GetName();
     out << "case " << tag << ": os << \"" << tag << ": \" << "
         << "::android::internal::ToString(get<" + tag + ">()); break;\n";
+    if (f->IsDeprecated()) {
+      out << "#pragma clang diagnostic pop\n";
+    }
   }
   out << "}\n";
   out << "os << \"}\";\n";
@@ -330,50 +453,144 @@ std::string GetDeprecatedAttribute(const AidlCommentable& type) {
   return "";
 }
 
-const vector<string> UnionWriter::headers{
-    "cassert",      // __assert for logging
-    "type_traits",  // std::is_same_v
-    "utility",      // std::mode/forward for value
-    "variant",      // std::variant for value
-};
+size_t AlignmentOf(const AidlTypeSpecifier& type, const AidlTypenames& typenames) {
+  static map<string, size_t> alignment = {
+      {"boolean", 1}, {"byte", 1}, {"char", 2}, {"double", 8},
+      {"float", 4},   {"int", 4},  {"long", 8},
+  };
+
+  string name = type.GetName();
+  if (auto enum_decl = typenames.GetEnumDeclaration(type); enum_decl) {
+    name = enum_decl->GetBackingType().GetName();
+  }
+  // default to 0 for parcelable types
+  return alignment[name];
+}
+
+std::set<std::string> UnionWriter::GetHeaders(const AidlUnionDecl& decl) {
+  std::set<std::string> union_headers = {
+      "cassert",      // __assert for logging
+      "type_traits",  // std::is_same_v
+      "utility",      // std::mode/forward for value
+      "variant",      // union's impl
+  };
+  if (decl.IsFixedSize()) {
+    union_headers.insert("tuple");  // fixed-sized union's typelist
+  }
+  return union_headers;
+}
+
+// fixed-sized union class looks like:
+// class Union {
+// public:
+//   enum Tag : uint8_t {
+//     field1 = 0,
+//     field2,
+//   };
+//  ... methods ...
+// private:
+//   Tag _tag;
+//   union {
+//     type1 field1;
+//     type2 field2;
+//   } _value;
+// };
 
 void UnionWriter::PrivateFields(CodeWriter& out) const {
-  vector<string> field_types;
-  for (const auto& f : decl.GetFields()) {
-    field_types.push_back(name_of(f->GetType(), typenames));
+  if (decl.IsFixedSize()) {
+    AIDL_FATAL_IF(decl.GetFields().empty(), decl) << "Union '" << decl.GetName() << "' is empty.";
+    const auto& first_field = decl.GetFields()[0];
+    const auto& default_name = first_field->GetName();
+    const auto& default_value = name_of(first_field->GetType(), typenames) + "(" +
+                                first_field->ValueString(decorator) + ")";
+
+    out << "Tag _tag = " << default_name << ";\n";
+    out << "union _value_t {\n";
+    out.Indent();
+    out << "_value_t() {}\n";
+    out << "~_value_t() {}\n";
+    for (const auto& f : decl.GetFields()) {
+      const auto& fn = f->GetName();
+      out << name_of(f->GetType(), typenames) << " " << fn;
+      if (decl.IsFixedSize()) {
+        int alignment = AlignmentOf(f->GetType(), typenames);
+        if (alignment > 0) {
+          out << " __attribute__((aligned (" << std::to_string(alignment) << ")))";
+        }
+      }
+      if (fn == default_name) {
+        out << " = " << default_value;
+      }
+      out << ";\n";
+    }
+    out.Dedent();
+    out << "} _value;\n";
+  } else {
+    vector<string> field_types;
+    for (const auto& f : decl.GetFields()) {
+      field_types.push_back(name_of(f->GetType(), typenames));
+    }
+    out << "std::variant<" + Join(field_types, ", ") + "> _value;\n";
   }
-  out << "std::variant<" + Join(field_types, ", ") + "> _value;\n";
 }
 
 void UnionWriter::PublicFields(CodeWriter& out) const {
-  AidlTypeSpecifier tag_type(AIDL_LOCATION_HERE, "int", /* is_array= */ false,
-                             /* type_params= */ nullptr, Comments{});
-  tag_type.Resolve(typenames, nullptr);
-
-  out << "enum Tag : " << name_of(tag_type, typenames) << " {\n";
-  bool is_first = true;
+  out << "// Expose tag symbols for legacy code\n";
   for (const auto& f : decl.GetFields()) {
-    out << "  " << f->GetName();
+    out << "static const inline Tag";
     GenerateDeprecated(out, *f);
-    if (is_first) out << " = 0";
-    out << ",  // " << f->Signature() << ";\n";
-    is_first = false;
+    out << " " << f->GetName() << " = Tag::" << f->GetName() << ";\n";
   }
-  out << "};\n";
 
   const auto& name = decl.GetName();
 
-  AIDL_FATAL_IF(decl.GetFields().empty(), decl) << "Union '" << name << "' is empty.";
-  const auto& first_field = decl.GetFields()[0];
-  const auto& default_name = first_field->GetName();
-  const auto& default_value =
-      name_of(first_field->GetType(), typenames) + "(" + first_field->ValueString(decorator) + ")";
+  if (decl.IsFixedSize()) {
+    vector<string> field_types;
+    for (const auto& f : decl.GetFields()) {
+      field_types.push_back(name_of(f->GetType(), typenames));
+    }
+    auto typelist = Join(field_types, ", ");
+    auto tmpl = R"--(
+template <Tag _Tag>
+using _at = typename std::tuple_element<static_cast<size_t>(_Tag), std::tuple<{typelist}>>::type;
+template <Tag _Tag, typename _Type>
+static {name} make(_Type&& _arg) {{
+  {name} _inst;
+  _inst.set<_Tag>(std::forward<_Type>(_arg));
+  return _inst;
+}}
+constexpr Tag getTag() const {{
+  return _tag;
+}}
+template <Tag _Tag>
+const _at<_Tag>& get() const {{
+  if (_Tag != _tag) {{ __assert2(__FILE__, __LINE__, __PRETTY_FUNCTION__, "bad access: a wrong tag"); }}
+  return *(_at<_Tag>*)(&_value);
+}}
+template <Tag _Tag>
+_at<_Tag>& get() {{
+  if (_Tag != _tag) {{ __assert2(__FILE__, __LINE__, __PRETTY_FUNCTION__, "bad access: a wrong tag"); }}
+  return *(_at<_Tag>*)(&_value);
+}}
+template <Tag _Tag, typename _Type>
+void set(_Type&& _arg) {{
+  _tag = _Tag;
+  get<_Tag>() = std::forward<_Type>(_arg);
+}}
+)--";
+    out << fmt::format(tmpl, fmt::arg("name", name), fmt::arg("typelist", typelist));
+  } else {
+    AIDL_FATAL_IF(decl.GetFields().empty(), decl) << "Union '" << name << "' is empty.";
+    const auto& first_field = decl.GetFields()[0];
+    const auto& default_name = first_field->GetName();
+    const auto& default_value = name_of(first_field->GetType(), typenames) + "(" +
+                                first_field->ValueString(decorator) + ")";
 
-  auto tmpl = R"--(
+    auto tmpl = R"--(
 template<typename _Tp>
 static constexpr bool _not_self = !std::is_same_v<std::remove_cv_t<std::remove_reference_t<_Tp>>, {name}>;
 
-{name}() : _value(std::in_place_index<{default_name}>, {default_value}) {{ }}
+{name}() : _value(std::in_place_index<static_cast<size_t>({default_name})>, {default_value}) {{ }}
 
 template <typename _Tp, typename = std::enable_if_t<_not_self<_Tp>>>
 // NOLINTNEXTLINE(google-explicit-constructor)
@@ -386,12 +603,12 @@ constexpr explicit {name}(std::in_place_index_t<_Np>, _Tp&&... _args)
 
 template <Tag _tag, typename... _Tp>
 static {name} make(_Tp&&... _args) {{
-  return {name}(std::in_place_index<_tag>, std::forward<_Tp>(_args)...);
+  return {name}(std::in_place_index<static_cast<size_t>(_tag)>, std::forward<_Tp>(_args)...);
 }}
 
 template <Tag _tag, typename _Tp, typename... _Up>
 static {name} make(std::initializer_list<_Tp> _il, _Up&&... _args) {{
-  return {name}(std::in_place_index<_tag>, std::move(_il), std::forward<_Up>(_args)...);
+  return {name}(std::in_place_index<static_cast<size_t>(_tag)>, std::move(_il), std::forward<_Up>(_args)...);
 }}
 
 Tag getTag() const {{
@@ -401,29 +618,30 @@ Tag getTag() const {{
 template <Tag _tag>
 const auto& get() const {{
   if (getTag() != _tag) {{ __assert2(__FILE__, __LINE__, __PRETTY_FUNCTION__, "bad access: a wrong tag"); }}
-  return std::get<_tag>(_value);
+  return std::get<static_cast<size_t>(_tag)>(_value);
 }}
 
 template <Tag _tag>
 auto& get() {{
   if (getTag() != _tag) {{ __assert2(__FILE__, __LINE__, __PRETTY_FUNCTION__, "bad access: a wrong tag"); }}
-  return std::get<_tag>(_value);
+  return std::get<static_cast<size_t>(_tag)>(_value);
 }}
 
 template <Tag _tag, typename... _Tp>
 void set(_Tp&&... _args) {{
-  _value.emplace<_tag>(std::forward<_Tp>(_args)...);
+  _value.emplace<static_cast<size_t>(_tag)>(std::forward<_Tp>(_args)...);
 }}
 
 )--";
-  out << fmt::format(tmpl, fmt::arg("name", name), fmt::arg("default_name", default_name),
-                     fmt::arg("default_value", default_value));
+    out << fmt::format(tmpl, fmt::arg("name", name), fmt::arg("default_name", default_name),
+                       fmt::arg("default_value", default_value));
+  }
 }
 
 void UnionWriter::ReadFromParcel(CodeWriter& out, const ParcelWriterContext& ctx) const {
-  AidlTypeSpecifier tag_type(AIDL_LOCATION_HERE, "int", /* is_array= */ false,
-                             /* type_params= */ nullptr, Comments{});
-  tag_type.Resolve(typenames, nullptr);
+  // Even though @FixedSize union may use a smaller type than int32_t, we need to read/write it
+  // as if it is int32_t for compatibility with other bckends.
+  auto tag_type = typenames.MakeResolvedType(AIDL_LOCATION_HERE, "int", /* is_array= */ false);
 
   const string tag = "_aidl_tag";
   const string value = "_aidl_value";
@@ -437,9 +655,13 @@ void UnionWriter::ReadFromParcel(CodeWriter& out, const ParcelWriterContext& ctx
   };
 
   out << fmt::format("{} {};\n", ctx.status_type, status);
-  read_var(tag, tag_type);
-  out << fmt::format("switch ({}) {{\n", tag);
+  read_var(tag, *tag_type);
+  out << fmt::format("switch (static_cast<Tag>({})) {{\n", tag);
   for (const auto& variable : decl.GetFields()) {
+    if (variable->IsDeprecated()) {
+      out << "#pragma clang diagnostic push\n";
+      out << "#pragma clang diagnostic ignored \"-Wdeprecated-declarations\"\n";
+    }
     out << fmt::format("case {}: {{\n", variable->GetName());
     out.Indent();
     const auto& type = variable->GetType();
@@ -459,34 +681,115 @@ void UnionWriter::ReadFromParcel(CodeWriter& out, const ParcelWriterContext& ctx
     out << "}\n";
     out << fmt::format("return {}; }}\n", ctx.status_ok);
     out.Dedent();
+    if (variable->IsDeprecated()) {
+      out << "#pragma clang diagnostic pop\n";
+    }
   }
   out << "}\n";
   out << fmt::format("return {};\n", ctx.status_bad);
 }
 
 void UnionWriter::WriteToParcel(CodeWriter& out, const ParcelWriterContext& ctx) const {
-  AidlTypeSpecifier tag_type(AIDL_LOCATION_HERE, "int", /* is_array= */ false,
-                             /* type_params= */ nullptr, Comments{});
-  tag_type.Resolve(typenames, nullptr);
+  // Even though @FixedSize union may use a smaller type than int32_t, we need to read/write it
+  // as if it is int32_t for compatibility with other bckends.
+  auto tag_type = typenames.MakeResolvedType(AIDL_LOCATION_HERE, "int", /* is_array= */ false);
 
   const string tag = "_aidl_tag";
   const string value = "_aidl_value";
   const string status = "_aidl_ret_status";
 
   out << fmt::format("{} {} = ", ctx.status_type, status);
-  ctx.write_func(out, "getTag()", tag_type);
+  ctx.write_func(out, "static_cast<int32_t>(getTag())", *tag_type);
   out << ";\n";
   out << fmt::format("if ({} != {}) return {};\n", status, ctx.status_ok, status);
   out << "switch (getTag()) {\n";
   for (const auto& variable : decl.GetFields()) {
+    if (variable->IsDeprecated()) {
+      out << "#pragma clang diagnostic push\n";
+      out << "#pragma clang diagnostic ignored \"-Wdeprecated-declarations\"\n";
+    }
     out << fmt::format("case {}: return ", variable->GetName());
     ctx.write_func(out, "get<" + variable->GetName() + ">()", variable->GetType());
     out << ";\n";
+    if (variable->IsDeprecated()) {
+      out << "#pragma clang diagnostic pop\n";
+    }
   }
   out << "}\n";
   out << "__assert2(__FILE__, __LINE__, __PRETTY_FUNCTION__, \"can't reach here\");\n";
 }
 
+std::string CppConstantValueDecorator(
+    const AidlTypeSpecifier& type,
+    const std::variant<std::string, std::vector<std::string>>& raw_value, bool is_ndk) {
+  if (type.IsArray()) {
+    auto values = std::get<std::vector<std::string>>(raw_value);
+    // Hexadecimal literals for byte arrays should be casted to uint8_t
+    if (type.GetName() == "byte" &&
+        std::any_of(values.begin(), values.end(),
+                    [](const auto& value) { return !value.empty() && value[0] == '-'; })) {
+      for (auto& value : values) {
+        // cast only if necessary
+        if (value[0] == '-') {
+          value = "uint8_t(" + value + ")";
+        }
+      }
+    }
+    std::string value = "{" + Join(values, ", ") + "}";
+
+    if (type.IsFixedSizeArray()) {
+      // For arrays, use double braces because arrays can be nested.
+      //  e.g.) array<array<int, 2>, 3> ints = {{ {{1,2}}, {{3,4}}, {{5,6}} }};
+      // Vectors might need double braces, but since we don't have nested vectors (yet)
+      // single brace would work even for optional vectors.
+      value = "{" + value + "}";
+    }
+
+    if (!type.IsMutated() && type.IsNullable()) {
+      // For outermost std::optional<>, we need an additional brace pair to initialize its value.
+      value = "{" + value + "}";
+    }
+    return value;
+  }
+
+  const std::string& value = std::get<std::string>(raw_value);
+  if (AidlTypenames::IsBuiltinTypename(type.GetName())) {
+    if (type.GetName() == "boolean") {
+      return value;
+    } else if (type.GetName() == "byte") {
+      return value;
+    } else if (type.GetName() == "char") {
+      // TODO: consider 'L'-prefix for wide char literal
+      return value;
+    } else if (type.GetName() == "double") {
+      return value;
+    } else if (type.GetName() == "float") {
+      return value;  // value has 'f' suffix
+    } else if (type.GetName() == "int") {
+      return value;
+    } else if (type.GetName() == "long") {
+      return value + "L";
+    } else if (type.GetName() == "String") {
+      if (is_ndk || type.IsUtf8InCpp()) {
+        return value;
+      } else {
+        return "::android::String16(" + value + ")";
+      }
+    }
+    AIDL_FATAL(type) << "Unknown built-in type: " << type.GetName();
+  }
+
+  auto defined_type = type.GetDefinedType();
+  AIDL_FATAL_IF(!defined_type, type) << "Invalid type for \"" << value << "\"";
+  auto enum_type = defined_type->AsEnumDeclaration();
+  AIDL_FATAL_IF(!enum_type, type) << "Invalid type for \"" << value << "\"";
+
+  auto cpp_type_name = "::" + Join(Split(enum_type->GetCanonicalName(), "."), "::");
+  if (is_ndk) {
+    cpp_type_name = "::aidl" + cpp_type_name;
+  }
+  return cpp_type_name + "::" + value.substr(value.find_last_of('.') + 1);
+}
 }  // namespace cpp
 }  // namespace aidl
 }  // namespace android

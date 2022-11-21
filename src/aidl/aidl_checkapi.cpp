@@ -78,7 +78,10 @@ static vector<string> get_strict_annotations(const AidlAnnotatable& node) {
       AidlAnnotation::Type::NULLABLE,
       // @JavaDerive doesn't affect read/write
       AidlAnnotation::Type::JAVA_DERIVE,
+      AidlAnnotation::Type::JAVA_DEFAULT,
+      AidlAnnotation::Type::JAVA_DELEGATOR,
       AidlAnnotation::Type::JAVA_ONLY_IMMUTABLE,
+      AidlAnnotation::Type::JAVA_SUPPRESS_LINT,
       // @Backing for a enum type is checked by the enum checker
       AidlAnnotation::Type::BACKING,
       // @RustDerive doesn't affect read/write
@@ -86,11 +89,11 @@ static vector<string> get_strict_annotations(const AidlAnnotatable& node) {
       AidlAnnotation::Type::SUPPRESS_WARNINGS,
   };
   vector<string> annotations;
-  for (const AidlAnnotation& annotation : node.GetAnnotations()) {
-    if (kIgnoreAnnotations.find(annotation.GetType()) != kIgnoreAnnotations.end()) {
+  for (const auto& annotation : node.GetAnnotations()) {
+    if (kIgnoreAnnotations.find(annotation->GetType()) != kIgnoreAnnotations.end()) {
       continue;
     }
-    auto annotation_string = annotation.ToString();
+    auto annotation_string = annotation->ToString();
     // adding @Deprecated (with optional args) is okay
     if (StartsWith(annotation_string, "@JavaPassthrough(annotation=\"@Deprecated")) {
       continue;
@@ -428,7 +431,7 @@ bool check_api(const Options& options, const IoDelegate& io_delegate) {
 
   // We don't check impoted types.
   auto get_types_in = [](const AidlTypenames& tns, const std::string& location) {
-    std::vector<AidlDefinedType*> types;
+    std::vector<const AidlDefinedType*> types;
     for (const auto& type : tns.AllDefinedTypes()) {
       if (StartsWith(type->GetLocation().GetFile(), location)) {
         types.push_back(type);
@@ -436,8 +439,10 @@ bool check_api(const Options& options, const IoDelegate& io_delegate) {
     }
     return types;
   };
-  std::vector<AidlDefinedType*> old_types = get_types_in(*old_tns, options.InputFiles().at(0));
-  std::vector<AidlDefinedType*> new_types = get_types_in(*new_tns, options.InputFiles().at(1));
+  std::vector<const AidlDefinedType*> old_types =
+      get_types_in(*old_tns, options.InputFiles().at(0));
+  std::vector<const AidlDefinedType*> new_types =
+      get_types_in(*new_tns, options.InputFiles().at(1));
 
   bool compatible = true;
 
@@ -456,7 +461,7 @@ bool check_api(const Options& options, const IoDelegate& io_delegate) {
     }
   }
 
-  map<string, AidlDefinedType*> new_map;
+  map<string, const AidlDefinedType*> new_map;
   for (const auto t : new_types) {
     new_map.emplace(t->GetCanonicalName(), t);
   }

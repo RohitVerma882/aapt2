@@ -21,7 +21,6 @@
 
 #include "aidl.h"
 #include "aidl_language.h"
-#include "ast_cpp.h"
 #include "code_writer.h"
 #include "generate_cpp.h"
 #include "os.h"
@@ -60,36 +59,6 @@ class ASTTest : public ::testing::Test {
     EXPECT_NE(nullptr, defined_types.front().get()->AsInterface());
 
     return defined_types.front().get()->AsInterface();
-  }
-
-  AidlEnumDeclaration* ParseSingleEnumDeclaration() {
-    io_delegate_.SetFileContents(options_.InputFiles().at(0), file_contents_);
-
-    vector<string> imported_files;
-    AidlError err = ::android::aidl::internals::load_and_validate_aidl(
-        options_.InputFiles().front(), options_, io_delegate_, &typenames_, &imported_files);
-
-    if (err != AidlError::OK) {
-      return nullptr;
-    }
-
-    const auto& defined_types = typenames_.MainDocument().DefinedTypes();
-    EXPECT_EQ(1ul, defined_types.size());
-    EXPECT_NE(nullptr, defined_types.front().get()->AsEnumDeclaration());
-
-    return defined_types.front().get()->AsEnumDeclaration();
-  }
-
-  void Compare(Document* doc, const char* expected) {
-    string output;
-    doc->Write(CodeWriter::ForString(&output).get());
-
-    if (expected == output) {
-      return; // Success
-    }
-
-    test::PrintDiff(expected, output);
-    FAIL() << "Document contents did not match expected contents";
   }
 
   const Options options_;
@@ -131,11 +100,10 @@ TEST_F(IoErrorHandlingTest, HandlesBadHeaderWrite) {
       StringPrintf("%s%c%s", kHeaderDir, OS_PATH_SEPARATOR,
                    kInterfaceHeaderRelPath);
   io_delegate_.AddBrokenFilePath(header_path);
-  ASSERT_FALSE(GenerateCpp(options_.OutputFile(), options_, typenames_, *interface, io_delegate_));
+  ASSERT_DEATH(GenerateCpp(options_.OutputFile(), options_, typenames_, *interface, io_delegate_),
+               "I/O Error!");
   // We should never attempt to write the C++ file if we fail writing headers.
   ASSERT_FALSE(io_delegate_.GetWrittenContents(kOutputPath, nullptr));
-  // We should remove partial results.
-  ASSERT_TRUE(io_delegate_.PathWasRemoved(header_path));
 }
 
 TEST_F(IoErrorHandlingTest, HandlesBadCppWrite) {
@@ -145,9 +113,8 @@ TEST_F(IoErrorHandlingTest, HandlesBadCppWrite) {
 
   // Simulate issues closing the cpp file.
   io_delegate_.AddBrokenFilePath(kOutputPath);
-  ASSERT_FALSE(GenerateCpp(options_.OutputFile(), options_, typenames_, *interface, io_delegate_));
-  // We should remove partial results.
-  ASSERT_TRUE(io_delegate_.PathWasRemoved(kOutputPath));
+  ASSERT_DEATH(GenerateCpp(options_.OutputFile(), options_, typenames_, *interface, io_delegate_),
+               "I/O Error!");
 }
 
 }  // namespace cpp

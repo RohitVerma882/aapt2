@@ -106,7 +106,7 @@ function _aidl-format() (
       # "a = 1, b = 2" would match only once and will become "a = 1, b=2".
       gawk -i inplace \
         '/@[^@]+\(.*=.*\)/ { # matches a line having @anno(param = val) \
-              print(gensub(/([^@,=]+) = ([^@,=]+)/, "\\1=\\2", "g", $0)); \
+              print(gensub(/([^@,=]+) = ([^@,=]+|"[^"]*")/, "\\1=\\2", "g", $0)); \
               done=1;\
         } \
         {if (!done) {print($0);} done=0;}' "$1"

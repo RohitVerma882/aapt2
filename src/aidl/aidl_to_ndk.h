@@ -31,7 +31,9 @@ enum class StorageMode {
 std::string NdkHeaderFile(const AidlDefinedType& defined_type, cpp::ClassNames name,
                           bool use_os_sep = true);
 
-std::string ConstantValueDecorator(const AidlTypeSpecifier& type, const std::string& raw_value);
+std::string ConstantValueDecorator(
+    const AidlTypeSpecifier& type,
+    const std::variant<std::string, std::vector<std::string>>& raw_value);
 
 // Returns ::aidl::some_package::some_sub_package::foo::IFoo/BpFoo/BnFoo
 std::string NdkFullClassName(const AidlDefinedType& type, cpp::ClassNames name);
@@ -39,12 +41,6 @@ std::string NdkFullClassName(const AidlDefinedType& type, cpp::ClassNames name);
 // Returns the corresponding Ndk type name for an AIDL type spec including
 // array modifiers.
 std::string NdkNameOf(const AidlTypenames& types, const AidlTypeSpecifier& aidl, StorageMode mode);
-
-// Return the alignment of known types and enum backing types.
-// If the alignment is unknown, or it is a FizedSize parcelable with its
-// own guaranteed alignment(so it does not need to be specified), 0 will be
-// returned.
-size_t NdkAlignmentOf(const AidlTypenames& types, const AidlTypeSpecifier& aidl);
 
 struct CodeGeneratorContext {
   CodeWriter& writer;

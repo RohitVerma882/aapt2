@@ -3,17 +3,16 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include <ziparchive/zip_writer.h>
 #include "fuzzer/FuzzedDataProvider.h"
+#include <android-base/file.h>
+#include <ziparchive/zip_writer.h>
 
 // See current fuzz coverage here:
 // https://android-coverage.googleplex.com/fuzz_targets/libziparchive_writer_fuzzer/index.html
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   FuzzedDataProvider provider(data, size);
-
-  std::unique_ptr<std::FILE, decltype(&fclose)> fp(fopen("fuzz", "wb"),
-                                                   &fclose);
+  std::unique_ptr<std::FILE, decltype(&fclose)> fp(tmpfile(), &fclose);
   if (!fp) {
     return 0;
   }

@@ -33,5 +33,17 @@ adb push \
 adb push \
     ${ANDROID_PRODUCT_OUT}/testcases/aidl_test_java_client/*/aidl_test_java_client.jar \
     /data/framework/aidl_test_java_client.jar
+adb push \
+    ${ANDROID_PRODUCT_OUT}/testcases/aidl_test_java_service_sdk29/*/aidl_test_java_service_sdk29.jar \
+    /data/framework/aidl_test_java_service_sdk29.jar
+adb push \
+    ${ANDROID_PRODUCT_OUT}/testcases/aidl_test_java_client_sdk29/*/aidl_test_java_client_sdk29.jar \
+    /data/framework/aidl_test_java_client_sdk29.jar
+adb push \
+    ${ANDROID_PRODUCT_OUT}/testcases/aidl_test_java_service_sdk1/*/aidl_test_java_service_sdk1.jar \
+    /data/framework/aidl_test_java_service_sdk1.jar
+adb push \
+    ${ANDROID_PRODUCT_OUT}/testcases/aidl_test_java_client_sdk1/*/aidl_test_java_client_sdk1.jar \
+    /data/framework/aidl_test_java_client_sdk1.jar
 
 ${ANDROID_BUILD_TOP}/system/tools/aidl/tests/aidl_integration_test.py

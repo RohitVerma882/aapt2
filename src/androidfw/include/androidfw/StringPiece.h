@@ -75,12 +75,14 @@ class BasicStringPiece {
   bool operator>(const BasicStringPiece<TChar>& rhs) const;
   bool operator==(const BasicStringPiece<TChar>& rhs) const;
   bool operator!=(const BasicStringPiece<TChar>& rhs) const;
+
   // for std::basic_string
+  
   bool operator<(const std::basic_string<TChar>& rhs) const;
   bool operator>(const std::basic_string<TChar>& rhs) const;
   bool operator==(const std::basic_string<TChar>& rhs) const;
   bool operator!=(const std::basic_string<TChar>& rhs) const;
-
+  
   const_iterator begin() const;
   const_iterator end() const;
 
@@ -261,6 +263,7 @@ inline bool BasicStringPiece<TChar>::operator!=(const BasicStringPiece<TChar>& r
   return compare(rhs) != 0;
 }
 
+
 template <typename TChar>
 inline bool BasicStringPiece<TChar>::operator<(const std::basic_string<TChar>& rhs) const {
     return compare(BasicStringPiece(rhs)) < 0;
@@ -280,6 +283,7 @@ template <typename TChar>
 inline bool BasicStringPiece<TChar>::operator!=(const std::basic_string<TChar>& rhs) const{
     return compare(BasicStringPiece(rhs)) != 0;
 }
+
 
 template <typename TChar>
 inline typename BasicStringPiece<TChar>::const_iterator BasicStringPiece<TChar>::begin() const {

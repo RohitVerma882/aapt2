@@ -1,6 +1,6 @@
-#line 1 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.cpp"
+#line 1 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.cpp"
 
-#line 3 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.cpp"
+#line 3 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -372,24 +372,25 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[149] =
+static const flex_int16_t yy_accept[157] =
     {   0,
         0,    0,    0,    0,   63,   61,    9,    8,   35,   61,
        27,   28,   61,   10,   11,   25,   23,   20,   24,   21,
        26,   58,   58,   18,   19,   12,   22,   13,   61,   56,
        16,   17,   30,   56,   56,   56,   56,   56,   56,   56,
        56,   14,   29,   15,   36,    5,    4,    3,    9,    8,
-       40,    0,    6,   33,    0,   59,    1,    7,    0,   58,
-        0,   58,    0,   59,   31,   37,   39,   38,   32,   41,
-       56,   56,   56,   56,   56,   56,   45,   56,   56,   56,
-       56,   56,   34,    5,    4,    3,    2,   57,    7,    0,
-       59,   60,   41,   56,   56,   56,   56,   56,   56,   56,
+       40,    0,    6,    0,   33,    0,   59,    1,    7,    0,
+       58,    0,   58,    0,   59,    0,   31,   37,   39,   38,
+       32,   41,   56,   56,   56,   56,   56,   56,   45,   56,
+       56,   56,   56,   56,   34,    5,    4,    3,    2,    0,
+        6,    0,   57,    7,    0,   59,   60,   58,   41,   56,
 
-       56,   46,   56,   56,   56,   56,   60,   56,   56,   54,
-       56,   56,   56,   56,   56,   56,   56,   50,   56,   49,
-       56,   51,   56,   47,   56,   56,   56,   56,   55,   56,
-       43,   56,   53,   56,   56,   56,   56,   44,   56,   56,
-       56,   56,   56,   52,   56,   48,   42,    0
+       56,   56,   56,   56,   56,   56,   56,   46,   56,   56,
+       56,   56,   60,    0,   56,   56,   54,   56,   56,   56,
+       56,   56,   56,   56,   50,   56,   60,   49,   56,   51,
+       56,   47,   56,   56,   56,   56,   55,   56,   43,   56,
+       53,   56,   56,   56,   56,   44,   56,   56,   56,   56,
+       56,   52,   56,   48,   42,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -399,15 +400,15 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    2,    4,    5,    1,    1,    6,    7,    8,    9,
        10,   11,   12,   13,   14,   15,   16,   17,   18,   18,
-       18,   18,   18,   18,   18,   18,   18,   19,   20,   21,
-       22,   23,    1,   24,   25,   25,   25,   25,   26,   25,
-       27,   27,   27,   27,   27,   28,   27,   27,   27,   27,
-       27,   27,   27,   27,   27,   27,   27,   29,   27,   27,
-       30,    1,   31,   32,   33,    1,   34,   35,   36,   37,
+       18,   18,   18,   18,   18,   19,   18,   20,   21,   22,
+       23,   24,    1,   25,   26,   26,   26,   26,   27,   26,
+       28,   28,   28,   28,   28,   29,   28,   28,   28,   28,
+       28,   28,   28,   28,   28,   28,   28,   30,   28,   28,
+       31,   32,   33,   34,   35,    1,   36,   37,   38,   39,
 
-       38,   39,   40,   41,   42,   27,   43,   44,   45,   46,
-       47,   48,   27,   49,   50,   51,   52,   27,   53,   29,
-       54,   27,   55,   56,   57,   58,    1,    1,    1,    1,
+       40,   41,   42,   43,   44,   28,   45,   46,   47,   48,
+       49,   50,   28,   51,   52,   53,   54,   28,   55,   30,
+       56,   28,   57,   58,   59,   60,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -424,130 +425,136 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[59] =
+static const YY_CHAR yy_meta[61] =
     {   0,
         1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
-        3,    1,    1,    1,    1,    1,    4,    4,    1,    1,
-        1,    1,    1,    1,    5,    5,    6,    6,    6,    1,
-        1,    1,    6,    5,    5,    5,    5,    5,    5,    6,
-        6,    6,    6,    6,    6,    6,    6,    6,    6,    6,
-        6,    6,    6,    6,    1,    1,    1,    1
+        3,    1,    1,    1,    1,    1,    4,    4,    4,    1,
+        1,    1,    1,    1,    1,    5,    5,    6,    6,    6,
+        1,    1,    1,    1,    6,    5,    5,    5,    5,    5,
+        5,    6,    6,    6,    6,    6,    6,    6,    6,    6,
+        6,    6,    6,    6,    6,    6,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[158] =
+static const flex_int16_t yy_base[167] =
     {   0,
-        0,    0,   56,   57,  232,  233,  229,  227,  207,  223,
-      233,  220,    0,  233,  233,  233,  233,  233,  233,   44,
-       53,   55,   48,  233,  233,   56,  204,   57,    0,    0,
-      233,  233,  233,   41,  179,  190,   45,   49,  189,  173,
-      175,  233,  164,  233,  233,    0,  216,   86,  216,  214,
-      233,  211,  233,  233,  207,   86,  233,    0,   88,   92,
-      105,  233,    0,  233,  233,  233,  233,  233,  233,    0,
-        0,  168,  165,  160,  167,  162,   24,  171,  157,   49,
-      155,  164,  233,    0,  202,   97,  233,  233,    0,   97,
-      109,   72,    0,  154,  170,  157,  151,  153,  147,  160,
+        0,    0,   58,   59,  251,  252,  248,  246,  225,   58,
+      252,  240,    0,  252,  252,  252,  252,  252,  252,   47,
+       56,   76,   38,  252,  252,   51,  223,   52,    0,    0,
+      252,  252,  252,   28,  197,  208,   32,   33,  207,  191,
+      193,  252,  182,  252,  252,    0,  236,   72,  236,  234,
+      252,   66,  252,   79,  252,  228,   83,  252,    0,   90,
+        0,  101,  181,    0,  252,  215,  252,  252,  252,  252,
+      252,    0,    0,  185,  182,  177,  184,  179,   36,  188,
+      174,   48,  172,  181,  252,    0,  221,   81,  252,   99,
+      107,  122,  252,    0,  118,  123,   92,  252,    0,  171,
 
-      144,    0,  153,  159,  156,  146,  233,  141,  150,    0,
-      152,  140,  128,  125,  139,  128,  109,    0,  100,    0,
-      107,    0,   93,    0,  104,   88,  101,   96,    0,  105,
-        0,  104,    0,   99,  101,   97,   97,    0,   97,   91,
-       90,   77,   47,    0,   44,    0,    0,  233,  148,  154,
-      160,  162,  165,  171,  177,  180,  182
+      187,  174,  168,  170,  164,  177,  161,    0,  170,  176,
+      173,  163,  157,  182,  137,  146,    0,  138,  112,  109,
+      110,  124,  123,  118,    0,  109,  252,    0,  116,    0,
+      102,    0,  112,   96,  109,  104,    0,  113,    0,  112,
+        0,  107,  109,  105,  105,    0,   96,   92,   89,   82,
+       75,    0,   74,    0,    0,  252,  164,  170,  176,  178,
+      181,  187,  193,  199,  202,  204
     } ;
 
-static const flex_int16_t yy_def[158] =
+static const flex_int16_t yy_def[167] =
     {   0,
-      148,    1,  149,  149,  148,  148,  148,  148,  148,  150,
-      148,  148,  151,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  152,  153,
-      148,  148,  148,  153,  153,  153,  153,  153,  153,  153,
-      153,  148,  148,  148,  148,  154,  148,  148,  148,  148,
-      148,  150,  148,  148,  148,  148,  148,  155,  148,  148,
-      148,  148,  156,  148,  148,  148,  148,  148,  148,  157,
-      153,  153,  153,  153,  153,  153,  153,  153,  153,  153,
-      153,  153,  148,  154,  148,  148,  148,  148,  155,  148,
-      148,  156,  157,  153,  153,  153,  153,  153,  153,  153,
+      156,    1,  157,  157,  156,  156,  156,  156,  156,  158,
+      156,  156,  159,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,   22,  156,  156,  156,  156,  156,  160,  161,
+      156,  156,  156,  161,  161,  161,  161,  161,  161,  161,
+      161,  156,  156,  156,  156,  162,  156,  156,  156,  156,
+      156,  158,  156,  163,  156,  156,  156,  156,  164,  156,
+       23,  156,  156,  165,  156,  156,  156,  156,  156,  156,
+      156,  166,  161,  161,  161,  161,  161,  161,  161,  161,
+      161,  161,  161,  161,  156,  162,  156,  156,  156,  158,
+      158,  163,  156,  164,  156,  156,  165,  156,  166,  161,
 
-      153,  153,  153,  153,  153,  153,  148,  153,  153,  153,
-      153,  153,  153,  153,  153,  153,  153,  153,  153,  153,
-      153,  153,  153,  153,  153,  153,  153,  153,  153,  153,
-      153,  153,  153,  153,  153,  153,  153,  153,  153,  153,
-      153,  153,  153,  153,  153,  153,  153,    0,  148,  148,
-      148,  148,  148,  148,  148,  148,  148
+      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
+      161,  161,  156,  156,  161,  161,  161,  161,  161,  161,
+      161,  161,  161,  161,  161,  161,  156,  161,  161,  161,
+      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
+      161,  161,  161,  161,  161,  161,  161,  161,  161,  161,
+      161,  161,  161,  161,  161,    0,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156
     } ;
 
-static const flex_int16_t yy_nxt[292] =
+static const flex_int16_t yy_nxt[313] =
     {   0,
         6,    7,    8,    9,   10,   11,   12,   13,   14,   15,
-       16,   17,   18,   19,   20,   21,   22,   23,   24,   25,
-       26,   27,   28,   29,   30,   30,   30,   30,   30,   31,
-       32,   33,   30,   30,   30,   34,   30,   35,   36,   30,
-       30,   37,   30,   30,   30,   30,   38,   39,   30,   30,
-       40,   41,   30,   30,   42,   43,   44,   45,   47,   47,
-       56,   56,   59,   57,   60,   60,   48,   48,   58,   59,
-       99,   60,   60,   61,  100,   62,   65,   66,   68,   69,
-       61,  147,   62,   63,  103,   61,   64,   72,   73,   76,
-       77,   62,   61,   64,   78,  146,   86,  104,   62,  107,
+       16,   17,   18,   19,   20,   21,   22,   23,   23,   24,
+       25,   26,   27,   28,   29,   30,   30,   30,   30,   30,
+       31,    6,   32,   33,   30,   30,   30,   34,   30,   35,
+       36,   30,   30,   37,   30,   30,   30,   30,   38,   39,
+       30,   30,   40,   41,   30,   30,   42,   43,   44,   45,
+       47,   47,   53,   57,   57,   57,   58,  156,   48,   48,
+       53,   59,   67,   68,   70,   71,   74,   75,   78,   79,
+       80,   52,   88,   91,  105,  109,   81,   89,  106,   54,
+       60,   88,   61,   61,   61,  156,   89,   54,  110,   57,
 
-       79,   87,   56,   56,   56,   56,   59,   86,   60,   60,
-       63,   61,   87,   91,   91,  107,   90,   61,   90,   62,
-      145,   91,   91,   61,   64,   91,   91,  144,  143,   61,
-       64,  142,  141,  140,  139,   62,  138,  137,  136,  135,
-      134,  133,  132,  131,  130,  129,  128,   64,   46,   46,
-       46,   46,   46,   46,   52,   52,   52,   52,   52,   52,
-       55,  127,   55,   55,   55,   55,   70,   70,   71,   71,
-       71,   84,  126,  125,   84,   84,   84,   89,  124,   89,
-       89,   89,   89,   92,   92,   93,   93,   93,  123,  122,
-      121,  120,  119,  118,  117,  116,  115,  114,  113,  112,
+       57,   57,   62,   53,   63,   64,   57,   57,   57,   62,
+       92,   53,   95,  155,   95,   62,   65,   96,   96,   96,
+      113,   63,   62,   65,   52,  154,   91,  153,  152,   66,
+       54,  151,  150,   64,   96,   96,   96,  113,   54,   96,
+       96,   96,  149,  148,  147,  114,  146,  145,  144,  143,
+      142,  141,  140,   92,  139,  138,  137,  136,  135,  134,
+      133,  132,  131,   65,   46,   46,   46,   46,   46,   46,
+       52,   52,   52,   52,   52,   52,   56,  130,   56,   56,
+       56,   56,   72,   72,   73,   73,   73,   86,  129,  128,
+       86,   86,   86,   90,   90,   90,   90,   90,   90,   94,
 
-      111,  110,  109,  108,   85,  106,  105,  102,  101,   98,
-       97,   96,   95,   94,   88,   53,   50,   49,   85,   83,
-       82,   81,   80,   75,   74,   67,   54,   53,   51,   50,
-       49,  148,    5,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148
+      127,   94,   94,   94,   94,   97,   97,   99,   99,   99,
+      114,  126,  125,  124,  123,  122,  121,  120,  119,  118,
+      117,  116,  115,   87,  112,  111,  108,  107,  104,  103,
+      102,  101,  100,   98,   66,   93,   50,   49,   87,   85,
+       84,   83,   82,   77,   76,   69,   55,   51,   50,   49,
+      156,    5,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
 
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156
     } ;
 
-static const flex_int16_t yy_chk[292] =
+static const flex_int16_t yy_chk[313] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    3,    4,
-       20,   20,   23,   21,   23,   23,    3,    4,   21,   22,
-       77,   22,   22,   23,   77,   23,   26,   26,   28,   28,
-       22,  145,   22,   22,   80,   23,   23,   34,   34,   37,
-       37,   23,   22,   22,   38,  143,   48,   80,   22,   92,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        3,    4,   10,   20,   20,   20,   21,   23,    3,    4,
+       52,   21,   26,   26,   28,   28,   34,   34,   37,   37,
+       38,   54,   48,   54,   79,   82,   38,   48,   79,   10,
+       22,   88,   22,   22,   22,   23,   88,   52,   82,   57,
 
-       38,   48,   56,   56,   59,   59,   60,   86,   60,   60,
-       22,   56,   86,   90,   90,   92,   61,   60,   61,   60,
-      142,   61,   61,   56,   56,   91,   91,  141,  140,   60,
-       60,  139,  137,  136,  135,   60,  134,  132,  130,  128,
-      127,  126,  125,  123,  121,  119,  117,   91,  149,  149,
-      149,  149,  149,  149,  150,  150,  150,  150,  150,  150,
-      151,  116,  151,  151,  151,  151,  152,  152,  153,  153,
-      153,  154,  115,  114,  154,  154,  154,  155,  113,  155,
-      155,  155,  155,  156,  156,  157,  157,  157,  112,  111,
-      109,  108,  106,  105,  104,  103,  101,  100,   99,   98,
+       57,   57,   22,   90,   22,   22,   60,   60,   60,   57,
+       54,   91,   62,  153,   62,   22,   22,   62,   62,   62,
+       97,   22,   57,   57,   92,  151,   92,  150,  149,   22,
+       90,  148,  147,   22,   95,   95,   95,   97,   91,   96,
+       96,   96,  145,  144,  143,   97,  142,  140,  138,  136,
+      135,  134,  133,   92,  131,  129,  126,  124,  123,  122,
+      121,  120,  119,   96,  157,  157,  157,  157,  157,  157,
+      158,  158,  158,  158,  158,  158,  159,  118,  159,  159,
+      159,  159,  160,  160,  161,  161,  161,  162,  116,  115,
+      162,  162,  162,  163,  163,  163,  163,  163,  163,  164,
 
-       97,   96,   95,   94,   85,   82,   81,   79,   78,   76,
-       75,   74,   73,   72,   55,   52,   50,   49,   47,   43,
-       41,   40,   39,   36,   35,   27,   12,   10,    9,    8,
-        7,    5,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148,  148,  148,  148,  148,  148,  148,  148,  148,  148,
-      148
+      114,  164,  164,  164,  164,  165,  165,  166,  166,  166,
+      113,  112,  111,  110,  109,  107,  106,  105,  104,  103,
+      102,  101,  100,   87,   84,   83,   81,   80,   78,   77,
+       76,   75,   74,   66,   63,   56,   50,   49,   47,   43,
+       41,   40,   39,   36,   35,   27,   12,    9,    8,    7,
+        5,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
 
+      156,  156,  156,  156,  156,  156,  156,  156,  156,  156,
+      156,  156
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -557,7 +564,7 @@ static const flex_int16_t yy_chk[292] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 1 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 /*
  * Copyright (C) 2016, The Android Open Source Project
  *
@@ -573,7 +580,7 @@ static const flex_int16_t yy_chk[292] =
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#line 18 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 18 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 #include <string.h>
 #include <stdlib.h>
 
@@ -581,11 +588,19 @@ static const flex_int16_t yy_chk[292] =
 #include "parser.h"
 #include "aidl_language_y.h"
 
+#ifndef YYSTYPE
+#define YYSTYPE yy::parser::semantic_type
+#endif
+
+#ifndef YYLTYPE
+#define YYLTYPE yy::parser::location_type
+#endif
+
 #define YY_USER_ACTION yylloc->columns(yyleng);
-#line 585 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.cpp"
+#line 600 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.cpp"
 #define YY_NO_INPUT 1
 
-#line 588 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.cpp"
+#line 603 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.cpp"
 
 #define INITIAL 0
 #define LONG_COMMENT 1
@@ -868,10 +883,10 @@ YY_DECL
 		}
 
 	{
-#line 43 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 51 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 
 
-#line 46 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 54 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
   /* This happens at every call to yylex (every time we receive one token) */
   using android::aidl::Comments;
   using android::aidl::Comment;
@@ -880,7 +895,7 @@ YY_DECL
   yylloc->step();
 
 
-#line 883 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.cpp"
+#line 898 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -907,13 +922,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 149 )
+				if ( yy_current_state >= 157 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 233 );
+		while ( yy_base[yy_current_state] != 252 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -939,42 +954,42 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 54 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 62 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { extra_text += yytext; BEGIN(LONG_COMMENT); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 55 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 63 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { extra_text += yytext; yylloc->step(); BEGIN(INITIAL);
                         comments.push_back({extra_text});
                         extra_text.clear(); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 58 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 66 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { extra_text += yytext; }
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 59 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 67 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { extra_text += yytext; yylloc->lines(yyleng); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 60 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 68 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { extra_text += yytext; }
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 62 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 70 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken(yytext, comments);
                         return yy::parser::token::C_STR; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 65 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 73 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { extra_text += yytext; extra_text += "\n";
                         comments.push_back({extra_text});
                         extra_text.clear(); }
@@ -982,179 +997,179 @@ YY_RULE_SETUP
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 69 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 77 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylloc->lines(yyleng); yylloc->step(); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 70 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 78 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 {}
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(LONG_COMMENT):
-#line 71 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 79 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yyterminate(); }
 	YY_BREAK
 /* symbols */
 case 10:
 YY_RULE_SETUP
-#line 74 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 82 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('('); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 75 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 83 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(')'); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 76 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 84 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('<'); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 77 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 85 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('>'); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 78 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 86 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('{'); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 79 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 87 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('}'); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 80 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 88 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('['); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 81 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 89 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(']'); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 82 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 90 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(':'); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 83 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 91 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(';'); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 84 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 92 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(','); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 85 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 93 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('.'); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 86 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 94 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('='); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 87 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 95 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('+'); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 88 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 96 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('-'); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 89 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 97 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('*'); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 90 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 98 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('/'); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 91 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 99 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('%'); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 92 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 100 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('&'); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 93 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 101 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('|'); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 94 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 102 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('^'); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 95 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 103 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::LSHIFT); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 96 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 104 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::RSHIFT); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 97 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 105 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::LOGICAL_AND); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 98 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 106 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::LOGICAL_OR);  }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 99 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 107 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('!'); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 100 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 108 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return('~'); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 101 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 109 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::LEQ); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 102 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 110 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::GEQ); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 103 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 111 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::EQUALITY); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 104 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 112 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return(yy::parser::token::NEQ); }
 	YY_BREAK
 /* annotations */
 case 41:
 YY_RULE_SETUP
-#line 107 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 115 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken(yytext + 1, comments);
                         return yy::parser::token::ANNOTATION;
                       }
@@ -1162,84 +1177,84 @@ YY_RULE_SETUP
 /* keywords */
 case 42:
 YY_RULE_SETUP
-#line 112 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 120 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("parcelable", comments);
                         return yy::parser::token::PARCELABLE;
                       }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 115 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 123 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("import", comments);
                         return yy::parser::token::IMPORT; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 117 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 125 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("package", comments);
                         return yy::parser::token::PACKAGE; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 119 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 127 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return yy::parser::token::IN; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 120 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 128 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return yy::parser::token::OUT; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 121 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 129 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return yy::parser::token::INOUT; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 122 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 130 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("cpp_header", comments);
                         return yy::parser::token::CPP_HEADER; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 124 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 132 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("const", comments);
                         return yy::parser::token::CONST; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 126 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 134 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return yy::parser::token::TRUE_LITERAL; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 127 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 135 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return yy::parser::token::FALSE_LITERAL; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 129 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 137 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("interface", comments);
                         return yy::parser::token::INTERFACE;
                       }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 132 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 140 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("oneway", comments);
                         return yy::parser::token::ONEWAY;
                       }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 135 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 143 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("enum", comments);
                         return yy::parser::token::ENUM;
                       }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 138 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 146 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken("union", comments);
                         return yy::parser::token::UNION;
                       }
@@ -1247,48 +1262,47 @@ YY_RULE_SETUP
 /* scalars */
 case 56:
 YY_RULE_SETUP
-#line 143 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 151 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken(yytext, comments);
                         return yy::parser::token::IDENTIFIER;
                       }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 146 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
-{ yylval->character = yytext[1];
-                        return yy::parser::token::CHARVALUE;
-                      }
+#line 154 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
+{ yylval->token = new AidlToken(std::string(yytext, yyleng), comments);
+                        return yy::parser::token::CHARVALUE; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 149 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 156 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken(yytext, comments);
                         return yy::parser::token::INTVALUE; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 151 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 158 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken(yytext, comments);
                         return yy::parser::token::FLOATVALUE; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 153 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 160 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { yylval->token = new AidlToken(yytext, comments);
                         return yy::parser::token::HEXVALUE; }
 	YY_BREAK
 /* lexical error! */
 case 61:
 YY_RULE_SETUP
-#line 157 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 164 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 { return yy::parser::token::UNKNOWN; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 159 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 166 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 ECHO;
 	YY_BREAK
-#line 1291 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.cpp"
+#line 1305 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.cpp"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1585,7 +1599,7 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 149 )
+			if ( yy_current_state >= 157 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1614,11 +1628,11 @@ static int yy_get_next_buffer (yyscan_t yyscanner)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 149 )
+		if ( yy_current_state >= 157 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 148);
+	yy_is_jam = (yy_current_state == 156);
 
 	(void)yyg;
 	return yy_is_jam ? 0 : yy_current_state;
@@ -2441,7 +2455,7 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 159 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_l.ll"
+#line 166 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_l.ll"
 
 
 // comment and whitespace handling

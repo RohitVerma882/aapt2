@@ -23,6 +23,7 @@
 
 #include "android-base/stringprintf.h"
 #include "androidfw/StringPiece.h"
+#include "build/version.h"
 
 #include "text/Unicode.h"
 #include "text/Utf8Iterator.h"
@@ -30,14 +31,17 @@
 #include "util/Maybe.h"
 #include "utils/Unicode.h"
 
-#include "platform_tools_version.h"
-
 using ::aapt::text::Utf8Iterator;
 using ::android::StringPiece;
 using ::android::StringPiece16;
 
 namespace aapt {
 namespace util {
+
+// Package name and shared user id would be used as a part of the file name.
+// Limits size to 223 and reserves 32 for the OS.
+// See frameworks/base/core/java/android/content/pm/parsing/ParsingPackageUtils.java
+constexpr static const size_t kMaxPackageNameSize = 223;
 
 static std::vector<std::string> SplitAndTransform(
     const StringPiece& str, char sep, const std::function<char(char)>& f) {
@@ -170,7 +174,19 @@ static int IsAndroidNameImpl(const StringPiece& str) {
 }
 
 bool IsAndroidPackageName(const StringPiece& str) {
+  if (str.size() > kMaxPackageNameSize) {
+    return false;
+  }
   return IsAndroidNameImpl(str) > 1 || str == "android";
+}
+
+bool IsAndroidSharedUserId(const android::StringPiece& package_name,
+                           const android::StringPiece& shared_user_id) {
+  if (shared_user_id.size() > kMaxPackageNameSize) {
+    return false;
+  }
+  return shared_user_id.empty() || IsAndroidNameImpl(shared_user_id) > 1 ||
+         package_name == "android";
 }
 
 bool IsAndroidSplitName(const StringPiece& str) {
@@ -215,9 +231,11 @@ std::string GetToolFingerprint() {
   // Update minor version whenever a feature or flag is added.
   static const char* const sMinorVersion = "19";
 
-  static const char* const sBuildId = PLATFORM_TOOLS_VERSION;
-  return android::base::StringPrintf("%s.%s-%s", sMajorVersion, sMinorVersion, sBuildId);
- }
+  // The build id of aapt2 binary.
+  static const std::string sBuildId = android::build::GetBuildNumber();
+
+  return android::base::StringPrintf("%s.%s-%s", sMajorVersion, sMinorVersion, sBuildId.c_str());
+}
 
 static size_t ConsumeDigits(const char* start, const char* end) {
   const char* c = start;

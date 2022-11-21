@@ -1,0 +1,24 @@
+[submodule "src/zopfli"]
+	path = src/zopfli
+	url = https://android.googlesource.com/platform/external/zopfli
+	shallow = true
+[submodule "src/zlib"]
+	path = src/zlib
+	url = https://github.com/madler/zlib.git
+	shallow = true
+[submodule "src/libpng"]
+	path = src/libpng
+	url = https://android.googlesource.com/platform/external/libpng.git
+	shallow = true
+[submodule "src/fmtlib"]
+	path = src/fmtlib
+	url = https://android.googlesource.com/platform/external/fmtlib.git
+	shallow = true
+[submodule "src/expat"]
+	path = src/expat
+	url = https://android.googlesource.com/platform/external/expat.git
+	shallow = true
+[submodule "src/googletest"]
+	path = src/googletest
+	url = https://android.googlesource.com/platform/external/googletest
+	shallow = true

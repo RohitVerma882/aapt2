@@ -34,12 +34,12 @@ const char SCRIPT_CODES[][4] = {
     /* 30 */ {'H', 'a', 'n', 't'},
     /* 31 */ {'H', 'e', 'b', 'r'},
     /* 32 */ {'H', 'l', 'u', 'w'},
-    /* 33 */ {'H', 'm', 'n', 'g'},
-    /* 34 */ {'H', 'm', 'n', 'p'},
-    /* 35 */ {'I', 't', 'a', 'l'},
-    /* 36 */ {'J', 'p', 'a', 'n'},
-    /* 37 */ {'K', 'a', 'l', 'i'},
-    /* 38 */ {'K', 'a', 'n', 'a'},
+    /* 33 */ {'H', 'm', 'n', 'p'},
+    /* 34 */ {'I', 't', 'a', 'l'},
+    /* 35 */ {'J', 'p', 'a', 'n'},
+    /* 36 */ {'K', 'a', 'l', 'i'},
+    /* 37 */ {'K', 'a', 'n', 'a'},
+    /* 38 */ {'K', 'a', 'w', 'i'},
     /* 39 */ {'K', 'h', 'a', 'r'},
     /* 40 */ {'K', 'h', 'm', 'r'},
     /* 41 */ {'K', 'i', 't', 's'},
@@ -69,39 +69,43 @@ const char SCRIPT_CODES[][4] = {
     /* 65 */ {'O', 'r', 'k', 'h'},
     /* 66 */ {'O', 'r', 'y', 'a'},
     /* 67 */ {'O', 's', 'g', 'e'},
-    /* 68 */ {'P', 'a', 'u', 'c'},
-    /* 69 */ {'P', 'h', 'l', 'i'},
-    /* 70 */ {'P', 'h', 'n', 'x'},
-    /* 71 */ {'P', 'l', 'r', 'd'},
-    /* 72 */ {'P', 'r', 't', 'i'},
-    /* 73 */ {'R', 'u', 'n', 'r'},
-    /* 74 */ {'S', 'a', 'm', 'r'},
-    /* 75 */ {'S', 'a', 'r', 'b'},
-    /* 76 */ {'S', 'a', 'u', 'r'},
-    /* 77 */ {'S', 'g', 'n', 'w'},
-    /* 78 */ {'S', 'i', 'n', 'h'},
-    /* 79 */ {'S', 'o', 'g', 'd'},
-    /* 80 */ {'S', 'o', 'r', 'a'},
-    /* 81 */ {'S', 'o', 'y', 'o'},
-    /* 82 */ {'S', 'y', 'r', 'c'},
-    /* 83 */ {'T', 'a', 'l', 'e'},
-    /* 84 */ {'T', 'a', 'l', 'u'},
-    /* 85 */ {'T', 'a', 'm', 'l'},
-    /* 86 */ {'T', 'a', 'n', 'g'},
-    /* 87 */ {'T', 'a', 'v', 't'},
-    /* 88 */ {'T', 'e', 'l', 'u'},
-    /* 89 */ {'T', 'f', 'n', 'g'},
-    /* 90 */ {'T', 'h', 'a', 'a'},
-    /* 91 */ {'T', 'h', 'a', 'i'},
-    /* 92 */ {'T', 'i', 'b', 't'},
-    /* 93 */ {'U', 'g', 'a', 'r'},
-    /* 94 */ {'V', 'a', 'i', 'i'},
-    /* 95 */ {'W', 'c', 'h', 'o'},
-    /* 96 */ {'X', 'p', 'e', 'o'},
-    /* 97 */ {'X', 's', 'u', 'x'},
-    /* 98 */ {'Y', 'i', 'i', 'i'},
-    /* 99 */ {'~', '~', '~', 'A'},
-    /* 100 */ {'~', '~', '~', 'B'},
+    /* 68 */ {'O', 'u', 'g', 'r'},
+    /* 69 */ {'P', 'a', 'u', 'c'},
+    /* 70 */ {'P', 'h', 'l', 'i'},
+    /* 71 */ {'P', 'h', 'n', 'x'},
+    /* 72 */ {'P', 'l', 'r', 'd'},
+    /* 73 */ {'P', 'r', 't', 'i'},
+    /* 74 */ {'R', 'o', 'h', 'g'},
+    /* 75 */ {'R', 'u', 'n', 'r'},
+    /* 76 */ {'S', 'a', 'm', 'r'},
+    /* 77 */ {'S', 'a', 'r', 'b'},
+    /* 78 */ {'S', 'a', 'u', 'r'},
+    /* 79 */ {'S', 'g', 'n', 'w'},
+    /* 80 */ {'S', 'i', 'n', 'h'},
+    /* 81 */ {'S', 'o', 'g', 'd'},
+    /* 82 */ {'S', 'o', 'r', 'a'},
+    /* 83 */ {'S', 'o', 'y', 'o'},
+    /* 84 */ {'S', 'y', 'r', 'c'},
+    /* 85 */ {'T', 'a', 'l', 'e'},
+    /* 86 */ {'T', 'a', 'l', 'u'},
+    /* 87 */ {'T', 'a', 'm', 'l'},
+    /* 88 */ {'T', 'a', 'n', 'g'},
+    /* 89 */ {'T', 'a', 'v', 't'},
+    /* 90 */ {'T', 'e', 'l', 'u'},
+    /* 91 */ {'T', 'f', 'n', 'g'},
+    /* 92 */ {'T', 'h', 'a', 'a'},
+    /* 93 */ {'T', 'h', 'a', 'i'},
+    /* 94 */ {'T', 'i', 'b', 't'},
+    /* 95 */ {'T', 'n', 's', 'a'},
+    /* 96 */ {'T', 'o', 't', 'o'},
+    /* 97 */ {'U', 'g', 'a', 'r'},
+    /* 98 */ {'V', 'a', 'i', 'i'},
+    /* 99 */ {'W', 'c', 'h', 'o'},
+    /* 100 */ {'X', 'p', 'e', 'o'},
+    /* 101 */ {'X', 's', 'u', 'x'},
+    /* 102 */ {'Y', 'i', 'i', 'i'},
+    /* 103 */ {'~', '~', '~', 'A'},
+    /* 104 */ {'~', '~', '~', 'B'},
 };
 
 
@@ -122,7 +126,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x80600000u, 46u}, // ada -> Latn
     {0x90600000u, 46u}, // ade -> Latn
     {0xA4600000u, 46u}, // adj -> Latn
-    {0xBC600000u, 92u}, // adp -> Tibt
+    {0xBC600000u, 94u}, // adp -> Tibt
     {0xE0600000u, 18u}, // ady -> Cyrl
     {0xE4600000u, 46u}, // adz -> Latn
     {0x61650000u,  5u}, // ae -> Avst
@@ -140,7 +144,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xB8E00000u,  1u}, // aho -> Ahom
     {0x99200000u, 46u}, // ajg -> Latn
     {0x616B0000u, 46u}, // ak -> Latn
-    {0xA9400000u, 97u}, // akk -> Xsux
+    {0xA9400000u, 101u}, // akk -> Xsux
     {0x81600000u, 46u}, // ala -> Latn
     {0xA1600000u, 46u}, // ali -> Latn
     {0xB5600000u, 46u}, // aln -> Latn
@@ -165,7 +169,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xC9E00000u, 46u}, // aps -> Latn
     {0xE5E00000u, 46u}, // apz -> Latn
     {0x61720000u,  2u}, // ar -> Arab
-    {0x61725842u, 100u}, // ar-XB -> ~~~B
+    {0x61725842u, 104u}, // ar-XB -> ~~~B
     {0x8A200000u,  3u}, // arc -> Armi
     {0x9E200000u, 46u}, // arh -> Latn
     {0xB6200000u, 46u}, // arn -> Latn
@@ -176,7 +180,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xE6200000u,  2u}, // arz -> Arab
     {0x61730000u,  8u}, // as -> Beng
     {0x82400000u, 46u}, // asa -> Latn
-    {0x92400000u, 77u}, // ase -> Sgnw
+    {0x92400000u, 79u}, // ase -> Sgnw
     {0x9A400000u, 46u}, // asg -> Latn
     {0xBA400000u, 46u}, // aso -> Latn
     {0xCE400000u, 46u}, // ast -> Latn
@@ -233,7 +237,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xDC810000u, 46u}, // bex -> Latn
     {0xE4810000u, 46u}, // bez -> Latn
     {0x8CA10000u, 46u}, // bfd -> Latn
-    {0xC0A10000u, 85u}, // bfq -> Taml
+    {0xC0A10000u, 87u}, // bfq -> Taml
     {0xCCA10000u,  2u}, // bft -> Arab
     {0xE0A10000u, 19u}, // bfy -> Deva
     {0x62670000u, 18u}, // bg -> Cyrl
@@ -267,7 +271,9 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xC1410000u, 46u}, // bkq -> Latn
     {0xD1410000u, 46u}, // bku -> Latn
     {0xD5410000u, 46u}, // bkv -> Latn
-    {0xCD610000u, 87u}, // blt -> Tavt
+    {0x81610000u, 46u}, // bla -> Latn
+    {0x99610000u, 46u}, // blg -> Latn
+    {0xCD610000u, 89u}, // blt -> Tavt
     {0x626D0000u, 46u}, // bm -> Latn
     {0x9D810000u, 46u}, // bmh -> Latn
     {0xA9810000u, 46u}, // bmk -> Latn
@@ -277,7 +283,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x99A10000u, 46u}, // bng -> Latn
     {0xB1A10000u, 46u}, // bnm -> Latn
     {0xBDA10000u, 46u}, // bnp -> Latn
-    {0x626F0000u, 92u}, // bo -> Tibt
+    {0x626F0000u, 94u}, // bo -> Tibt
     {0xA5C10000u, 46u}, // boj -> Latn
     {0xB1C10000u, 46u}, // bom -> Latn
     {0xB5C10000u, 46u}, // bon -> Latn
@@ -348,22 +354,22 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xB9420000u, 46u}, // cko -> Latn
     {0xE1420000u, 46u}, // cky -> Latn
     {0x81620000u, 46u}, // cla -> Latn
+    {0x89620000u, 46u}, // clc -> Latn
     {0x91820000u, 46u}, // cme -> Latn
-    {0x99820000u, 81u}, // cmg -> Soyo
+    {0x99820000u, 83u}, // cmg -> Soyo
     {0x636F0000u, 46u}, // co -> Latn
     {0xBDC20000u, 16u}, // cop -> Copt
     {0xC9E20000u, 46u}, // cps -> Latn
     {0x63720000u, 11u}, // cr -> Cans
+    {0x9A220000u, 46u}, // crg -> Latn
     {0x9E220000u, 18u}, // crh -> Cyrl
-    {0xA6220000u, 11u}, // crj -> Cans
     {0xAA220000u, 11u}, // crk -> Cans
     {0xAE220000u, 11u}, // crl -> Cans
-    {0xB2220000u, 11u}, // crm -> Cans
     {0xCA220000u, 46u}, // crs -> Latn
     {0x63730000u, 46u}, // cs -> Latn
     {0x86420000u, 46u}, // csb -> Latn
     {0xDA420000u, 11u}, // csw -> Cans
-    {0x8E620000u, 68u}, // ctd -> Pauc
+    {0x8E620000u, 69u}, // ctd -> Pauc
     {0x63750000u, 18u}, // cu -> Cyrl
     {0x63760000u, 18u}, // cv -> Cyrl
     {0x63790000u, 46u}, // cy -> Latn
@@ -408,12 +414,12 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x8A830000u, 46u}, // duc -> Latn
     {0x8E830000u, 46u}, // dud -> Latn
     {0x9A830000u, 46u}, // dug -> Latn
-    {0x64760000u, 90u}, // dv -> Thaa
+    {0x64760000u, 92u}, // dv -> Thaa
     {0x82A30000u, 46u}, // dva -> Latn
     {0xDAC30000u, 46u}, // dww -> Latn
     {0xBB030000u, 46u}, // dyo -> Latn
     {0xD3030000u, 46u}, // dyu -> Latn
-    {0x647A0000u, 92u}, // dz -> Tibt
+    {0x647A0000u, 94u}, // dz -> Tibt
     {0x9B230000u, 46u}, // dzg -> Latn
     {0xD0240000u, 46u}, // ebu -> Latn
     {0x65650000u, 46u}, // ee -> Latn
@@ -421,12 +427,12 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xACC40000u, 46u}, // egl -> Latn
     {0xE0C40000u, 20u}, // egy -> Egyp
     {0x81440000u, 46u}, // eka -> Latn
-    {0xE1440000u, 37u}, // eky -> Kali
+    {0xE1440000u, 36u}, // eky -> Kali
     {0x656C0000u, 26u}, // el -> Grek
     {0x81840000u, 46u}, // ema -> Latn
     {0xA1840000u, 46u}, // emi -> Latn
     {0x656E0000u, 46u}, // en -> Latn
-    {0x656E5841u, 99u}, // en-XA -> ~~~A
+    {0x656E5841u, 103u}, // en-XA -> ~~~A
     {0xB5A40000u, 46u}, // enn -> Latn
     {0xC1A40000u, 46u}, // enq -> Latn
     {0x656F0000u, 46u}, // eo -> Latn
@@ -436,7 +442,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xD2440000u, 46u}, // esu -> Latn
     {0x65740000u, 46u}, // et -> Latn
     {0xC6640000u, 46u}, // etr -> Latn
-    {0xCE640000u, 35u}, // ett -> Ital
+    {0xCE640000u, 34u}, // ett -> Ital
     {0xD2640000u, 46u}, // etu -> Latn
     {0xDE640000u, 46u}, // etx -> Latn
     {0x65750000u, 46u}, // eu -> Latn
@@ -526,7 +532,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x95C60000u, 21u}, // gof -> Ethi
     {0xA1C60000u, 46u}, // goi -> Latn
     {0xB1C60000u, 19u}, // gom -> Deva
-    {0xB5C60000u, 88u}, // gon -> Telu
+    {0xB5C60000u, 90u}, // gon -> Telu
     {0xC5C60000u, 46u}, // gor -> Latn
     {0xC9C60000u, 46u}, // gos -> Latn
     {0xCDC60000u, 25u}, // got -> Goth
@@ -571,11 +577,11 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xAD070000u, 46u}, // hil -> Latn
     {0x81670000u, 46u}, // hla -> Latn
     {0xD1670000u, 32u}, // hlu -> Hluw
-    {0x8D870000u, 71u}, // hmd -> Plrd
+    {0x8D870000u, 72u}, // hmd -> Plrd
     {0xCD870000u, 46u}, // hmt -> Latn
     {0x8DA70000u,  2u}, // hnd -> Arab
     {0x91A70000u, 19u}, // hne -> Deva
-    {0xA5A70000u, 33u}, // hnj -> Hmng
+    {0xA5A70000u, 33u}, // hnj -> Hmnp
     {0xB5A70000u, 46u}, // hnn -> Latn
     {0xB9A70000u,  2u}, // hno -> Arab
     {0x686F0000u, 46u}, // ho -> Latn
@@ -588,6 +594,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x68740000u, 46u}, // ht -> Latn
     {0x68750000u, 46u}, // hu -> Latn
     {0xA2870000u, 46u}, // hui -> Latn
+    {0xC6870000u, 46u}, // hur -> Latn
     {0x68790000u,  4u}, // hy -> Armn
     {0x687A0000u, 46u}, // hz -> Latn
     {0x69610000u, 46u}, // ia -> Latn
@@ -606,11 +613,10 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x69670000u, 46u}, // ig -> Latn
     {0x84C80000u, 46u}, // igb -> Latn
     {0x90C80000u, 46u}, // ige -> Latn
-    {0x69690000u, 98u}, // ii -> Yiii
+    {0x69690000u, 102u}, // ii -> Yiii
     {0xA5280000u, 46u}, // ijj -> Latn
     {0x696B0000u, 46u}, // ik -> Latn
     {0xA9480000u, 46u}, // ikk -> Latn
-    {0xCD480000u, 46u}, // ikt -> Latn
     {0xD9480000u, 46u}, // ikw -> Latn
     {0xDD480000u, 46u}, // ikx -> Latn
     {0xB9680000u, 46u}, // ilo -> Latn
@@ -628,7 +634,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xCAC80000u, 46u}, // iws -> Latn
     {0x9F280000u, 46u}, // izh -> Latn
     {0xA3280000u, 46u}, // izi -> Latn
-    {0x6A610000u, 36u}, // ja -> Jpan
+    {0x6A610000u, 35u}, // ja -> Jpan
     {0x84090000u, 46u}, // jab -> Latn
     {0xB0090000u, 46u}, // jam -> Latn
     {0xC4090000u, 46u}, // jar -> Latn
@@ -654,6 +660,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xA40A0000u, 46u}, // kaj -> Latn
     {0xB00A0000u, 46u}, // kam -> Latn
     {0xB80A0000u, 46u}, // kao -> Latn
+    {0xD80A0000u, 38u}, // kaw -> Kawi
     {0x8C2A0000u, 18u}, // kbd -> Cyrl
     {0xB02A0000u, 46u}, // kbm -> Latn
     {0xBC2A0000u, 46u}, // kbp -> Latn
@@ -665,9 +672,9 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xAC4A0000u, 46u}, // kcl -> Latn
     {0xCC4A0000u, 46u}, // kct -> Latn
     {0x906A0000u, 46u}, // kde -> Latn
-    {0x9C6A0000u,  2u}, // kdh -> Arab
+    {0x9C6A0000u, 46u}, // kdh -> Latn
     {0xAC6A0000u, 46u}, // kdl -> Latn
-    {0xCC6A0000u, 91u}, // kdt -> Thai
+    {0xCC6A0000u, 93u}, // kdt -> Thai
     {0x808A0000u, 46u}, // kea -> Latn
     {0xB48A0000u, 46u}, // ken -> Latn
     {0xE48A0000u, 46u}, // kez -> Latn
@@ -679,7 +686,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x94CA0000u, 46u}, // kgf -> Latn
     {0xBCCA0000u, 46u}, // kgp -> Latn
     {0x80EA0000u, 46u}, // kha -> Latn
-    {0x84EA0000u, 84u}, // khb -> Talu
+    {0x84EA0000u, 86u}, // khb -> Talu
     {0xB4EA0000u, 19u}, // khn -> Deva
     {0xC0EA0000u, 46u}, // khq -> Latn
     {0xC8EA0000u, 46u}, // khs -> Latn
@@ -767,13 +774,14 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xDEAA0000u,  2u}, // kvx -> Arab
     {0x6B770000u, 46u}, // kw -> Latn
     {0xA6CA0000u, 46u}, // kwj -> Latn
+    {0xAACA0000u, 46u}, // kwk -> Latn
     {0xBACA0000u, 46u}, // kwo -> Latn
     {0xC2CA0000u, 46u}, // kwq -> Latn
     {0x82EA0000u, 46u}, // kxa -> Latn
     {0x8AEA0000u, 21u}, // kxc -> Ethi
     {0x92EA0000u, 46u}, // kxe -> Latn
     {0xAEEA0000u, 19u}, // kxl -> Deva
-    {0xB2EA0000u, 91u}, // kxm -> Thai
+    {0xB2EA0000u, 93u}, // kxm -> Thai
     {0xBEEA0000u,  2u}, // kxp -> Arab
     {0xDAEA0000u, 46u}, // kxw -> Latn
     {0xE6EA0000u, 46u}, // kxz -> Latn
@@ -798,7 +806,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xD02B0000u, 46u}, // lbu -> Latn
     {0xD82B0000u, 46u}, // lbw -> Latn
     {0xB04B0000u, 46u}, // lcm -> Latn
-    {0xBC4B0000u, 91u}, // lcp -> Thai
+    {0xBC4B0000u, 93u}, // lcp -> Thai
     {0x846B0000u, 46u}, // ldb -> Latn
     {0x8C8B0000u, 46u}, // led -> Latn
     {0x908B0000u, 46u}, // lee -> Latn
@@ -816,13 +824,14 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x990B0000u, 46u}, // lig -> Latn
     {0x9D0B0000u, 46u}, // lih -> Latn
     {0xA50B0000u, 46u}, // lij -> Latn
+    {0xAD0B0000u, 46u}, // lil -> Latn
     {0xC90B0000u, 49u}, // lis -> Lisu
     {0xBD2B0000u, 46u}, // ljp -> Latn
     {0xA14B0000u,  2u}, // lki -> Arab
     {0xCD4B0000u, 46u}, // lkt -> Latn
     {0x916B0000u, 46u}, // lle -> Latn
     {0xB56B0000u, 46u}, // lln -> Latn
-    {0xB58B0000u, 88u}, // lmn -> Telu
+    {0xB58B0000u, 90u}, // lmn -> Telu
     {0xB98B0000u, 46u}, // lmo -> Latn
     {0xBD8B0000u, 46u}, // lmp -> Latn
     {0x6C6E0000u, 46u}, // ln -> Latn
@@ -844,7 +853,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xE28B0000u, 46u}, // luy -> Latn
     {0xE68B0000u,  2u}, // luz -> Arab
     {0x6C760000u, 46u}, // lv -> Latn
-    {0xAECB0000u, 91u}, // lwl -> Thai
+    {0xAECB0000u, 93u}, // lwl -> Thai
     {0x9F2B0000u, 29u}, // lzh -> Hans
     {0xE72B0000u, 46u}, // lzz -> Latn
     {0x8C0C0000u, 46u}, // mad -> Latn
@@ -896,6 +905,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xA0EC0000u, 46u}, // mhi -> Latn
     {0xACEC0000u, 46u}, // mhl -> Latn
     {0x6D690000u, 46u}, // mi -> Latn
+    {0x890C0000u, 46u}, // mic -> Latn
     {0x950C0000u, 46u}, // mif -> Latn
     {0xB50C0000u, 46u}, // min -> Latn
     {0xD90C0000u, 46u}, // miw -> Latn
@@ -948,7 +958,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xAACC0000u, 46u}, // mwk -> Latn
     {0xC6CC0000u, 19u}, // mwr -> Deva
     {0xD6CC0000u, 46u}, // mwv -> Latn
-    {0xDACC0000u, 34u}, // mww -> Hmnp
+    {0xDACC0000u, 33u}, // mww -> Hmnp
     {0x8AEC0000u, 46u}, // mxc -> Latn
     {0xB2EC0000u, 46u}, // mxm -> Latn
     {0x6D790000u, 59u}, // my -> Mymr
@@ -1012,11 +1022,11 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x9DAD0000u, 46u}, // nnh -> Latn
     {0xA9AD0000u, 46u}, // nnk -> Latn
     {0xB1AD0000u, 46u}, // nnm -> Latn
-    {0xBDAD0000u, 95u}, // nnp -> Wcho
+    {0xBDAD0000u, 99u}, // nnp -> Wcho
     {0x6E6F0000u, 46u}, // no -> Latn
     {0x8DCD0000u, 44u}, // nod -> Lana
     {0x91CD0000u, 19u}, // noe -> Deva
-    {0xB5CD0000u, 73u}, // non -> Runr
+    {0xB5CD0000u, 75u}, // non -> Runr
     {0xBDCD0000u, 46u}, // nop -> Latn
     {0xD1CD0000u, 46u}, // nou -> Latn
     {0xBA0D0000u, 61u}, // nqo -> Nkoo
@@ -1026,6 +1036,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xB64D0000u, 46u}, // nsn -> Latn
     {0xBA4D0000u, 46u}, // nso -> Latn
     {0xCA4D0000u, 46u}, // nss -> Latn
+    {0xCE4D0000u, 95u}, // nst -> Tnsa
     {0xB26D0000u, 46u}, // ntm -> Latn
     {0xC66D0000u, 46u}, // ntr -> Latn
     {0xA28D0000u, 46u}, // nui -> Latn
@@ -1043,6 +1054,9 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xA32D0000u, 46u}, // nzi -> Latn
     {0x6F630000u, 46u}, // oc -> Latn
     {0x88CE0000u, 46u}, // ogc -> Latn
+    {0x6F6A0000u, 11u}, // oj -> Cans
+    {0xC92E0000u, 11u}, // ojs -> Cans
+    {0x814E0000u, 46u}, // oka -> Latn
     {0xC54E0000u, 46u}, // okr -> Latn
     {0xD54E0000u, 46u}, // okv -> Latn
     {0x6F6D0000u, 46u}, // om -> Latn
@@ -1057,11 +1071,12 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x824E0000u, 67u}, // osa -> Osge
     {0x826E0000u,  2u}, // ota -> Arab
     {0xAA6E0000u, 65u}, // otk -> Orkh
+    {0xA28E0000u, 68u}, // oui -> Ougr
     {0xB32E0000u, 46u}, // ozm -> Latn
     {0x70610000u, 28u}, // pa -> Guru
     {0x7061504Bu,  2u}, // pa-PK -> Arab
     {0x980F0000u, 46u}, // pag -> Latn
-    {0xAC0F0000u, 69u}, // pal -> Phli
+    {0xAC0F0000u, 70u}, // pal -> Phli
     {0xB00F0000u, 46u}, // pam -> Latn
     {0xBC0F0000u, 46u}, // pap -> Latn
     {0xD00F0000u, 46u}, // pau -> Latn
@@ -1071,11 +1086,11 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x886F0000u, 46u}, // pdc -> Latn
     {0xCC6F0000u, 46u}, // pdt -> Latn
     {0x8C8F0000u, 46u}, // ped -> Latn
-    {0xB88F0000u, 96u}, // peo -> Xpeo
+    {0xB88F0000u, 100u}, // peo -> Xpeo
     {0xDC8F0000u, 46u}, // pex -> Latn
     {0xACAF0000u, 46u}, // pfl -> Latn
     {0xACEF0000u,  2u}, // phl -> Arab
-    {0xB4EF0000u, 70u}, // phn -> Phnx
+    {0xB4EF0000u, 71u}, // phn -> Phnx
     {0xAD0F0000u, 46u}, // pil -> Latn
     {0xBD0F0000u, 46u}, // pip -> Latn
     {0x814F0000u,  9u}, // pka -> Brah
@@ -1089,6 +1104,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xB5CF0000u, 46u}, // pon -> Latn
     {0x81EF0000u, 19u}, // ppa -> Deva
     {0xB9EF0000u, 46u}, // ppo -> Latn
+    {0xB20F0000u, 46u}, // pqm -> Latn
     {0x822F0000u, 39u}, // pra -> Khar
     {0x8E2F0000u,  2u}, // prd -> Arab
     {0x9A2F0000u, 46u}, // prg -> Latn
@@ -1109,9 +1125,9 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xAC910000u, 46u}, // rel -> Latn
     {0xC8910000u, 46u}, // res -> Latn
     {0xB4D10000u, 46u}, // rgn -> Latn
-    {0x98F10000u,  2u}, // rhg -> Arab
+    {0x98F10000u, 74u}, // rhg -> Rohg
     {0x81110000u, 46u}, // ria -> Latn
-    {0x95110000u, 89u}, // rif -> Tfng
+    {0x95110000u, 91u}, // rif -> Tfng
     {0x95114E4Cu, 46u}, // rif-NL -> Latn
     {0xC9310000u, 19u}, // rjs -> Deva
     {0xCD510000u,  8u}, // rkt -> Beng
@@ -1135,7 +1151,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x72770000u, 46u}, // rw -> Latn
     {0xAAD10000u, 46u}, // rwk -> Latn
     {0xBAD10000u, 46u}, // rwo -> Latn
-    {0xD3110000u, 38u}, // ryu -> Kana
+    {0xD3110000u, 37u}, // ryu -> Kana
     {0x73610000u, 19u}, // sa -> Deva
     {0x94120000u, 46u}, // saf -> Latn
     {0x9C120000u, 18u}, // sah -> Cyrl
@@ -1143,7 +1159,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xC8120000u, 46u}, // sas -> Latn
     {0xCC120000u, 64u}, // sat -> Olck
     {0xD4120000u, 46u}, // sav -> Latn
-    {0xE4120000u, 76u}, // saz -> Saur
+    {0xE4120000u, 78u}, // saz -> Saur
     {0x80320000u, 46u}, // sba -> Latn
     {0x90320000u, 46u}, // sbe -> Latn
     {0xBC320000u, 46u}, // sbp -> Latn
@@ -1152,8 +1168,8 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xAC520000u,  2u}, // scl -> Arab
     {0xB4520000u, 46u}, // scn -> Latn
     {0xB8520000u, 46u}, // sco -> Latn
-    {0xC8520000u, 46u}, // scs -> Latn
     {0x73640000u,  2u}, // sd -> Arab
+    {0x7364494Eu, 19u}, // sd-IN -> Deva
     {0x88720000u, 46u}, // sdc -> Latn
     {0x9C720000u,  2u}, // sdh -> Arab
     {0x73650000u, 46u}, // se -> Latn
@@ -1167,11 +1183,11 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xD8D20000u, 21u}, // sgw -> Ethi
     {0xE4D20000u, 46u}, // sgz -> Latn
     {0x73680000u, 46u}, // sh -> Latn
-    {0xA0F20000u, 89u}, // shi -> Tfng
+    {0xA0F20000u, 91u}, // shi -> Tfng
     {0xA8F20000u, 46u}, // shk -> Latn
     {0xB4F20000u, 59u}, // shn -> Mymr
     {0xD0F20000u,  2u}, // shu -> Arab
-    {0x73690000u, 78u}, // si -> Sinh
+    {0x73690000u, 80u}, // si -> Sinh
     {0x8D120000u, 46u}, // sid -> Latn
     {0x99120000u, 46u}, // sig -> Latn
     {0xAD120000u, 46u}, // sil -> Latn
@@ -1190,7 +1206,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x81920000u, 46u}, // sma -> Latn
     {0xA5920000u, 46u}, // smj -> Latn
     {0xB5920000u, 46u}, // smn -> Latn
-    {0xBD920000u, 74u}, // smp -> Samr
+    {0xBD920000u, 76u}, // smp -> Samr
     {0xC1920000u, 46u}, // smq -> Latn
     {0xC9920000u, 46u}, // sms -> Latn
     {0x736E0000u, 46u}, // sn -> Latn
@@ -1200,10 +1216,10 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xDDB20000u, 46u}, // snx -> Latn
     {0xE1B20000u, 46u}, // sny -> Latn
     {0x736F0000u, 46u}, // so -> Latn
-    {0x99D20000u, 79u}, // sog -> Sogd
+    {0x99D20000u, 81u}, // sog -> Sogd
     {0xA9D20000u, 46u}, // sok -> Latn
     {0xC1D20000u, 46u}, // soq -> Latn
-    {0xD1D20000u, 91u}, // sou -> Thai
+    {0xD1D20000u, 93u}, // sou -> Thai
     {0xE1D20000u, 46u}, // soy -> Latn
     {0x8DF20000u, 46u}, // spd -> Latn
     {0xADF20000u, 46u}, // spl -> Latn
@@ -1214,7 +1230,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x7372524Fu, 46u}, // sr-RO -> Latn
     {0x73725255u, 46u}, // sr-RU -> Latn
     {0x73725452u, 46u}, // sr-TR -> Latn
-    {0x86320000u, 80u}, // srb -> Sora
+    {0x86320000u, 82u}, // srb -> Sora
     {0xB6320000u, 46u}, // srn -> Latn
     {0xC6320000u, 46u}, // srr -> Latn
     {0xDE320000u, 19u}, // srx -> Deva
@@ -1241,9 +1257,9 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xB6F20000u, 46u}, // sxn -> Latn
     {0xDAF20000u, 46u}, // sxw -> Latn
     {0xAF120000u,  8u}, // syl -> Beng
-    {0xC7120000u, 82u}, // syr -> Syrc
+    {0xC7120000u, 84u}, // syr -> Syrc
     {0xAF320000u, 46u}, // szl -> Latn
-    {0x74610000u, 85u}, // ta -> Taml
+    {0x74610000u, 87u}, // ta -> Taml
     {0xA4130000u, 19u}, // taj -> Deva
     {0xAC130000u, 46u}, // tal -> Latn
     {0xB4130000u, 46u}, // tan -> Latn
@@ -1257,11 +1273,11 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xE4330000u, 46u}, // tbz -> Latn
     {0xA0530000u, 46u}, // tci -> Latn
     {0xE0530000u, 42u}, // tcy -> Knda
-    {0x8C730000u, 83u}, // tdd -> Tale
+    {0x8C730000u, 85u}, // tdd -> Tale
     {0x98730000u, 19u}, // tdg -> Deva
     {0x9C730000u, 19u}, // tdh -> Deva
     {0xD0730000u, 46u}, // tdu -> Latn
-    {0x74650000u, 88u}, // te -> Telu
+    {0x74650000u, 90u}, // te -> Telu
     {0x8C930000u, 46u}, // ted -> Latn
     {0xB0930000u, 46u}, // tem -> Latn
     {0xB8930000u, 46u}, // teo -> Latn
@@ -1272,7 +1288,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x88D30000u, 46u}, // tgc -> Latn
     {0xB8D30000u, 46u}, // tgo -> Latn
     {0xD0D30000u, 46u}, // tgu -> Latn
-    {0x74680000u, 91u}, // th -> Thai
+    {0x74680000u, 93u}, // th -> Thai
     {0xACF30000u, 19u}, // thl -> Deva
     {0xC0F30000u, 19u}, // thq -> Deva
     {0xC4F30000u, 19u}, // thr -> Deva
@@ -1311,14 +1327,14 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x8E530000u, 26u}, // tsd -> Grek
     {0x96530000u, 19u}, // tsf -> Deva
     {0x9A530000u, 46u}, // tsg -> Latn
-    {0xA6530000u, 92u}, // tsj -> Tibt
+    {0xA6530000u, 94u}, // tsj -> Tibt
     {0xDA530000u, 46u}, // tsw -> Latn
     {0x74740000u, 18u}, // tt -> Cyrl
     {0x8E730000u, 46u}, // ttd -> Latn
     {0x92730000u, 46u}, // tte -> Latn
     {0xA6730000u, 46u}, // ttj -> Latn
     {0xC6730000u, 46u}, // ttr -> Latn
-    {0xCA730000u, 91u}, // tts -> Thai
+    {0xCA730000u, 93u}, // tts -> Thai
     {0xCE730000u, 46u}, // ttt -> Latn
     {0x9E930000u, 46u}, // tuh -> Latn
     {0xAE930000u, 46u}, // tul -> Latn
@@ -1329,7 +1345,8 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xD2B30000u, 46u}, // tvu -> Latn
     {0x9ED30000u, 46u}, // twh -> Latn
     {0xC2D30000u, 46u}, // twq -> Latn
-    {0x9AF30000u, 86u}, // txg -> Tang
+    {0x9AF30000u, 88u}, // txg -> Tang
+    {0xBAF30000u, 96u}, // txo -> Toto
     {0x74790000u, 46u}, // ty -> Latn
     {0x83130000u, 46u}, // tya -> Latn
     {0xD7130000u, 18u}, // tyv -> Cyrl
@@ -1340,7 +1357,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x75670000u,  2u}, // ug -> Arab
     {0x75674B5Au, 18u}, // ug-KZ -> Cyrl
     {0x75674D4Eu, 18u}, // ug-MN -> Cyrl
-    {0x80D40000u, 93u}, // uga -> Ugar
+    {0x80D40000u, 97u}, // uga -> Ugar
     {0x756B0000u, 18u}, // uk -> Cyrl
     {0xA1740000u, 46u}, // uli -> Latn
     {0x85940000u, 46u}, // umb -> Latn
@@ -1361,7 +1378,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x757A4146u,  2u}, // uz-AF -> Arab
     {0x757A434Eu, 18u}, // uz-CN -> Cyrl
     {0x98150000u, 46u}, // vag -> Latn
-    {0xA0150000u, 94u}, // vai -> Vaii
+    {0xA0150000u, 98u}, // vai -> Vaii
     {0xB4150000u, 46u}, // van -> Latn
     {0x76650000u, 46u}, // ve -> Latn
     {0x88950000u, 46u}, // vec -> Latn
@@ -1384,7 +1401,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xB4160000u, 46u}, // wan -> Latn
     {0xC4160000u, 46u}, // war -> Latn
     {0xBC360000u, 46u}, // wbp -> Latn
-    {0xC0360000u, 88u}, // wbq -> Telu
+    {0xC0360000u, 90u}, // wbq -> Telu
     {0xC4360000u, 19u}, // wbr -> Deva
     {0xA0560000u, 46u}, // wci -> Latn
     {0xC4960000u, 46u}, // wer -> Latn
@@ -1426,9 +1443,9 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0xC5B70000u, 19u}, // xnr -> Deva
     {0x99D70000u, 46u}, // xog -> Latn
     {0xB5D70000u, 46u}, // xon -> Latn
-    {0xC5F70000u, 72u}, // xpr -> Prti
+    {0xC5F70000u, 73u}, // xpr -> Prti
     {0x86370000u, 46u}, // xrb -> Latn
-    {0x82570000u, 75u}, // xsa -> Sarb
+    {0x82570000u, 77u}, // xsa -> Sarb
     {0xA2570000u, 46u}, // xsi -> Latn
     {0xB2570000u, 46u}, // xsm -> Latn
     {0xC6570000u, 19u}, // xsr -> Deva
@@ -1469,7 +1486,7 @@ const std::unordered_map<uint32_t, uint8_t> LIKELY_SCRIPTS({
     {0x98190000u, 46u}, // zag -> Latn
     {0xA4790000u,  2u}, // zdj -> Arab
     {0x80990000u, 46u}, // zea -> Latn
-    {0x9CD90000u, 89u}, // zgh -> Tfng
+    {0x9CD90000u, 91u}, // zgh -> Tfng
     {0x7A680000u, 29u}, // zh -> Hans
     {0x7A684155u, 30u}, // zh-AU -> Hant
     {0x7A68424Eu, 30u}, // zh-BN -> Hant
@@ -1573,6 +1590,8 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xCD21534E4C61746ELLU, // bjt_Latn_SN
     0xB141434D4C61746ELLU, // bkm_Latn_CM
     0xD14150484C61746ELLU, // bku_Latn_PH
+    0x816143414C61746ELLU, // bla_Latn_CA
+    0x99614D594C61746ELLU, // blg_Latn_MY
     0xCD61564E54617674LLU, // blt_Tavt_VN
     0x626D4D4C4C61746ELLU, // bm_Latn_ML
     0xC1814D4C4C61746ELLU, // bmq_Latn_ML
@@ -1615,16 +1634,16 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0x81224B4841726162LLU, // cja_Arab_KH
     0xB122564E4368616DLLU, // cjm_Cham_VN
     0x8542495141726162LLU, // ckb_Arab_IQ
+    0x896243414C61746ELLU, // clc_Latn_CA
     0x99824D4E536F796FLLU, // cmg_Soyo_MN
     0x636F46524C61746ELLU, // co_Latn_FR
     0xBDC24547436F7074LLU, // cop_Copt_EG
     0xC9E250484C61746ELLU, // cps_Latn_PH
     0x6372434143616E73LLU, // cr_Cans_CA
+    0x9A2243414C61746ELLU, // crg_Latn_CA
     0x9E2255414379726CLLU, // crh_Cyrl_UA
-    0xA622434143616E73LLU, // crj_Cans_CA
     0xAA22434143616E73LLU, // crk_Cans_CA
     0xAE22434143616E73LLU, // crl_Cans_CA
-    0xB222434143616E73LLU, // crm_Cans_CA
     0xCA2253434C61746ELLU, // crs_Latn_SC
     0x6373435A4C61746ELLU, // cs_Latn_CZ
     0x8642504C4C61746ELLU, // csb_Latn_PL
@@ -1742,13 +1761,14 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xE407414641726162LLU, // haz_Arab_AF
     0x6865494C48656272LLU, // he_Hebr_IL
     0x6869494E44657661LLU, // hi_Deva_IN
+    0x6869494E4C61746ELLU, // hi_Latn_IN
     0x9507464A4C61746ELLU, // hif_Latn_FJ
     0xAD0750484C61746ELLU, // hil_Latn_PH
     0xD1675452486C7577LLU, // hlu_Hluw_TR
     0x8D87434E506C7264LLU, // hmd_Plrd_CN
     0x8DA7504B41726162LLU, // hnd_Arab_PK
     0x91A7494E44657661LLU, // hne_Deva_IN
-    0xA5A74C41486D6E67LLU, // hnj_Hmng_LA
+    0xA5A75553486D6E70LLU, // hnj_Hmnp_US
     0xB5A750484C61746ELLU, // hnn_Latn_PH
     0xB9A7504B41726162LLU, // hno_Arab_PK
     0x686F50474C61746ELLU, // ho_Latn_PG
@@ -1759,6 +1779,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xB647434E48616E73LLU, // hsn_Hans_CN
     0x687448544C61746ELLU, // ht_Latn_HT
     0x687548554C61746ELLU, // hu_Latn_HU
+    0xC68743414C61746ELLU, // hur_Latn_CA
     0x6879414D41726D6ELLU, // hy_Armn_AM
     0x687A4E414C61746ELLU, // hz_Latn_NA
     0x80284D594C61746ELLU, // iba_Latn_MY
@@ -1768,7 +1789,6 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0x69674E474C61746ELLU, // ig_Latn_NG
     0x6969434E59696969LLU, // ii_Yiii_CN
     0x696B55534C61746ELLU, // ik_Latn_US
-    0xCD4843414C61746ELLU, // ikt_Latn_CA
     0xB96850484C61746ELLU, // ilo_Latn_PH
     0x696E49444C61746ELLU, // in_Latn_ID
     0x9DA852554379726CLLU, // inh_Cyrl_RU
@@ -1792,12 +1812,13 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xA40A4E474C61746ELLU, // kaj_Latn_NG
     0xB00A4B454C61746ELLU, // kam_Latn_KE
     0xB80A4D4C4C61746ELLU, // kao_Latn_ML
+    0xD80A49444B617769LLU, // kaw_Kawi_ID
     0x8C2A52554379726CLLU, // kbd_Cyrl_RU
     0xE02A4E4541726162LLU, // kby_Arab_NE
     0x984A4E474C61746ELLU, // kcg_Latn_NG
     0xA84A5A574C61746ELLU, // kck_Latn_ZW
     0x906A545A4C61746ELLU, // kde_Latn_TZ
-    0x9C6A544741726162LLU, // kdh_Arab_TG
+    0x9C6A54474C61746ELLU, // kdh_Latn_TG
     0xCC6A544854686169LLU, // kdt_Thai_TH
     0x808A43564C61746ELLU, // kea_Latn_CV
     0xB48A434D4C61746ELLU, // ken_Latn_CM
@@ -1849,6 +1870,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xC6AA49444C61746ELLU, // kvr_Latn_ID
     0xDEAA504B41726162LLU, // kvx_Arab_PK
     0x6B7747424C61746ELLU, // kw_Latn_GB
+    0xAACA43414C61746ELLU, // kwk_Latn_CA
     0xAEEA494E44657661LLU, // kxl_Deva_IN
     0xB2EA544854686169LLU, // kxm_Thai_TH
     0xBEEA504B41726162LLU, // kxp_Arab_PK
@@ -1874,6 +1896,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0x950B4E5044657661LLU, // lif_Deva_NP
     0x950B494E4C696D62LLU, // lif_Limb_IN
     0xA50B49544C61746ELLU, // lij_Latn_IT
+    0xAD0B43414C61746ELLU, // lil_Latn_CA
     0xC90B434E4C697375LLU, // lis_Lisu_CN
     0xBD2B49444C61746ELLU, // ljp_Latn_ID
     0xA14B495241726162LLU, // lki_Arab_IR
@@ -1919,6 +1942,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xE0CC545A4C61746ELLU, // mgy_Latn_TZ
     0x6D684D484C61746ELLU, // mh_Latn_MH
     0x6D694E5A4C61746ELLU, // mi_Latn_NZ
+    0x890C43414C61746ELLU, // mic_Latn_CA
     0xB50C49444C61746ELLU, // min_Latn_ID
     0x6D6B4D4B4379726CLLU, // mk_Cyrl_MK
     0x6D6C494E4D6C796DLLU, // ml_Mlym_IN
@@ -1982,6 +2006,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0x6E725A414C61746ELLU, // nr_Latn_ZA
     0xAA4D434143616E73LLU, // nsk_Cans_CA
     0xBA4D5A414C61746ELLU, // nso_Latn_ZA
+    0xCE4D494E546E7361LLU, // nst_Tnsa_IN
     0xCA8D53534C61746ELLU, // nus_Latn_SS
     0x6E7655534C61746ELLU, // nv_Latn_US
     0xC2ED434E4C61746ELLU, // nxq_Latn_CN
@@ -1990,11 +2015,15 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xB70D55474C61746ELLU, // nyn_Latn_UG
     0xA32D47484C61746ELLU, // nzi_Latn_GH
     0x6F6346524C61746ELLU, // oc_Latn_FR
+    0x6F6A434143616E73LLU, // oj_Cans_CA
+    0xC92E434143616E73LLU, // ojs_Cans_CA
+    0x814E43414C61746ELLU, // oka_Latn_CA
     0x6F6D45544C61746ELLU, // om_Latn_ET
     0x6F72494E4F727961LLU, // or_Orya_IN
     0x6F7347454379726CLLU, // os_Cyrl_GE
     0x824E55534F736765LLU, // osa_Osge_US
     0xAA6E4D4E4F726B68LLU, // otk_Orkh_MN
+    0xA28E8C814F756772LLU, // oui_Ougr_143
     0x7061504B41726162LLU, // pa_Arab_PK
     0x7061494E47757275LLU, // pa_Guru_IN
     0x980F50484C61746ELLU, // pag_Latn_PH
@@ -2017,6 +2046,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xCDAF47524772656BLLU, // pnt_Grek_GR
     0xB5CF464D4C61746ELLU, // pon_Latn_FM
     0x81EF494E44657661LLU, // ppa_Deva_IN
+    0xB20F43414C61746ELLU, // pqm_Latn_CA
     0x822F504B4B686172LLU, // pra_Khar_PK
     0x8E2F495241726162LLU, // prd_Arab_IR
     0x7073414641726162LLU, // ps_Arab_AF
@@ -2029,7 +2059,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0x945152454C61746ELLU, // rcf_Latn_RE
     0xA49149444C61746ELLU, // rej_Latn_ID
     0xB4D149544C61746ELLU, // rgn_Latn_IT
-    0x98F14D4D41726162LLU, // rhg_Arab_MM
+    0x98F14D4D526F6867LLU, // rhg_Rohg_MM
     0x8111494E4C61746ELLU, // ria_Latn_IN
     0x95114D4154666E67LLU, // rif_Tfng_MA
     0xC9314E5044657661LLU, // rjs_Deva_NP
@@ -2064,7 +2094,6 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xA852494E44657661LLU, // sck_Deva_IN
     0xB45249544C61746ELLU, // scn_Latn_IT
     0xB85247424C61746ELLU, // sco_Latn_GB
-    0xC85243414C61746ELLU, // scs_Latn_CA
     0x7364504B41726162LLU, // sd_Arab_PK
     0x7364494E44657661LLU, // sd_Deva_IN
     0x7364494E4B686F6ALLU, // sd_Khoj_IN
@@ -2172,6 +2201,7 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
     0xAEB354564C61746ELLU, // tvl_Latn_TV
     0xC2D34E454C61746ELLU, // twq_Latn_NE
     0x9AF3434E54616E67LLU, // txg_Tang_CN
+    0xBAF3494E546F746FLLU, // txo_Toto_IN
     0x747950464C61746ELLU, // ty_Latn_PF
     0xD71352554379726CLLU, // tyv_Cyrl_RU
     0xB3334D414C61746ELLU, // tzm_Latn_MA
@@ -2256,11 +2286,16 @@ std::unordered_set<uint64_t> REPRESENTATIVE_LOCALES({
 });
 
 const std::unordered_map<uint32_t, uint32_t> ARAB_PARENTS({
+    {0x61724145u, 0x61729420u}, // ar-AE -> ar-015
     {0x6172445Au, 0x61729420u}, // ar-DZ -> ar-015
     {0x61724548u, 0x61729420u}, // ar-EH -> ar-015
     {0x61724C59u, 0x61729420u}, // ar-LY -> ar-015
     {0x61724D41u, 0x61729420u}, // ar-MA -> ar-015
     {0x6172544Eu, 0x61729420u}, // ar-TN -> ar-015
+});
+
+const std::unordered_map<uint32_t, uint32_t> DEVA_PARENTS({
+    {0x68690000u, 0x656E494Eu}, // hi-Latn -> en-IN
 });
 
 const std::unordered_map<uint32_t, uint32_t> HANT_PARENTS({
@@ -2279,7 +2314,6 @@ const std::unordered_map<uint32_t, uint32_t> LATN_PARENTS({
     {0x656E4253u, 0x656E8400u}, // en-BS -> en-001
     {0x656E4257u, 0x656E8400u}, // en-BW -> en-001
     {0x656E425Au, 0x656E8400u}, // en-BZ -> en-001
-    {0x656E4341u, 0x656E8400u}, // en-CA -> en-001
     {0x656E4343u, 0x656E8400u}, // en-CC -> en-001
     {0x656E4348u, 0x656E80A1u}, // en-CH -> en-150
     {0x656E434Bu, 0x656E8400u}, // en-CK -> en-001
@@ -2322,6 +2356,7 @@ const std::unordered_map<uint32_t, uint32_t> LATN_PARENTS({
     {0x656E4D53u, 0x656E8400u}, // en-MS -> en-001
     {0x656E4D54u, 0x656E8400u}, // en-MT -> en-001
     {0x656E4D55u, 0x656E8400u}, // en-MU -> en-001
+    {0x656E4D56u, 0x656E8400u}, // en-MV -> en-001
     {0x656E4D57u, 0x656E8400u}, // en-MW -> en-001
     {0x656E4D59u, 0x656E8400u}, // en-MY -> en-001
     {0x656E4E41u, 0x656E8400u}, // en-NA -> en-001
@@ -2332,7 +2367,6 @@ const std::unordered_map<uint32_t, uint32_t> LATN_PARENTS({
     {0x656E4E55u, 0x656E8400u}, // en-NU -> en-001
     {0x656E4E5Au, 0x656E8400u}, // en-NZ -> en-001
     {0x656E5047u, 0x656E8400u}, // en-PG -> en-001
-    {0x656E5048u, 0x656E8400u}, // en-PH -> en-001
     {0x656E504Bu, 0x656E8400u}, // en-PK -> en-001
     {0x656E504Eu, 0x656E8400u}, // en-PN -> en-001
     {0x656E5057u, 0x656E8400u}, // en-PW -> en-001
@@ -2407,6 +2441,7 @@ const struct {
     const std::unordered_map<uint32_t, uint32_t>* map;
 } SCRIPT_PARENTS[] = {
     {{'A', 'r', 'a', 'b'}, &ARAB_PARENTS},
+    {{'D', 'e', 'v', 'a'}, &DEVA_PARENTS},
     {{'H', 'a', 'n', 't'}, &HANT_PARENTS},
     {{'L', 'a', 't', 'n'}, &LATN_PARENTS},
     {{'~', '~', '~', 'B'}, &___B_PARENTS},

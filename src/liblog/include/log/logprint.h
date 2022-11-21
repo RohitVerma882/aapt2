@@ -17,6 +17,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdio.h>
 #include <sys/types.h>
 
 #include <android/log.h>
@@ -147,13 +148,9 @@ char* android_log_formatLogLine(AndroidLogFormat* p_format, char* defaultBuffer,
                                 size_t* p_outLength);
 
 /**
- * Either print or do not print log line, based on filter
- *
- * Assumes single threaded execution
- *
+ * Formats a log message into a FILE*.
  */
-int android_log_printLogLine(AndroidLogFormat* p_format, int fd,
-                             const AndroidLogEntry* entry);
+size_t android_log_printLogLine(AndroidLogFormat* p_format, FILE* fp, const AndroidLogEntry* entry);
 
 #ifdef __cplusplus
 }

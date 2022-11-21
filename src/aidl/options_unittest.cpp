@@ -445,5 +445,64 @@ TEST(OptionsTests, CheckApiWithUnknown) {
   EXPECT_THAT(GetCapturedStderr(), testing::HasSubstr("Unsupported --checkapi level: 'unknown'"));
 }
 
+TEST(OptionsTest, AcceptValidMinSdkVersion) {
+  const char* args[] = {
+      "aidl", "--lang=java", "--min_sdk_version=30", "--out=out", "input.aidl", nullptr,
+  };
+  auto options = GetOptions(args);
+  EXPECT_TRUE(options->Ok());
+  EXPECT_EQ(30u, options->GetMinSdkVersion());
+}
+
+TEST(OPtionsTests, AcceptCodeNameAsMinSdkVersion) {
+  const char* args[] = {
+      "aidl", "--lang=java", "--min_sdk_version=Tiramisu", "--out=out", "input.aidl", nullptr,
+  };
+  auto options = GetOptions(args);
+  EXPECT_TRUE(options->Ok());
+  EXPECT_EQ(10000u, options->GetMinSdkVersion());
+}
+
+TEST(OptionsTest, DefaultMinSdkVersion) {
+  const char* args[] = {
+      "aidl", "--lang=java", "--out=out", "input.aidl", nullptr,
+  };
+  auto options = GetOptions(args);
+  EXPECT_TRUE(options->Ok());
+  EXPECT_EQ(DEFAULT_SDK_VERSION_JAVA, options->GetMinSdkVersion());
+}
+
+TEST(OptionsTest, RejectInvalidMinSdkVersion) {
+  const char* args[] = {
+      "aidl", "--lang=java", "--min_sdk_version=NOT_A_VERSION", "--out=out", "input.aidl", nullptr,
+  };
+  CaptureStderr();
+  auto options = GetOptions(args);
+  EXPECT_FALSE(options->Ok());
+  EXPECT_THAT(GetCapturedStderr(), testing::HasSubstr("Invalid SDK version: NOT_A_VERSION"));
+}
+
+TEST(OptionsTest, RejectOldMinSdkVersion) {
+  const char* args[] = {
+      "aidl",       "--lang=cpp", "--min_sdk_version=22", "--out=out", "--header_out=out",
+      "input.aidl", nullptr,
+  };
+  CaptureStderr();
+  auto options = GetOptions(args);
+  EXPECT_FALSE(options->Ok());
+  EXPECT_THAT(GetCapturedStderr(), testing::HasSubstr("Min SDK version should at least be 23"));
+}
+
+TEST(OptionsTest, RejectRpcOnOldSdkVersion) {
+  const char* args[] = {
+      "aidl", "--lang=java", "--rpc", "--min_sdk_version=23", "--out=out", "input.aidl", nullptr,
+  };
+  CaptureStderr();
+  auto options = GetOptions(args);
+  EXPECT_FALSE(options->Ok());
+  EXPECT_THAT(GetCapturedStderr(),
+              testing::HasSubstr("RPC code requires minimum SDK version of at least"));
+}
+
 }  // namespace aidl
 }  // namespace android

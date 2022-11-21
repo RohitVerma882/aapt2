@@ -22,29 +22,28 @@ add_executable(aapt
     ${SRC_PATH}/aapt/ZipEntry.cpp
     ${SRC_PATH}/aapt/ZipFile.cpp)
 
-target_compile_definitions(aapt PRIVATE -DSTATIC_ANDROIDFW_FOR_TOOLS)
+target_compile_definitions(aapt PRIVATE
+    -DSTATIC_ANDROIDFW_FOR_TOOLS
+    -DPLATFORM_TOOLS_VERSION="${TOOLS_VERSION}")
 
-target_include_directories(aapt PUBLIC
-    ${SRC_PATH}/androidfw/include
-    ${SRC_PATH}/expat
-    ${SRC_PATH}/fmtlib/include
-    ${SRC_PATH}/libpng
+target_include_directories(aapt PRIVATE
     ${SRC_PATH}/libbase/include
     ${SRC_PATH}/libutils/include
     ${SRC_PATH}/libsystem/include
     ${SRC_PATH}/liblog/include
-    ${SRC_PATH}/sysprop/include)
+    ${SRC_PATH}/androidfw/include
+    ${SRC_PATH}/expat/lib
+    ${SRC_PATH}/fmtlib/include
+    ${SRC_PATH}/libpng)
 
 target_link_libraries(aapt
-    libandroidfw
-    libincfs
+    libbase
     libutils
     libcutils
-    libziparchive
-    libbase
     liblog
-    libexpat
-    libpng
-    libfmt
-    c++_static
-    z)
+    libandroidfw
+    libziparchive
+    libincfs
+    expat
+    png_static
+    zlibstatic)

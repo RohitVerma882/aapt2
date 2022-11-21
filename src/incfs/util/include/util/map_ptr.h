@@ -26,7 +26,7 @@
 #include <type_traits>
 #include <vector>
 
-#if 0
+#ifdef __ANDROID__
 #include <linux/incrementalfs.h>
 #endif
 
@@ -358,7 +358,7 @@ public:
             return false;
         }
 
-#if 0
+#ifdef __ANDROID__
         if (LIKELY(map_ == nullptr)) {
             return ptr_ != nullptr;
         }

@@ -154,7 +154,7 @@ StringPiece GetFilename(const StringPiece& path) {
   const char* end = path.end();
   const char* last_dir_sep = path.begin();
   for (const char* c = path.begin(); c != end; ++c) {
-    if (*c == sDirSep) {
+    if (*c == sDirSep || *c == sInvariantDirSep) {
       last_dir_sep = c + 1;
     }
   }
@@ -349,7 +349,7 @@ Maybe<std::vector<std::string>> FindFiles(const android::StringPiece& path, IDia
   const std::string root_dir = path.to_string();
   std::unique_ptr<DIR, decltype(closedir)*> d(opendir(root_dir.data()), closedir);
   if (!d) {
-    diag->Error(DiagMessage() << SystemErrorCodeToString(errno));
+    diag->Error(DiagMessage() << SystemErrorCodeToString(errno) << ": " << root_dir);
     return {};
   }
 

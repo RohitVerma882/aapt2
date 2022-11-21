@@ -1,10 +1,11 @@
 /*
  * Copyright (C) 2018 The Android Open Source Project
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http:///licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -66,6 +67,7 @@ void Command::AddRequiredFlagList(const StringPiece& name, const StringPiece& de
     value->push_back((flags & Command::kPath) ? GetSafePath(arg) : arg.to_string());
     return true;
   };
+
   flags_.emplace_back(Flag(name, description, /* required */ true, /* num_args */ 1, func));
 }
 
@@ -77,7 +79,8 @@ void Command::AddOptionalFlag(const StringPiece& name, const StringPiece& descri
   };
 
   flags_.emplace_back(Flag(name, description, /* required */ false, /* num_args */ 1, func));
-} 
+}
+
 void Command::AddOptionalFlagList(const StringPiece& name, const StringPiece& description,
                                   std::vector<std::string>* value, uint32_t flags) {
   auto func = [value, flags](const StringPiece& arg) -> bool {
@@ -111,10 +114,8 @@ void Command::AddOptionalSwitch(const StringPiece& name, const StringPiece& desc
 void Command::AddOptionalSubcommand(std::unique_ptr<Command>&& subcommand, bool experimental) {
   subcommand->full_subcommand_name_ = StringPrintf("%s %s", name_.data(), subcommand->name_.data());
   if (experimental) {
-    //std::cout << "experimental: " << subcommand->name_ << std::endl;
     experimental_subcommands_.push_back(std::move(subcommand));
   } else {
-    //std::cout << "subcommand: " << subcommand->name_ << std::endl;
     subcommands_.push_back(std::move(subcommand));
   }
 }
@@ -180,13 +181,12 @@ void Command::Usage(std::ostream* out) {
 int Command::Execute(const std::vector<StringPiece>& args, std::ostream* out_error) {
   TRACE_NAME_ARGS("Command::Execute", args);
   std::vector<std::string> file_args;
-  
+
   for (size_t i = 0; i < args.size(); i++) {
     const StringPiece& arg = args[i];
     if (*(arg.data()) != '-') {
       // Continue parsing as the subcommand if the first argument matches one of the subcommands
       if (i == 0) {
-        
         for (auto& subcommand : subcommands_) {
           if (arg == subcommand->name_ || (!subcommand->short_name_.empty()
                                            && arg == subcommand->short_name_)) {
@@ -246,6 +246,7 @@ int Command::Execute(const std::vector<StringPiece>& args, std::ostream* out_err
       return 1;
     }
   }
+
   return Action(file_args);
 }
 

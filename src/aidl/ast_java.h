@@ -207,15 +207,6 @@ struct NewExpression : public Expression {
   void Write(CodeWriter* to) const override;
 };
 
-struct NewArrayExpression : public Expression {
-  const std::string type;
-  std::shared_ptr<Expression> size;
-
-  NewArrayExpression(const std::string& type, std::shared_ptr<Expression> size);
-  virtual ~NewArrayExpression() = default;
-  void Write(CodeWriter* to) const override;
-};
-
 struct Cast : public Expression {
   const std::string type;
   std::shared_ptr<Expression> expression = nullptr;
@@ -251,6 +242,12 @@ struct ReturnStatement : public Statement {
 
   explicit ReturnStatement(std::shared_ptr<Expression> expression);
   virtual ~ReturnStatement() = default;
+  void Write(CodeWriter* to) const override;
+};
+
+struct BreakStatement : public Statement {
+  BreakStatement() = default;
+  virtual ~BreakStatement() = default;
   void Write(CodeWriter* to) const override;
 };
 
@@ -330,20 +327,6 @@ struct Class : public ClassElement {
   virtual ~Class() = default;
 
   void Write(CodeWriter* to) const override;
-};
-
-class Document : public AstNode {
- public:
-  Document(const std::string& comment,
-           const std::string& package,
-           std::unique_ptr<Class> clazz);
-  virtual ~Document() = default;
-  void Write(CodeWriter* to) const override;
-
- private:
-  std::string comment_;
-  std::string package_;
-  std::unique_ptr<Class> clazz_;
 };
 
 extern std::shared_ptr<Expression> NULL_VALUE;

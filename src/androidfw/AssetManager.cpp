@@ -940,11 +940,13 @@ Asset* AssetManager::openAssetFromZipLocked(const ZipFileRO* pZipFile,
 
     if (method == ZipFileRO::kCompressStored) {
         pAsset = Asset::createFromUncompressedMap(std::move(*dataMap), mode);
-        
+        ALOGV("Opened uncompressed entry %s in zip %s mode %d: %p", entryName.string(),
+                dataMap->file_name(), mode, pAsset.get());
     } else {
         pAsset = Asset::createFromCompressedMap(std::move(*dataMap),
             static_cast<size_t>(uncompressedLen), mode);
-        
+        ALOGV("Opened compressed entry %s in zip %s mode %d: %p", entryName.string(),
+                dataMap->file_name(), mode, pAsset.get());
     }
     if (pAsset == NULL) {
         /* unexpected */

@@ -26,9 +26,8 @@ namespace android {
 namespace aidl {
 namespace rust {
 
-bool GenerateRust(const std::string& filename, const AidlDefinedType* iface,
-                  const AidlTypenames& typenames, const IoDelegate& io_delegate,
-                  const Options& options);
+void GenerateRust(const string& filename, const Options& options, const AidlTypenames& types,
+                  const AidlDefinedType& defined_type, const IoDelegate& io_delegate);
 
 }  // namespace rust
 }  // namespace aidl

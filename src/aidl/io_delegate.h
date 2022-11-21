@@ -57,8 +57,6 @@ class IoDelegate {
   virtual std::unique_ptr<CodeWriter> GetCodeWriter(
       const std::string& file_path) const;
 
-  virtual void RemovePath(const std::string& file_path) const;
-
   virtual android::base::Result<std::vector<std::string>> ListFiles(const std::string& dir) const;
 
  private:

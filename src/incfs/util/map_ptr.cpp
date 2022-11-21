@@ -18,7 +18,7 @@
 #include <android-base/stringprintf.h>
 #include <utils/FileMap.h>
 
-#if 0
+#ifdef __ANDROID__
 #include "incfs_inline.h"
 #endif
 
@@ -50,7 +50,7 @@ bool IncFsFileMap::Create(int fd, off64_t offset, size_t length, const char* fil
     return Create(fd, offset, length, file_name, true /* verify */);
 }
 
-#if 0
+#ifdef __ANDROID__
 static bool IsVerificationEnabled(int fd) {
     return isIncFsFd(fd) && isFullyLoaded(fd) != LoadingState::Full;
 }

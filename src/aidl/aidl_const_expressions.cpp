@@ -89,14 +89,14 @@ class OverflowGuard {
       mOverflowed = true;
       return 0;
     }
-    return mValue / o;
+    return static_cast<T>(mValue / o);
   }
   T operator%(T o) {
     if (o == 0 || (isMin() && o == -1)) {
       mOverflowed = true;
       return 0;
     }
-    return mValue % o;
+    return static_cast<T>(mValue % o);
   }
   T operator|(T o) { return mValue | o; }
   T operator^(T o) { return mValue ^ o; }
@@ -112,14 +112,14 @@ class OverflowGuard {
       mOverflowed = true;
       return 0;
     }
-    return mValue >> o;
+    return static_cast<T>(mValue >> o);
   }
   T operator<<(T o) {
     if (o < 0 || mValue < 0 || o > CLZ(mValue) || o >= static_cast<T>(sizeof(T) * 8)) {
       mOverflowed = true;
       return 0;
     }
-    return mValue << o;
+    return static_cast<T>(mValue << o);
   }
   T operator||(T o) { return mValue || o; }
   T operator&&(T o) { return mValue && o; }
@@ -248,6 +248,49 @@ static bool isValidLiteralChar(char c) {
            c == '\\');   // Disallow backslashes for future proofing.
 }
 
+static std::string PrintCharLiteral(char c) {
+  std::ostringstream os;
+  switch (c) {
+    case '\0':
+      os << "\\0";
+      break;
+    case '\'':
+      os << "\\'";
+      break;
+    case '\\':
+      os << "\\\\";
+      break;
+    case '\a':
+      os << "\\a";
+      break;
+    case '\b':
+      os << "\\b";
+      break;
+    case '\f':
+      os << "\\f";
+      break;
+    case '\n':
+      os << "\\n";
+      break;
+    case '\r':
+      os << "\\r";
+      break;
+    case '\t':
+      os << "\\t";
+      break;
+    case '\v':
+      os << "\\v";
+      break;
+    default:
+      if (std::isprint(static_cast<unsigned char>(c))) {
+        os << c;
+      } else {
+        os << "\\x" << std::hex << std::uppercase << static_cast<int>(c);
+      }
+  }
+  return os.str();
+}
+
 bool ParseFloating(std::string_view sv, double* parsed) {
   // float literal should be parsed successfully.
   android::base::ConsumeSuffix(&sv, "f");
@@ -279,6 +322,11 @@ bool AidlUnaryConstExpression::IsCompatibleType(Type type, const string& op) {
 
 bool AidlBinaryConstExpression::AreCompatibleTypes(Type t1, Type t2) {
   switch (t1) {
+    case Type::ARRAY:
+      if (t2 == Type::ARRAY) {
+        return true;
+      }
+      break;
     case Type::STRING:
       if (t2 == Type::STRING) {
         return true;
@@ -338,6 +386,9 @@ AidlConstantValue* AidlConstantValue::Default(const AidlTypeSpecifier& specifier
   if (name == "boolean") {
     return Boolean(location, false);
   }
+  if (name == "char") {
+    return Character(location, "'\\0'");  // literal to be used in backends
+  }
   if (name == "byte" || name == "int" || name == "long") {
     return Integral(location, "0");
   }
@@ -354,13 +405,22 @@ AidlConstantValue* AidlConstantValue::Boolean(const AidlLocation& location, bool
   return new AidlConstantValue(location, Type::BOOLEAN, value ? "true" : "false");
 }
 
-AidlConstantValue* AidlConstantValue::Character(const AidlLocation& location, char value) {
-  const std::string explicit_value = string("'") + value + "'";
-  if (!isValidLiteralChar(value)) {
-    AIDL_ERROR(location) << "Invalid character literal " << value;
-    return new AidlConstantValue(location, Type::ERROR, explicit_value);
+AidlConstantValue* AidlConstantValue::Character(const AidlLocation& location,
+                                                const std::string& value) {
+  static const char* kZeroString = "'\\0'";
+
+  // We should have better supports for escapes in the future, but for now
+  // allow only what is needed for defaults.
+  if (value != kZeroString) {
+    AIDL_FATAL_IF(value.size() != 3 || value[0] != '\'' || value[2] != '\'', location) << value;
+
+    if (!isValidLiteralChar(value[1])) {
+      AIDL_ERROR(location) << "Invalid character literal " << PrintCharLiteral(value[1]);
+      return new AidlConstantValue(location, Type::ERROR, value);
+    }
   }
-  return new AidlConstantValue(location, Type::CHARACTER, explicit_value);
+
+  return new AidlConstantValue(location, Type::CHARACTER, value);
 }
 
 AidlConstantValue* AidlConstantValue::Floating(const AidlLocation& location,
@@ -378,8 +438,15 @@ bool AidlConstantValue::ParseIntegral(const string& value, int64_t* parsed_value
     return false;
   }
 
-  const bool isLong = EndsWith(value, 'l') || EndsWith(value, 'L');
-  const std::string value_substr = isLong ? value.substr(0, value.size() - 1) : value;
+  std::string_view value_view = value;
+  const bool is_byte = ConsumeSuffix(&value_view, "u8");
+  const bool is_long = ConsumeSuffix(&value_view, "l") || ConsumeSuffix(&value_view, "L");
+  const std::string value_substr = std::string(value_view);
+
+  *parsed_value = 0;
+  *parsed_type = Type::ERROR;
+
+  if (is_byte && is_long) return false;
 
   if (IsHex(value)) {
     // AIDL considers 'const int foo = 0xffffffff' as -1, but if we want to
@@ -393,28 +460,38 @@ bool AidlConstantValue::ParseIntegral(const string& value, int64_t* parsed_value
     // Note, for historical consistency, we need to consider small hex values
     // as an integral type. Recognizing them as INT8 could break some files,
     // even though it would simplify this code.
-    if (uint32_t rawValue32;
-        !isLong && android::base::ParseUint<uint32_t>(value_substr, &rawValue32)) {
-      *parsed_value = static_cast<int32_t>(rawValue32);
+    if (is_byte) {
+      uint8_t raw_value8;
+      if (!android::base::ParseUint<uint8_t>(value_substr, &raw_value8)) {
+        return false;
+      }
+      *parsed_value = static_cast<int8_t>(raw_value8);
+      *parsed_type = Type::INT8;
+    } else if (uint32_t raw_value32;
+               !is_long && android::base::ParseUint<uint32_t>(value_substr, &raw_value32)) {
+      *parsed_value = static_cast<int32_t>(raw_value32);
       *parsed_type = Type::INT32;
-    } else if (uint64_t rawValue64; android::base::ParseUint<uint64_t>(value_substr, &rawValue64)) {
-      *parsed_value = static_cast<int64_t>(rawValue64);
+    } else if (uint64_t raw_value64;
+               android::base::ParseUint<uint64_t>(value_substr, &raw_value64)) {
+      *parsed_value = static_cast<int64_t>(raw_value64);
       *parsed_type = Type::INT64;
     } else {
-      *parsed_value = 0;
-      *parsed_type = Type::ERROR;
       return false;
     }
     return true;
   }
 
   if (!android::base::ParseInt<int64_t>(value_substr, parsed_value)) {
-    *parsed_value = 0;
-    *parsed_type = Type::ERROR;
     return false;
   }
 
-  if (isLong) {
+  if (is_byte) {
+    if (*parsed_value > UINT8_MAX || *parsed_value < 0) {
+      return false;
+    }
+    *parsed_value = static_cast<int8_t>(*parsed_value);
+    *parsed_type = Type::INT8;
+  } else if (is_long) {
     *parsed_type = Type::INT64;
   } else {
     // guess literal type.
@@ -445,18 +522,23 @@ AidlConstantValue* AidlConstantValue::Integral(const AidlLocation& location, con
 AidlConstantValue* AidlConstantValue::Array(
     const AidlLocation& location, std::unique_ptr<vector<unique_ptr<AidlConstantValue>>> values) {
   AIDL_FATAL_IF(values == nullptr, location);
+  // Reconstruct literal value
   std::vector<std::string> str_values;
   for (const auto& v : *values) {
     str_values.push_back(v->value_);
   }
-  return new AidlConstantValue(location, Type::ARRAY, std::move(values), Join(str_values, ", "));
+  return new AidlConstantValue(location, Type::ARRAY, std::move(values),
+                               "{" + Join(str_values, ", ") + "}");
 }
 
 AidlConstantValue* AidlConstantValue::String(const AidlLocation& location, const string& value) {
+  AIDL_FATAL_IF(value.size() == 0, "If this is unquoted, we need to update the index log");
+  AIDL_FATAL_IF(value[0] != '\"', "If this is unquoted, we need to update the index log");
+
   for (size_t i = 0; i < value.length(); ++i) {
     if (!isValidLiteralChar(value[i])) {
-      AIDL_ERROR(location) << "Found invalid character at index " << i << " in string constant '"
-                           << value << "'";
+      AIDL_ERROR(location) << "Found invalid character '" << value[i] << "' at index " << i - 1
+                           << " in string constant '" << value << "'";
       return new AidlConstantValue(location, Type::ERROR, value);
     }
   }
@@ -485,7 +567,7 @@ string AidlConstantValue::ValueString(const AidlTypeSpecifier& type,
   }
 
   const AidlDefinedType* defined_type = type.GetDefinedType();
-  if (defined_type && !type.IsArray()) {
+  if (defined_type && final_type_ != Type::ARRAY) {
     const AidlEnumDeclaration* enum_type = defined_type->AsEnumDeclaration();
     if (!enum_type) {
       AIDL_ERROR(this) << "Invalid type (" << defined_type->GetCanonicalName()
@@ -500,7 +582,7 @@ string AidlConstantValue::ValueString(const AidlTypeSpecifier& type,
     return decorator(type, value_);
   }
 
-  const string& type_string = type.GetName();
+  const string& type_string = type.Signature();
   int err = 0;
 
   switch (final_type_) {
@@ -549,8 +631,10 @@ string AidlConstantValue::ValueString(const AidlTypeSpecifier& type,
       bool success = true;
 
       for (const auto& value : values_) {
-        const AidlTypeSpecifier& array_base = type.ArrayBase();
-        const string value_string = value->ValueString(array_base, decorator);
+        string value_string;
+        type.ViewAsArrayBase([&](const auto& base_type) {
+          value_string = value->ValueString(base_type, decorator);
+        });
         if (value_string.empty()) {
           success = false;
           break;
@@ -561,8 +645,17 @@ string AidlConstantValue::ValueString(const AidlTypeSpecifier& type,
         err = -1;
         break;
       }
-
-      return decorator(type, "{" + Join(value_strings, ", ") + "}");
+      if (type.IsFixedSizeArray()) {
+        auto size =
+            std::get<FixedSizeArray>(type.GetArray()).dimensions.front()->EvaluatedValue<int32_t>();
+        if (values_.size() != static_cast<size_t>(size)) {
+          AIDL_ERROR(this) << "Expected an array of " << size << " elements, but found one with "
+                           << values_.size() << " elements";
+          err = -1;
+          break;
+        }
+      }
+      return decorator(type, value_strings);
     }
     case Type::FLOATING: {
       if (type_string == "double") {
@@ -592,7 +685,8 @@ string AidlConstantValue::ValueString(const AidlTypeSpecifier& type,
   }
 
   AIDL_FATAL_IF(err == 0, this);
-  AIDL_ERROR(this) << "Invalid type specifier for " << ToString(final_type_) << ": " << type_string;
+  AIDL_ERROR(this) << "Invalid type specifier for " << ToString(final_type_) << ": " << type_string
+                   << " (" << value_ << ")";
   return "";
 }
 
@@ -626,6 +720,14 @@ bool AidlConstantValue::CheckValid() const {
   }
 
   return true;
+}
+
+bool AidlConstantValue::Evaluate() const {
+  if (CheckValid()) {
+    return evaluate();
+  } else {
+    return false;
+  }
 }
 
 bool AidlConstantValue::evaluate() const {
@@ -739,7 +841,8 @@ AidlConstantReference::AidlConstantReference(const AidlLocation& location, const
   if (pos == string::npos) {
     field_name_ = value;
   } else {
-    ref_type_ = std::make_unique<AidlTypeSpecifier>(location, value.substr(0, pos), false, nullptr,
+    ref_type_ = std::make_unique<AidlTypeSpecifier>(location, value.substr(0, pos),
+                                                    /*array=*/std::nullopt, /*type_params=*/nullptr,
                                                     Comments{});
     field_name_ = value.substr(pos + 1);
   }
@@ -1007,6 +1110,8 @@ bool AidlBinaryConstExpression::evaluate() const {
   return false;
 }
 
+// Constructor for integer(byte, int, long)
+// Keep parsed integer & literal
 AidlConstantValue::AidlConstantValue(const AidlLocation& location, Type parsed_type,
                                      int64_t parsed_value, const string& checked_value)
     : AidlNode(location),
@@ -1018,6 +1123,8 @@ AidlConstantValue::AidlConstantValue(const AidlLocation& location, Type parsed_t
   AIDL_FATAL_IF(type_ != Type::INT8 && type_ != Type::INT32 && type_ != Type::INT64, location);
 }
 
+// Constructor for non-integer(String, char, boolean, float, double)
+// Keep literal as it is. (e.g. String literal has double quotes at both ends)
 AidlConstantValue::AidlConstantValue(const AidlLocation& location, Type type,
                                      const string& checked_value)
     : AidlNode(location),
@@ -1037,6 +1144,7 @@ AidlConstantValue::AidlConstantValue(const AidlLocation& location, Type type,
   }
 }
 
+// Constructor for array
 AidlConstantValue::AidlConstantValue(const AidlLocation& location, Type type,
                                      std::unique_ptr<vector<unique_ptr<AidlConstantValue>>> values,
                                      const std::string& value)

@@ -123,42 +123,65 @@ bool AidlTypenames::IsIgnorableImport(const string& import) const {
 // so that they can be referenced via a simple name.
 bool AidlTypenames::AddDocument(std::unique_ptr<AidlDocument> doc) {
   bool is_preprocessed = doc->IsPreprocessed();
-  for (const auto& type : doc->DefinedTypes()) {
-    if (IsBuiltinTypename(type->GetName())) {
-      // ParcelFileDescriptor is treated as a built-in type, but it's also in the framework.aidl.
-      // So aidl should ignore built-in types in framework.aidl to prevent duplication.
-      // (b/130899491)
-      if (is_preprocessed) {
-        continue;
-      }
-      // HasValidNameComponents handles name conflicts with built-in types
-    }
+  std::vector<AidlDefinedType*> types_to_add;
+  // Add types in two steps to avoid adding a type while the doc is rejected.
+  // 1. filter types to add
+  // 2. add types
 
-    if (auto prev_definition = defined_types_.find(type->GetCanonicalName());
-        prev_definition != defined_types_.end()) {
-      // Skip duplicate type in preprocessed document
-      if (is_preprocessed) {
-        continue;
+  std::function<bool(const std::vector<std::unique_ptr<AidlDefinedType>>&)> collect_types_to_add;
+  collect_types_to_add = [&](auto& types) {
+    for (const auto& type : types) {
+      if (IsBuiltinTypename(type->GetName())) {
+        // ParcelFileDescriptor is treated as a built-in type, but it's also in the framework.aidl.
+        // So aidl should ignore built-in types in framework.aidl to prevent duplication.
+        // (b/130899491)
+        if (is_preprocessed) {
+          continue;
+        }
+        // HasValidNameComponents handles name conflicts with built-in types
       }
-      // Overwrite duplicate type which is already added via preprocessed with a new one
-      if (!prev_definition->second->GetDocument().IsPreprocessed()) {
-        AIDL_ERROR(type) << "redefinition: " << type->GetCanonicalName() << " is defined "
-                         << prev_definition->second->GetLocation();
+
+      if (auto prev_definition = defined_types_.find(type->GetCanonicalName());
+          prev_definition != defined_types_.end()) {
+        // Skip duplicate type in preprocessed document
+        if (is_preprocessed) {
+          continue;
+        }
+        // Overwrite duplicate type which is already added via preprocessed with a new one
+        if (!prev_definition->second->GetDocument().IsPreprocessed()) {
+          AIDL_ERROR(type) << "redefinition: " << type->GetCanonicalName() << " is defined "
+                           << prev_definition->second->GetLocation();
+          return false;
+        }
+      }
+
+      if (!HasValidNameComponents(*type)) {
+        return false;
+      }
+
+      types_to_add.push_back(type.get());
+
+      // recursively check nested types
+      if (!collect_types_to_add(type->GetNestedTypes())) {
         return false;
       }
     }
+    return true;
+  };
 
-    if (!HasValidNameComponents(*type)) {
-      return false;
-    }
+  if (!collect_types_to_add(doc->DefinedTypes())) {
+    return false;
+  }
 
+  for (const auto& type : types_to_add) {
     // populate global 'type' namespace with fully-qualified names
-    defined_types_.emplace(type->GetCanonicalName(), type.get());
+    defined_types_.emplace(type->GetCanonicalName(), type);
     // preprocessed unstructured parcelable types can be referenced without qualification
     if (is_preprocessed && type->AsUnstructuredParcelable()) {
-      defined_types_.emplace(type->GetName(), type.get());
+      defined_types_.emplace(type->GetName(), type);
     }
   }
+
   // transfer ownership of document
   documents_.push_back(std::move(doc));
   return true;
@@ -196,12 +219,16 @@ const AidlDefinedType* AidlTypenames::TryGetDefinedType(const string& type_name)
   return nullptr;
 }
 
-std::vector<AidlDefinedType*> AidlTypenames::AllDefinedTypes() const {
-  std::vector<AidlDefinedType*> res;
-  for (const auto& d : AllDocuments()) {
-    for (const auto& t : d->DefinedTypes()) {
-      res.push_back(t.get());
-    }
+std::vector<const AidlDefinedType*> AidlTypenames::AllDefinedTypes() const {
+  std::vector<const AidlDefinedType*> res;
+  for (const auto& doc : AllDocuments()) {
+    VisitTopDown(
+        [&](const AidlNode& node) {
+          if (auto defined_type = AidlCast<AidlDefinedType>(node); defined_type) {
+            res.push_back(defined_type);
+          }
+        },
+        *doc);
   }
   return res;
 }
@@ -220,6 +247,20 @@ AidlTypenames::ResolvedTypename AidlTypenames::ResolveTypename(const string& typ
   } else {
     return {type_name, false, nullptr};
   }
+}
+
+std::unique_ptr<AidlTypeSpecifier> AidlTypenames::MakeResolvedType(const AidlLocation& location,
+                                                                   const string& name,
+                                                                   bool is_array) const {
+  std::optional<ArrayType> array;
+  if (is_array) {
+    array = DynamicArray{};
+  }
+  std::unique_ptr<AidlTypeSpecifier> type(
+      new AidlTypeSpecifier(location, name, std::move(array), nullptr, {}));
+  AIDL_FATAL_IF(!type->Resolve(*this, nullptr), type) << "Can't make unknown type: " << name;
+  type->MarkVisited();
+  return type;
 }
 
 // Only immutable Parcelable, primitive type, and String, and List, Map, array of the types can be
@@ -250,10 +291,16 @@ bool AidlTypenames::CanBeJavaOnlyImmutable(const AidlTypeSpecifier& type) const 
   return t->IsJavaOnlyImmutable();
 }
 
-// Only FixedSize Parcelable, primitive types, and enum types can be FixedSize.
+// Followings can be FixedSize:
+// - @FixedSize parcelables
+// - primitive types and enum types
+// - fixed-size arrays of FixedSize types
 bool AidlTypenames::CanBeFixedSize(const AidlTypeSpecifier& type) const {
   const string& name = type.GetName();
-  if (type.IsGeneric() || type.IsArray()) {
+  if (type.IsGeneric() || type.IsNullable()) {
+    return false;
+  }
+  if (type.IsArray() && !type.IsFixedSizeArray()) {
     return false;
   }
   if (IsPrimitiveTypename(name)) {

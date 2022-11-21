@@ -21,34 +21,33 @@
 #include "io_delegate.h"
 #include "options.h"
 
+#include <optional>
 #include <string>
 
 namespace android {
 namespace aidl {
 namespace java {
 
-bool generate_java(const std::string& filename, const AidlDefinedType* iface,
-                   const AidlTypenames& typenames, const IoDelegate& io_delegate,
+void GenerateJava(const std::string& filename, const Options& options,
+                  const AidlTypenames& typenames, const AidlDefinedType& defined_type,
+                  const IoDelegate& io_delegate);
+
+void GenerateClass(CodeWriter& out, const AidlDefinedType& defined_type, const AidlTypenames& types,
                    const Options& options);
 
-std::unique_ptr<android::aidl::java::Class> generate_binder_interface_class(
-    const AidlInterface* iface, const AidlTypenames& typenames, const Options& options);
+std::unique_ptr<android::aidl::java::Class> GenerateInterfaceClass(const AidlInterface* iface,
+                                                                   const AidlTypenames& typenames,
+                                                                   const Options& options);
 
-std::unique_ptr<android::aidl::java::Class> generate_parcel_class(
-    const AidlStructuredParcelable* parcel, const AidlTypenames& typenames);
-
-void generate_enum(const CodeWriterPtr& code_writer, const AidlEnumDeclaration* enum_decl,
-                   const AidlTypenames& typenames);
-
-void generate_union(CodeWriter& out, const AidlUnionDecl* decl, const AidlTypenames& typenames);
-
-void generate_constant_declarations(CodeWriter& out, const AidlDefinedType& type);
+void GenerateConstantDeclarations(CodeWriter& out, const AidlDefinedType& type);
 
 std::string GenerateComments(const AidlCommentable& node);
 
 std::string GenerateAnnotations(const AidlNode& node);
 
 std::vector<std::string> JavaAnnotationsFor(const AidlNode& a);
+
+std::optional<std::string> JavaPermissionAnnotation(const AidlAnnotatable& a);
 
 }  // namespace java
 }  // namespace aidl

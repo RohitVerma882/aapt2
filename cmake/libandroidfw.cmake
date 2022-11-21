@@ -22,11 +22,10 @@ add_library(libandroidfw STATIC
     ${SRC_PATH}/androidfw/ZipFileRO.cpp
     ${SRC_PATH}/androidfw/ZipUtils.cpp)
 
-target_compile_definitions(libandroidfw PUBLIC -DSTATIC_ANDROIDFW_FOR_TOOLS)
-
 target_compile_definitions(libandroidfw PRIVATE
     -D_GNU_SOURCE
-    -DNDEBUG)
+    -DNDEBUG
+    -DSTATIC_ANDROIDFW_FOR_TOOLS)
 
 target_include_directories(libandroidfw PUBLIC
     ${SRC_PATH}/androidfw/include
@@ -37,5 +36,6 @@ target_include_directories(libandroidfw PUBLIC
     ${SRC_PATH}/libbase/include
     ${SRC_PATH}/libziparchive/include
     ${SRC_PATH}/incfs/util/include
-    ${SRC_PATH}/incfs/kernel-headers
     ${SRC_PATH}/fmtlib/include)
+
+target_link_libraries(libandroidfw PUBLIC fmt::fmt)

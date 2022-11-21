@@ -36,7 +36,7 @@
 
 #include <utils/Log.h>
 
-#if 0
+#if defined(__ANDROID__)
 #include <processgroup/processgroup.h>
 #include <processgroup/sched_policy.h>
 #endif
@@ -67,7 +67,7 @@ using namespace android;
 
 typedef void* (*android_pthread_entry)(void*);
 
-#if 0
+#if defined(__ANDROID__)
 struct thread_data_t {
     thread_func_t   entryFunction;
     void*           userData;
@@ -83,12 +83,6 @@ struct thread_data_t {
         char * name = t->threadName;
         delete t;
         setpriority(PRIO_PROCESS, 0, prio);
-
-        // A new thread will be in its parent's sched group by default,
-        // so we just need to handle the background case.
-        if (prio >= ANDROID_PRIORITY_BACKGROUND) {
-            SetTaskProfiles(0, {"SCHED_SP_BACKGROUND"}, true);
-        }
 
         if (name) {
             androidSetThreadName(name);
@@ -131,7 +125,7 @@ int androidCreateRawThreadEtc(android_thread_func_t entryFunction,
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 
-#if 0  /* valgrind is rejecting RT-priority create reqs */
+#if defined(__ANDROID__)  /* valgrind is rejecting RT-priority create reqs */
     if (threadPriority != PRIORITY_DEFAULT || threadName != NULL) {
         // Now that the pthread_t has a method to find the associated
         // android_thread_id_t (pid) from pthread_t, it would be possible to avoid
@@ -175,7 +169,7 @@ int androidCreateRawThreadEtc(android_thread_func_t entryFunction,
     return 1;
 }
 
-#if 0
+#if defined(__ANDROID__)
 static pthread_t android_thread_id_t_to_pthread(android_thread_id_t thread)
 {
     return (pthread_t) thread;
@@ -301,34 +295,20 @@ void androidSetCreateThreadFunc(android_create_thread_fn func)
     gCreateThreadFn = func;
 }
 
-#if 0
+#if defined(__ANDROID__)
 int androidSetThreadPriority(pid_t tid, int pri)
 {
     int rc = 0;
-    int lasterr = 0;
     int curr_pri = getpriority(PRIO_PROCESS, tid);
 
     if (curr_pri == pri) {
         return rc;
     }
 
-    if (pri >= ANDROID_PRIORITY_BACKGROUND) {
-        rc = SetTaskProfiles(tid, {"SCHED_SP_BACKGROUND"}, true) ? 0 : -1;
-    } else if (curr_pri >= ANDROID_PRIORITY_BACKGROUND) {
-        SchedPolicy policy = SP_FOREGROUND;
-        // Change to the sched policy group of the process.
-        get_sched_policy(getpid(), &policy);
-        rc = SetTaskProfiles(tid, {get_sched_policy_profile_name(policy)}, true) ? 0 : -1;
-    }
-
-    if (rc) {
-        lasterr = errno;
-    }
-
     if (setpriority(PRIO_PROCESS, tid, pri) < 0) {
         rc = INVALID_OPERATION;
     } else {
-        errno = lasterr;
+        errno = 0;
     }
 
     return rc;
@@ -843,7 +823,7 @@ bool Thread::isRunning() const {
     return mRunning;
 }
 
-#if 0
+#if defined(__ANDROID__)
 pid_t Thread::getTid() const
 {
     // mTid is not defined until the child initializes it, and the caller may need it earlier

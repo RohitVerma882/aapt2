@@ -36,8 +36,8 @@
 // especially those whose name start with YY_ or yy_.  They are
 // private implementation details that can be changed or removed.
 
-#ifndef YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED
-# define YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED
+#ifndef YY_YY_DATA_DATA_COM_TERMUX_FILES_HOME_PROJ_SDK_TOOLS_SOURCE_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED
+# define YY_YY_DATA_DATA_COM_TERMUX_FILES_HOME_PROJ_SDK_TOOLS_SOURCE_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED
 
 #include <iostream>
 #include <stdexcept>
@@ -97,7 +97,7 @@
 #endif
 
 namespace yy {
-#line 101 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_y.h"
+#line 101 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_y.h"
 
 
 
@@ -115,15 +115,16 @@ namespace yy {
     /// Symbol semantic values.
     union value_type
     {
-#line 70 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_y.yy"
+#line 70 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_y.yy"
 
     AidlToken* token;
     char character;
     std::string *str;
+    std::vector<std::unique_ptr<AidlToken>> *token_list;
     AidlAnnotation* annotation;
     AidlAnnotationParameter* param;
     std::map<std::string, std::shared_ptr<AidlConstantValue>>* param_list;
-    std::vector<AidlAnnotation>* annotation_list;
+    std::vector<std::unique_ptr<AidlAnnotation>>* annotation_list;
     AidlTypeSpecifier* type;
     AidlArgument* arg;
     AidlArgument::Direction direction;
@@ -139,12 +140,9 @@ namespace yy {
     AidlDefinedType* declaration;
     std::vector<std::unique_ptr<AidlTypeSpecifier>>* type_args;
     std::vector<std::string>* type_params;
-    std::vector<std::unique_ptr<AidlImport>>* imports;
-    AidlImport* import;
-    AidlPackage* package;
     std::vector<std::unique_ptr<AidlDefinedType>>* declarations;
 
-#line 148 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_y.h"
+#line 146 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_y.h"
 
     };
 #endif
@@ -291,7 +289,7 @@ namespace yy {
         S_YYACCEPT = 57,                         // $accept
         S_document = 58,                         // document
         S_identifier = 59,                       // identifier
-        S_package = 60,                          // package
+        S_optional_package = 60,                 // optional_package
         S_imports = 61,                          // imports
         S_import = 62,                           // import
         S_qualified_name = 63,                   // qualified_name
@@ -395,9 +393,9 @@ namespace yy {
   };
 
 } // yy
-#line 399 "/storage/emulated/0/AppProjects/aapt/src/aidl/aidl_language_y.h"
+#line 397 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/aidl_language_y.h"
 
 
 
 
-#endif // !YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED
+#endif // !YY_YY_DATA_DATA_COM_TERMUX_FILES_HOME_PROJ_SDK_TOOLS_SOURCE_SRC_AIDL_AIDL_LANGUAGE_Y_H_INCLUDED

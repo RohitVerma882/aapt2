@@ -233,15 +233,6 @@ void NewExpression::Write(CodeWriter* to) const {
   to->Write(")");
 }
 
-NewArrayExpression::NewArrayExpression(const std::string& t, std::shared_ptr<Expression> s)
-    : type(t), size(s) {}
-
-void NewArrayExpression::Write(CodeWriter* to) const {
-  to->Write("new %s[", this->type.c_str());
-  size->Write(to);
-  to->Write("]");
-}
-
 Cast::Cast(const std::string& t, std::shared_ptr<Expression> e) : type(t), expression(e) {}
 
 void Cast::Write(CodeWriter* to) const {
@@ -283,6 +274,10 @@ void ReturnStatement::Write(CodeWriter* to) const {
   to->Write("return ");
   this->expression->Write(to);
   to->Write(";\n");
+}
+
+void BreakStatement::Write(CodeWriter* to) const {
+  to->Write("break;\n");
 }
 
 void TryStatement::Write(CodeWriter* to) const {
@@ -430,31 +425,6 @@ void Class::Write(CodeWriter* to) const {
 
   to->Dedent();
   to->Write("}\n");
-}
-
-Document::Document(const std::string& comment,
-                   const std::string& package,
-                   std::unique_ptr<Class> clazz)
-    : comment_(comment),
-      package_(package),
-      clazz_(std::move(clazz)) {
-}
-
-void Document::Write(CodeWriter* to) const {
-  if (!comment_.empty()) {
-    to->Write("%s\n", comment_.c_str());
-  }
-  to->Write(
-      "/*\n"
-      " * This file is auto-generated.  DO NOT MODIFY.\n"
-      " */\n");
-  if (!package_.empty()) {
-    to->Write("package %s;\n", package_.c_str());
-  }
-
-  if (clazz_) {
-    clazz_->Write(to);
-  }
 }
 
 std::shared_ptr<Expression> NULL_VALUE = std::make_shared<LiteralExpression>("null");

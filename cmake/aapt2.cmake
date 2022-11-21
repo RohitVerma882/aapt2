@@ -1,43 +1,5 @@
-set(COMPILE_FLAGS
-    -Wno-unused-parameter
-    -Wno-missing-field-initializers
-    -fno-exceptions 
-    -fno-rtti)
-    
-set(INCLUDES
-    ${SRC_PATH}/aapt2
-    ${SRC_PATH}/protobuf/src
-    ${SRC_PATH}/liblog/include
-    ${SRC_PATH}/expat
-    ${SRC_PATH}/fmtlib/include
-    ${SRC_PATH}/libpng
-    ${SRC_PATH}/libbase/include
-    ${SRC_PATH}/androidfw/include
-    ${SRC_PATH}/libidmap2_policies/include
-    ${SRC_PATH}/libsystem/include
-    ${SRC_PATH}/libutils/include
-    ${SRC_PATH}/googletest/include
-    ${SRC_PATH}/libziparchive/include
-    ${SRC_PATH}/incfs/util/include
-    ${SRC_PATH}/sysprop/include)
-    
-set(LD_LIBS
-    libaapt2
-    libandroidfw 
-    libincfs
-    liblog
-    libbase
-    libutils
-    libcutils
-    libziparchive
-    protobuf
-    libpng
-    libexpat
-    libfmt
-    c++_static
-    z)
-
-set(TOOL_SOURCE
+add_executable(aapt2
+    ${SRC_PATH}/aapt2/Main.cpp
     ${SRC_PATH}/aapt2/cmd/Command.cpp
     ${SRC_PATH}/aapt2/cmd/Compile.cpp
     ${SRC_PATH}/aapt2/cmd/Convert.cpp
@@ -45,9 +7,7 @@ set(TOOL_SOURCE
     ${SRC_PATH}/aapt2/cmd/Dump.cpp
     ${SRC_PATH}/aapt2/cmd/Link.cpp
     ${SRC_PATH}/aapt2/cmd/Optimize.cpp
-    ${SRC_PATH}/aapt2/cmd/Util.cpp)
-    
-add_library(libaapt2 STATIC
+    ${SRC_PATH}/aapt2/cmd/Util.cpp
     ${SRC_PATH}/aapt2/compile/IdAssigner.cpp
     ${SRC_PATH}/aapt2/compile/InlineXmlFormatParser.cpp
     ${SRC_PATH}/aapt2/compile/NinePatch.cpp
@@ -123,22 +83,41 @@ add_library(libaapt2 STATIC
     ${SRC_PATH}/aapt2/Configuration.pb.cc
     ${SRC_PATH}/aapt2/Resources.pb.cc
     ${SRC_PATH}/aapt2/ResourcesInternal.pb.cc)
-
-target_include_directories(libaapt2 PUBLIC ${INCLUDES})
-target_compile_options(libaapt2 PRIVATE ${COMPILE_FLAGS})
-
-add_library(aapt2_jni SHARED
-    ${SRC_PATH}/aapt2/jni/aapt2_jni.cpp
-    ${TOOL_SOURCE})
     
-target_include_directories(aapt2_jni PUBLIC ${INCLUDES})
-target_compile_options(aapt2_jni PRIVATE ${COMPILE_FLAGS})
-target_link_libraries(aapt2_jni ${LD_LIBS})
+target_include_directories(aapt2 PRIVATE
+    ${SRC_PATH}/aapt2
+    ${SRC_PATH}/libbase/include
+    ${SRC_PATH}/libsystem/include
+    ${SRC_PATH}/libutils/include
+    ${SRC_PATH}/liblog/include
+    ${SRC_PATH}/androidfw/include
+    ${SRC_PATH}/libidmap2_policies/include
+    ${SRC_PATH}/libziparchive/include
+    ${SRC_PATH}/incfs/util/include
+    ${SRC_PATH}/googletest/googletest/include
+    ${SRC_PATH}/protobuf/src
+    ${SRC_PATH}/expat/lib
+    ${SRC_PATH}/fmtlib/include
+    ${SRC_PATH}/libpng)
 
-add_executable(aapt2
-    ${SRC_PATH}/aapt2/Main.cpp
-    ${TOOL_SOURCE})
+target_compile_definitions(aapt2 PRIVATE
+    -DPLATFORM_TOOLS_VERSION="${TOOLS_VERSION}")
     
-target_include_directories(aapt2 PUBLIC ${INCLUDES})
-target_compile_options(aapt2 PRIVATE ${COMPILE_FLAGS})
-target_link_libraries(aapt2 ${LD_LIBS})
+target_compile_options(aapt2 PRIVATE
+    -Wno-unused-parameter
+    -Wno-missing-field-initializers
+    -fno-exceptions 
+    -fno-rtti)
+
+target_link_libraries(aapt2
+    libbase
+    libutils
+    libcutils
+    liblog
+    libandroidfw 
+    libziparchive
+    libincfs
+    protobuf
+    png_static
+    expat
+    zlibstatic)

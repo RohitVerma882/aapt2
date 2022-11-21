@@ -4,8 +4,8 @@
 #include "ResourcesInternal.pb.h"
 
 #include <algorithm>
-#include <cstdint>
 
+#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -15,82 +15,85 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
-
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = _pb::internal;
-
+extern PROTOBUF_INTERNAL_EXPORT_Configuration_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Configuration_Configuration_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_Resources_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_SourcePosition_Resources_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_ResourcesInternal_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CompiledFile_Symbol_ResourcesInternal_2eproto;
 namespace aapt {
 namespace pb {
 namespace internal {
-PROTOBUF_CONSTEXPR CompiledFile_Symbol::CompiledFile_Symbol(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.resource_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.source_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct CompiledFile_SymbolDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CompiledFile_SymbolDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CompiledFile_SymbolDefaultTypeInternal() {}
-  union {  // NOLINT(misc-non-private-member-variables-in-classes)
-    CompiledFile_Symbol _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CompiledFile_SymbolDefaultTypeInternal _CompiledFile_Symbol_default_instance_;
-PROTOBUF_CONSTEXPR CompiledFile::CompiledFile(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.exported_symbol_)*/{}
-  , /*decltype(_impl_.resource_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.source_path_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.config_)*/nullptr
-  , /*decltype(_impl_.type_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct CompiledFileDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR CompiledFileDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~CompiledFileDefaultTypeInternal() {}
-  union {  // NOLINT(misc-non-private-member-variables-in-classes)
-    CompiledFile _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CompiledFileDefaultTypeInternal _CompiledFile_default_instance_;
+class CompiledFile_SymbolDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CompiledFile_Symbol> _instance;
+} _CompiledFile_Symbol_default_instance_;
+class CompiledFileDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CompiledFile> _instance;
+} _CompiledFile_default_instance_;
 }  // namespace internal
 }  // namespace pb
 }  // namespace aapt
-static ::_pb::Metadata file_level_metadata_ResourcesInternal_2eproto[2];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_ResourcesInternal_2eproto = nullptr;
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_ResourcesInternal_2eproto = nullptr;
+static void InitDefaultsscc_info_CompiledFile_ResourcesInternal_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-const ::uint32_t TableStruct_ResourcesInternal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  {
+    void* ptr = &::aapt::pb::internal::_CompiledFile_default_instance_;
+    new (ptr) ::aapt::pb::internal::CompiledFile();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::aapt::pb::internal::CompiledFile::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<2> scc_info_CompiledFile_ResourcesInternal_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsscc_info_CompiledFile_ResourcesInternal_2eproto}, {
+      &scc_info_Configuration_Configuration_2eproto.base,
+      &scc_info_CompiledFile_Symbol_ResourcesInternal_2eproto.base,}};
+
+static void InitDefaultsscc_info_CompiledFile_Symbol_ResourcesInternal_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::aapt::pb::internal::_CompiledFile_Symbol_default_instance_;
+    new (ptr) ::aapt::pb::internal::CompiledFile_Symbol();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::aapt::pb::internal::CompiledFile_Symbol::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_CompiledFile_Symbol_ResourcesInternal_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_CompiledFile_Symbol_ResourcesInternal_2eproto}, {
+      &scc_info_SourcePosition_Resources_2eproto.base,}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_ResourcesInternal_2eproto[2];
+static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_ResourcesInternal_2eproto = nullptr;
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_ResourcesInternal_2eproto = nullptr;
+
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_ResourcesInternal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile_Symbol, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile_Symbol, _impl_.resource_name_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile_Symbol, _impl_.source_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile_Symbol, resource_name_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile_Symbol, source_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, _impl_.resource_name_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, _impl_.config_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, _impl_.type_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, _impl_.source_path_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, _impl_.exported_symbol_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, resource_name_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, config_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, type_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, source_path_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::internal::CompiledFile, exported_symbol_),
 };
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::aapt::pb::internal::CompiledFile_Symbol)},
-  { 8, -1, -1, sizeof(::aapt::pb::internal::CompiledFile)},
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, sizeof(::aapt::pb::internal::CompiledFile_Symbol)},
+  { 7, -1, sizeof(::aapt::pb::internal::CompiledFile)},
 };
 
-static const ::_pb::Message* const file_default_instances[] = {
-  &::aapt::pb::internal::_CompiledFile_Symbol_default_instance_._instance,
-  &::aapt::pb::internal::_CompiledFile_default_instance_._instance,
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::aapt::pb::internal::_CompiledFile_Symbol_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::aapt::pb::internal::_CompiledFile_default_instance_),
 };
 
 const char descriptor_table_protodef_ResourcesInternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -105,31 +108,35 @@ const char descriptor_table_protodef_ResourcesInternal_2eproto[] PROTOBUF_SECTIO
   "(\t\022\'\n\006source\030\002 \001(\0132\027.aapt.pb.SourcePosit"
   "ionB\032\n\030android.aapt.pb.internalb\006proto3"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_ResourcesInternal_2eproto_deps[2] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_ResourcesInternal_2eproto_deps[2] = {
   &::descriptor_table_Configuration_2eproto,
   &::descriptor_table_Resources_2eproto,
 };
-static ::_pbi::once_flag descriptor_table_ResourcesInternal_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_ResourcesInternal_2eproto = {
-    false, false, 399, descriptor_table_protodef_ResourcesInternal_2eproto,
-    "ResourcesInternal.proto",
-    &descriptor_table_ResourcesInternal_2eproto_once, descriptor_table_ResourcesInternal_2eproto_deps, 2, 2,
-    schemas, file_default_instances, TableStruct_ResourcesInternal_2eproto::offsets,
-    file_level_metadata_ResourcesInternal_2eproto, file_level_enum_descriptors_ResourcesInternal_2eproto,
-    file_level_service_descriptors_ResourcesInternal_2eproto,
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ResourcesInternal_2eproto_sccs[2] = {
+  &scc_info_CompiledFile_ResourcesInternal_2eproto.base,
+  &scc_info_CompiledFile_Symbol_ResourcesInternal_2eproto.base,
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_ResourcesInternal_2eproto_getter() {
-  return &descriptor_table_ResourcesInternal_2eproto;
-}
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_ResourcesInternal_2eproto_once;
+static bool descriptor_table_ResourcesInternal_2eproto_initialized = false;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ResourcesInternal_2eproto = {
+  &descriptor_table_ResourcesInternal_2eproto_initialized, descriptor_table_protodef_ResourcesInternal_2eproto, "ResourcesInternal.proto", 399,
+  &descriptor_table_ResourcesInternal_2eproto_once, descriptor_table_ResourcesInternal_2eproto_sccs, descriptor_table_ResourcesInternal_2eproto_deps, 2, 2,
+  schemas, file_default_instances, TableStruct_ResourcesInternal_2eproto::offsets,
+  file_level_metadata_ResourcesInternal_2eproto, 2, file_level_enum_descriptors_ResourcesInternal_2eproto, file_level_service_descriptors_ResourcesInternal_2eproto,
+};
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_ResourcesInternal_2eproto(&descriptor_table_ResourcesInternal_2eproto);
+static bool dynamic_init_dummy_ResourcesInternal_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_ResourcesInternal_2eproto), true);
 namespace aapt {
 namespace pb {
 namespace internal {
 
 // ===================================================================
 
+void CompiledFile_Symbol::InitAsDefaultInstance() {
+  ::aapt::pb::internal::_CompiledFile_Symbol_default_instance_._instance.get_mutable()->source_ = const_cast< ::aapt::pb::SourcePosition*>(
+      ::aapt::pb::SourcePosition::internal_default_instance());
+}
 class CompiledFile_Symbol::_Internal {
  public:
   static const ::aapt::pb::SourcePosition& source(const CompiledFile_Symbol* msg);
@@ -137,166 +144,229 @@ class CompiledFile_Symbol::_Internal {
 
 const ::aapt::pb::SourcePosition&
 CompiledFile_Symbol::_Internal::source(const CompiledFile_Symbol* msg) {
-  return *msg->_impl_.source_;
+  return *msg->source_;
 }
 void CompiledFile_Symbol::clear_source() {
-  if (GetArenaForAllocation() == nullptr && _impl_.source_ != nullptr) {
-    delete _impl_.source_;
+  if (GetArenaNoVirtual() == nullptr && source_ != nullptr) {
+    delete source_;
   }
-  _impl_.source_ = nullptr;
+  source_ = nullptr;
 }
-CompiledFile_Symbol::CompiledFile_Symbol(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:aapt.pb.internal.CompiledFile.Symbol)
+CompiledFile_Symbol::CompiledFile_Symbol()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:aapt.pb.internal.CompiledFile.Symbol)
 }
 CompiledFile_Symbol::CompiledFile_Symbol(const CompiledFile_Symbol& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  CompiledFile_Symbol* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.resource_name_){}
-    , decltype(_impl_.source_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.resource_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.resource_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_resource_name().empty()) {
-    _this->_impl_.resource_name_.Set(from._internal_resource_name(), 
-      _this->GetArenaForAllocation());
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  resource_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from.resource_name().empty()) {
+    resource_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.resource_name_);
   }
-  if (from._internal_has_source()) {
-    _this->_impl_.source_ = new ::aapt::pb::SourcePosition(*from._impl_.source_);
+  if (from.has_source()) {
+    source_ = new ::aapt::pb::SourcePosition(*from.source_);
+  } else {
+    source_ = nullptr;
   }
   // @@protoc_insertion_point(copy_constructor:aapt.pb.internal.CompiledFile.Symbol)
 }
 
-inline void CompiledFile_Symbol::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.resource_name_){}
-    , decltype(_impl_.source_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.resource_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.resource_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void CompiledFile_Symbol::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CompiledFile_Symbol_ResourcesInternal_2eproto.base);
+  resource_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_ = nullptr;
 }
 
 CompiledFile_Symbol::~CompiledFile_Symbol() {
   // @@protoc_insertion_point(destructor:aapt.pb.internal.CompiledFile.Symbol)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
 }
 
-inline void CompiledFile_Symbol::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.resource_name_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.source_;
+void CompiledFile_Symbol::SharedDtor() {
+  resource_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete source_;
 }
 
 void CompiledFile_Symbol::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
+const CompiledFile_Symbol& CompiledFile_Symbol::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CompiledFile_Symbol_ResourcesInternal_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void CompiledFile_Symbol::Clear() {
 // @@protoc_insertion_point(message_clear_start:aapt.pb.internal.CompiledFile.Symbol)
-  ::uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.resource_name_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.source_ != nullptr) {
-    delete _impl_.source_;
+  resource_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == nullptr && source_ != nullptr) {
+    delete source_;
   }
-  _impl_.source_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  source_ = nullptr;
+  _internal_metadata_.Clear();
 }
 
-const char* CompiledFile_Symbol::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CompiledFile_Symbol::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string resource_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_resource_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_resource_name(), ptr, ctx, "aapt.pb.internal.CompiledFile.Symbol.resource_name");
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "aapt.pb.internal.CompiledFile.Symbol.resource_name"));
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.SourcePosition source = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_source(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(mutable_source(), ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
-      default:
-        goto handle_unusual;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
     }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
   }  // while
-message_done:
+success:
   return ptr;
 failure:
   ptr = nullptr;
-  goto message_done;
+  goto success;
 #undef CHK_
 }
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CompiledFile_Symbol::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:aapt.pb.internal.CompiledFile.Symbol)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string resource_name = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_resource_name()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->resource_name().data(), static_cast<int>(this->resource_name().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "aapt.pb.internal.CompiledFile.Symbol.resource_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
 
-::uint8_t* CompiledFile_Symbol::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:aapt.pb.internal.CompiledFile.Symbol)
-  ::uint32_t cached_has_bits = 0;
+      // .aapt.pb.SourcePosition source = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
+               input, mutable_source()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:aapt.pb.internal.CompiledFile.Symbol)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:aapt.pb.internal.CompiledFile.Symbol)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void CompiledFile_Symbol::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:aapt.pb.internal.CompiledFile.Symbol)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string resource_name = 1;
-  if (!this->_internal_resource_name().empty()) {
+  if (this->resource_name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_resource_name().data(), static_cast<int>(this->_internal_resource_name().length()),
+      this->resource_name().data(), static_cast<int>(this->resource_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "aapt.pb.internal.CompiledFile.Symbol.resource_name");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_resource_name(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->resource_name(), output);
   }
 
   // .aapt.pb.SourcePosition source = 2;
-  if (this->_internal_has_source()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::source(this),
-        _Internal::source(this).GetCachedSize(), target, stream);
+  if (this->has_source()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, _Internal::source(this), output);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:aapt.pb.internal.CompiledFile.Symbol)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CompiledFile_Symbol::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:aapt.pb.internal.CompiledFile.Symbol)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string resource_name = 1;
+  if (this->resource_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->resource_name().data(), static_cast<int>(this->resource_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "aapt.pb.internal.CompiledFile.Symbol.resource_name");
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        1, this->resource_name(), target);
+  }
+
+  // .aapt.pb.SourcePosition source = 2;
+  if (this->has_source()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, _Internal::source(this), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:aapt.pb.internal.CompiledFile.Symbol)
   return target;
@@ -306,50 +376,70 @@ size_t CompiledFile_Symbol::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:aapt.pb.internal.CompiledFile.Symbol)
   size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string resource_name = 1;
-  if (!this->_internal_resource_name().empty()) {
+  if (this->resource_name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_resource_name());
+        this->resource_name());
   }
 
   // .aapt.pb.SourcePosition source = 2;
-  if (this->_internal_has_source()) {
+  if (this->has_source()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.source_);
+        *source_);
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CompiledFile_Symbol::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CompiledFile_Symbol::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CompiledFile_Symbol::GetClassData() const { return &_class_data_; }
+void CompiledFile_Symbol::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:aapt.pb.internal.CompiledFile.Symbol)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CompiledFile_Symbol* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CompiledFile_Symbol>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:aapt.pb.internal.CompiledFile.Symbol)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:aapt.pb.internal.CompiledFile.Symbol)
+    MergeFrom(*source);
+  }
+}
 
-
-void CompiledFile_Symbol::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CompiledFile_Symbol*>(&to_msg);
-  auto& from = static_cast<const CompiledFile_Symbol&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:aapt.pb.internal.CompiledFile.Symbol)
-  GOOGLE_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+void CompiledFile_Symbol::MergeFrom(const CompiledFile_Symbol& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:aapt.pb.internal.CompiledFile.Symbol)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_resource_name().empty()) {
-    _this->_internal_set_resource_name(from._internal_resource_name());
+  if (from.resource_name().size() > 0) {
+
+    resource_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.resource_name_);
   }
-  if (from._internal_has_source()) {
-    _this->_internal_mutable_source()->::aapt::pb::SourcePosition::MergeFrom(
-        from._internal_source());
+  if (from.has_source()) {
+    mutable_source()->::aapt::pb::SourcePosition::MergeFrom(from.source());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CompiledFile_Symbol::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:aapt.pb.internal.CompiledFile.Symbol)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void CompiledFile_Symbol::CopyFrom(const CompiledFile_Symbol& from) {
@@ -365,24 +455,23 @@ bool CompiledFile_Symbol::IsInitialized() const {
 
 void CompiledFile_Symbol::InternalSwap(CompiledFile_Symbol* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.resource_name_, lhs_arena,
-      &other->_impl_.resource_name_, rhs_arena
-  );
-  swap(_impl_.source_, other->_impl_.source_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  resource_name_.Swap(&other->resource_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(source_, other->source_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CompiledFile_Symbol::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_ResourcesInternal_2eproto_getter, &descriptor_table_ResourcesInternal_2eproto_once,
-      file_level_metadata_ResourcesInternal_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // ===================================================================
 
+void CompiledFile::InitAsDefaultInstance() {
+  ::aapt::pb::internal::_CompiledFile_default_instance_._instance.get_mutable()->config_ = const_cast< ::aapt::pb::Configuration*>(
+      ::aapt::pb::Configuration::internal_default_instance());
+}
 class CompiledFile::_Internal {
  public:
   static const ::aapt::pb::Configuration& config(const CompiledFile* msg);
@@ -390,250 +479,359 @@ class CompiledFile::_Internal {
 
 const ::aapt::pb::Configuration&
 CompiledFile::_Internal::config(const CompiledFile* msg) {
-  return *msg->_impl_.config_;
+  return *msg->config_;
 }
 void CompiledFile::clear_config() {
-  if (GetArenaForAllocation() == nullptr && _impl_.config_ != nullptr) {
-    delete _impl_.config_;
+  if (GetArenaNoVirtual() == nullptr && config_ != nullptr) {
+    delete config_;
   }
-  _impl_.config_ = nullptr;
+  config_ = nullptr;
 }
-CompiledFile::CompiledFile(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:aapt.pb.internal.CompiledFile)
+CompiledFile::CompiledFile()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:aapt.pb.internal.CompiledFile)
 }
 CompiledFile::CompiledFile(const CompiledFile& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  CompiledFile* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.exported_symbol_){from._impl_.exported_symbol_}
-    , decltype(_impl_.resource_name_){}
-    , decltype(_impl_.source_path_){}
-    , decltype(_impl_.config_){nullptr}
-    , decltype(_impl_.type_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.resource_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.resource_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_resource_name().empty()) {
-    _this->_impl_.resource_name_.Set(from._internal_resource_name(), 
-      _this->GetArenaForAllocation());
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      exported_symbol_(from.exported_symbol_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  resource_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from.resource_name().empty()) {
+    resource_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.resource_name_);
   }
-  _impl_.source_path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.source_path_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_source_path().empty()) {
-    _this->_impl_.source_path_.Set(from._internal_source_path(), 
-      _this->GetArenaForAllocation());
+  source_path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from.source_path().empty()) {
+    source_path_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.source_path_);
   }
-  if (from._internal_has_config()) {
-    _this->_impl_.config_ = new ::aapt::pb::Configuration(*from._impl_.config_);
+  if (from.has_config()) {
+    config_ = new ::aapt::pb::Configuration(*from.config_);
+  } else {
+    config_ = nullptr;
   }
-  _this->_impl_.type_ = from._impl_.type_;
+  type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:aapt.pb.internal.CompiledFile)
 }
 
-inline void CompiledFile::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.exported_symbol_){arena}
-    , decltype(_impl_.resource_name_){}
-    , decltype(_impl_.source_path_){}
-    , decltype(_impl_.config_){nullptr}
-    , decltype(_impl_.type_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.resource_name_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.resource_name_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.source_path_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.source_path_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void CompiledFile::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CompiledFile_ResourcesInternal_2eproto.base);
+  resource_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_path_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&config_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&config_)) + sizeof(type_));
 }
 
 CompiledFile::~CompiledFile() {
   // @@protoc_insertion_point(destructor:aapt.pb.internal.CompiledFile)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
 }
 
-inline void CompiledFile::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.exported_symbol_.~RepeatedPtrField();
-  _impl_.resource_name_.Destroy();
-  _impl_.source_path_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.config_;
+void CompiledFile::SharedDtor() {
+  resource_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_path_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete config_;
 }
 
 void CompiledFile::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
+const CompiledFile& CompiledFile::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CompiledFile_ResourcesInternal_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void CompiledFile::Clear() {
 // @@protoc_insertion_point(message_clear_start:aapt.pb.internal.CompiledFile)
-  ::uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.exported_symbol_.Clear();
-  _impl_.resource_name_.ClearToEmpty();
-  _impl_.source_path_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.config_ != nullptr) {
-    delete _impl_.config_;
+  exported_symbol_.Clear();
+  resource_name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  source_path_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == nullptr && config_ != nullptr) {
+    delete config_;
   }
-  _impl_.config_ = nullptr;
-  _impl_.type_ = 0;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  config_ = nullptr;
+  type_ = 0;
+  _internal_metadata_.Clear();
 }
 
-const char* CompiledFile::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* CompiledFile::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // string resource_name = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_resource_name();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_resource_name(), ptr, ctx, "aapt.pb.internal.CompiledFile.resource_name");
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "aapt.pb.internal.CompiledFile.resource_name"));
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration config = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_config(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(mutable_config(), ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.FileReference.Type type = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 24)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_type(static_cast<::aapt::pb::FileReference_Type>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_type(static_cast<::aapt::pb::FileReference_Type>(val));
+        } else goto handle_unusual;
         continue;
       // string source_path = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_source_path();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_source_path(), ptr, ctx, "aapt.pb.internal.CompiledFile.source_path");
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "aapt.pb.internal.CompiledFile.source_path"));
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // repeated .aapt.pb.internal.CompiledFile.Symbol exported_symbol = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 42)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
           ptr -= 1;
           do {
             ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_exported_symbol(), ptr);
+            ptr = ctx->ParseMessage(add_exported_symbol(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
-        } else {
-          goto handle_unusual;
-        }
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 42);
+        } else goto handle_unusual;
         continue;
-      default:
-        goto handle_unusual;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
     }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
   }  // while
-message_done:
+success:
   return ptr;
 failure:
   ptr = nullptr;
-  goto message_done;
+  goto success;
 #undef CHK_
 }
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool CompiledFile::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:aapt.pb.internal.CompiledFile)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string resource_name = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_resource_name()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->resource_name().data(), static_cast<int>(this->resource_name().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "aapt.pb.internal.CompiledFile.resource_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
 
-::uint8_t* CompiledFile::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:aapt.pb.internal.CompiledFile)
-  ::uint32_t cached_has_bits = 0;
+      // .aapt.pb.Configuration config = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
+               input, mutable_config()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.FileReference.Type type = 3;
+      case 3: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::aapt::pb::FileReference_Type >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string source_path = 4;
+      case 4: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (34 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_source_path()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->source_path().data(), static_cast<int>(this->source_path().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "aapt.pb.internal.CompiledFile.source_path"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .aapt.pb.internal.CompiledFile.Symbol exported_symbol = 5;
+      case 5: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (42 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
+                input, add_exported_symbol()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:aapt.pb.internal.CompiledFile)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:aapt.pb.internal.CompiledFile)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void CompiledFile::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:aapt.pb.internal.CompiledFile)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // string resource_name = 1;
-  if (!this->_internal_resource_name().empty()) {
+  if (this->resource_name().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_resource_name().data(), static_cast<int>(this->_internal_resource_name().length()),
+      this->resource_name().data(), static_cast<int>(this->resource_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "aapt.pb.internal.CompiledFile.resource_name");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_resource_name(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->resource_name(), output);
   }
 
   // .aapt.pb.Configuration config = 2;
-  if (this->_internal_has_config()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::config(this),
-        _Internal::config(this).GetCachedSize(), target, stream);
+  if (this->has_config()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, _Internal::config(this), output);
   }
 
   // .aapt.pb.FileReference.Type type = 3;
-  if (this->_internal_type() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      3, this->_internal_type(), target);
+  if (this->type() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      3, this->type(), output);
   }
 
   // string source_path = 4;
-  if (!this->_internal_source_path().empty()) {
+  if (this->source_path().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_source_path().data(), static_cast<int>(this->_internal_source_path().length()),
+      this->source_path().data(), static_cast<int>(this->source_path().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "aapt.pb.internal.CompiledFile.source_path");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_source_path(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->source_path(), output);
   }
 
   // repeated .aapt.pb.internal.CompiledFile.Symbol exported_symbol = 5;
-  for (unsigned i = 0,
-      n = static_cast<unsigned>(this->_internal_exported_symbol_size()); i < n; i++) {
-    const auto& repfield = this->_internal_exported_symbol(i);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-        InternalWriteMessage(5, repfield, repfield.GetCachedSize(), target, stream);
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->exported_symbol_size()); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5,
+      this->exported_symbol(static_cast<int>(i)),
+      output);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:aapt.pb.internal.CompiledFile)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* CompiledFile::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:aapt.pb.internal.CompiledFile)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string resource_name = 1;
+  if (this->resource_name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->resource_name().data(), static_cast<int>(this->resource_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "aapt.pb.internal.CompiledFile.resource_name");
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        1, this->resource_name(), target);
+  }
+
+  // .aapt.pb.Configuration config = 2;
+  if (this->has_config()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        2, _Internal::config(this), target);
+  }
+
+  // .aapt.pb.FileReference.Type type = 3;
+  if (this->type() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      3, this->type(), target);
+  }
+
+  // string source_path = 4;
+  if (this->source_path().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->source_path().data(), static_cast<int>(this->source_path().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "aapt.pb.internal.CompiledFile.source_path");
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        4, this->source_path(), target);
+  }
+
+  // repeated .aapt.pb.internal.CompiledFile.Symbol exported_symbol = 5;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->exported_symbol_size()); i < n; i++) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        5, this->exported_symbol(static_cast<int>(i)), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:aapt.pb.internal.CompiledFile)
   return target;
@@ -643,77 +841,102 @@ size_t CompiledFile::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:aapt.pb.internal.CompiledFile)
   size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .aapt.pb.internal.CompiledFile.Symbol exported_symbol = 5;
-  total_size += 1UL * this->_internal_exported_symbol_size();
-  for (const auto& msg : this->_impl_.exported_symbol_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  {
+    unsigned int count = static_cast<unsigned int>(this->exported_symbol_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          this->exported_symbol(static_cast<int>(i)));
+    }
   }
 
   // string resource_name = 1;
-  if (!this->_internal_resource_name().empty()) {
+  if (this->resource_name().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_resource_name());
+        this->resource_name());
   }
 
   // string source_path = 4;
-  if (!this->_internal_source_path().empty()) {
+  if (this->source_path().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_source_path());
+        this->source_path());
   }
 
   // .aapt.pb.Configuration config = 2;
-  if (this->_internal_has_config()) {
+  if (this->has_config()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.config_);
+        *config_);
   }
 
   // .aapt.pb.FileReference.Type type = 3;
-  if (this->_internal_type() != 0) {
+  if (this->type() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->type());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CompiledFile::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    CompiledFile::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CompiledFile::GetClassData() const { return &_class_data_; }
+void CompiledFile::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:aapt.pb.internal.CompiledFile)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CompiledFile* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<CompiledFile>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:aapt.pb.internal.CompiledFile)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:aapt.pb.internal.CompiledFile)
+    MergeFrom(*source);
+  }
+}
 
-
-void CompiledFile::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<CompiledFile*>(&to_msg);
-  auto& from = static_cast<const CompiledFile&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:aapt.pb.internal.CompiledFile)
-  GOOGLE_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+void CompiledFile::MergeFrom(const CompiledFile& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:aapt.pb.internal.CompiledFile)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_impl_.exported_symbol_.MergeFrom(from._impl_.exported_symbol_);
-  if (!from._internal_resource_name().empty()) {
-    _this->_internal_set_resource_name(from._internal_resource_name());
+  exported_symbol_.MergeFrom(from.exported_symbol_);
+  if (from.resource_name().size() > 0) {
+
+    resource_name_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.resource_name_);
   }
-  if (!from._internal_source_path().empty()) {
-    _this->_internal_set_source_path(from._internal_source_path());
+  if (from.source_path().size() > 0) {
+
+    source_path_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.source_path_);
   }
-  if (from._internal_has_config()) {
-    _this->_internal_mutable_config()->::aapt::pb::Configuration::MergeFrom(
-        from._internal_config());
+  if (from.has_config()) {
+    mutable_config()->::aapt::pb::Configuration::MergeFrom(from.config());
   }
-  if (from._internal_type() != 0) {
-    _this->_internal_set_type(from._internal_type());
+  if (from.type() != 0) {
+    set_type(from.type());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CompiledFile::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:aapt.pb.internal.CompiledFile)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void CompiledFile::CopyFrom(const CompiledFile& from) {
@@ -729,44 +952,31 @@ bool CompiledFile::IsInitialized() const {
 
 void CompiledFile::InternalSwap(CompiledFile* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.exported_symbol_.InternalSwap(&other->_impl_.exported_symbol_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.resource_name_, lhs_arena,
-      &other->_impl_.resource_name_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.source_path_, lhs_arena,
-      &other->_impl_.source_path_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CompiledFile, _impl_.type_)
-      + sizeof(CompiledFile::_impl_.type_)  // NOLINT
-      - PROTOBUF_FIELD_OFFSET(CompiledFile, _impl_.config_)>(
-          reinterpret_cast<char*>(&_impl_.config_),
-          reinterpret_cast<char*>(&other->_impl_.config_));
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  CastToBase(&exported_symbol_)->InternalSwap(CastToBase(&other->exported_symbol_));
+  resource_name_.Swap(&other->resource_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  source_path_.Swap(&other->source_path_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(config_, other->config_);
+  swap(type_, other->type_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata CompiledFile::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_ResourcesInternal_2eproto_getter, &descriptor_table_ResourcesInternal_2eproto_once,
-      file_level_metadata_ResourcesInternal_2eproto[1]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace internal
 }  // namespace pb
 }  // namespace aapt
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::aapt::pb::internal::CompiledFile_Symbol*
-Arena::CreateMaybeMessage< ::aapt::pb::internal::CompiledFile_Symbol >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::aapt::pb::internal::CompiledFile_Symbol >(arena);
+template<> PROTOBUF_NOINLINE ::aapt::pb::internal::CompiledFile_Symbol* Arena::CreateMaybeMessage< ::aapt::pb::internal::CompiledFile_Symbol >(Arena* arena) {
+  return Arena::CreateInternal< ::aapt::pb::internal::CompiledFile_Symbol >(arena);
 }
-template<> PROTOBUF_NOINLINE ::aapt::pb::internal::CompiledFile*
-Arena::CreateMaybeMessage< ::aapt::pb::internal::CompiledFile >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::aapt::pb::internal::CompiledFile >(arena);
+template<> PROTOBUF_NOINLINE ::aapt::pb::internal::CompiledFile* Arena::CreateMaybeMessage< ::aapt::pb::internal::CompiledFile >(Arena* arena) {
+  return Arena::CreateInternal< ::aapt::pb::internal::CompiledFile >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

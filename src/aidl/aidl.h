@@ -45,7 +45,7 @@ enum class AidlError {
   OK = 0,
 };
 
-int compile_aidl(const Options& options, const IoDelegate& io_delegate);
+bool compile_aidl(const Options& options, const IoDelegate& io_delegate);
 bool dump_mappings(const Options& options, const IoDelegate& io_delegate);
 
 // main entry point to AIDL

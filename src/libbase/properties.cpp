@@ -16,7 +16,7 @@
 
 #include "android-base/properties.h"
 
-#if 0
+#if defined(__BIONIC__)
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/system_properties.h>
 #include <sys/_system_properties.h>
@@ -31,6 +31,8 @@
 #include <android-base/parsebool.h>
 #include <android-base/parseint.h>
 #include <android-base/strings.h>
+
+#if !defined(__BIONIC__)
 
 #define PROP_VALUE_MAX 92
 
@@ -60,6 +62,8 @@ int __system_property_get(const char* key, char* value) {
   snprintf(value, PROP_VALUE_MAX, "%s", it->second.c_str());
   return strlen(value);
 }
+
+#endif
 
 namespace android {
 namespace base {
@@ -104,7 +108,7 @@ template uint64_t GetUintProperty(const std::string&, uint64_t, uint64_t);
 
 std::string GetProperty(const std::string& key, const std::string& default_value) {
   std::string property_value;
-#if 0
+#if defined(__BIONIC__)
   const prop_info* pi = __system_property_find(key.c_str());
   if (pi == nullptr) return default_value;
 
@@ -130,7 +134,7 @@ bool SetProperty(const std::string& key, const std::string& value) {
   return (__system_property_set(key.c_str(), value.c_str()) == 0);
 }
 
-#if 0
+#if defined(__BIONIC__)
 
 struct WaitForPropertyData {
   bool done;

@@ -4,8 +4,8 @@
 #include "Configuration.pb.h"
 
 #include <algorithm>
-#include <cstdint>
 
+#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -15,96 +15,70 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-
-PROTOBUF_PRAGMA_INIT_SEG
-
-namespace _pb = ::PROTOBUF_NAMESPACE_ID;
-namespace _pbi = _pb::internal;
-
 namespace aapt {
 namespace pb {
-PROTOBUF_CONSTEXPR Configuration::Configuration(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.locale_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.product_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.mcc_)*/0u
-  , /*decltype(_impl_.mnc_)*/0u
-  , /*decltype(_impl_.layout_direction_)*/0
-  , /*decltype(_impl_.screen_width_)*/0u
-  , /*decltype(_impl_.screen_height_)*/0u
-  , /*decltype(_impl_.screen_width_dp_)*/0u
-  , /*decltype(_impl_.screen_height_dp_)*/0u
-  , /*decltype(_impl_.smallest_screen_width_dp_)*/0u
-  , /*decltype(_impl_.screen_layout_size_)*/0
-  , /*decltype(_impl_.screen_layout_long_)*/0
-  , /*decltype(_impl_.screen_round_)*/0
-  , /*decltype(_impl_.wide_color_gamut_)*/0
-  , /*decltype(_impl_.hdr_)*/0
-  , /*decltype(_impl_.orientation_)*/0
-  , /*decltype(_impl_.ui_mode_type_)*/0
-  , /*decltype(_impl_.ui_mode_night_)*/0
-  , /*decltype(_impl_.density_)*/0u
-  , /*decltype(_impl_.touchscreen_)*/0
-  , /*decltype(_impl_.keys_hidden_)*/0
-  , /*decltype(_impl_.keyboard_)*/0
-  , /*decltype(_impl_.nav_hidden_)*/0
-  , /*decltype(_impl_.navigation_)*/0
-  , /*decltype(_impl_.sdk_version_)*/0u
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct ConfigurationDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ConfigurationDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ConfigurationDefaultTypeInternal() {}
-  union {  // NOLINT(misc-non-private-member-variables-in-classes)
-    Configuration _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConfigurationDefaultTypeInternal _Configuration_default_instance_;
+class ConfigurationDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Configuration> _instance;
+} _Configuration_default_instance_;
 }  // namespace pb
 }  // namespace aapt
-static ::_pb::Metadata file_level_metadata_Configuration_2eproto[1];
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_Configuration_2eproto[14];
-static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_Configuration_2eproto = nullptr;
+static void InitDefaultsscc_info_Configuration_Configuration_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-const ::uint32_t TableStruct_Configuration_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  {
+    void* ptr = &::aapt::pb::_Configuration_default_instance_;
+    new (ptr) ::aapt::pb::Configuration();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::aapt::pb::Configuration::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Configuration_Configuration_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_Configuration_Configuration_2eproto}, {}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_Configuration_2eproto[1];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_Configuration_2eproto[14];
+static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_Configuration_2eproto = nullptr;
+
+const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_Configuration_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.mcc_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.mnc_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.locale_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.layout_direction_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_width_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_height_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_width_dp_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_height_dp_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.smallest_screen_width_dp_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_layout_size_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_layout_long_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.screen_round_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.wide_color_gamut_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.hdr_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.orientation_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.ui_mode_type_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.ui_mode_night_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.density_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.touchscreen_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.keys_hidden_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.keyboard_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.nav_hidden_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.navigation_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.sdk_version_),
-  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, _impl_.product_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, mcc_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, mnc_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, locale_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, layout_direction_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_width_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_height_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_width_dp_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_height_dp_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, smallest_screen_width_dp_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_layout_size_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_layout_long_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, screen_round_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, wide_color_gamut_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, hdr_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, orientation_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, ui_mode_type_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, ui_mode_night_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, density_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, touchscreen_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, keys_hidden_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, keyboard_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, nav_hidden_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, navigation_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, sdk_version_),
+  PROTOBUF_FIELD_OFFSET(::aapt::pb::Configuration, product_),
 };
-static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::aapt::pb::Configuration)},
+static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, sizeof(::aapt::pb::Configuration)},
 };
 
-static const ::_pb::Message* const file_default_instances[] = {
-  &::aapt::pb::_Configuration_default_instance_._instance,
+static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::aapt::pb::_Configuration_default_instance_),
 };
 
 const char descriptor_table_protodef_Configuration_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -177,21 +151,22 @@ const char descriptor_table_protodef_Configuration_2eproto[] PROTOBUF_SECTION_VA
   "VIGATION_TRACKBALL\020\003\022\024\n\020NAVIGATION_WHEEL"
   "\020\004B\022\n\020com.android.aaptb\006proto3"
   ;
-static ::_pbi::once_flag descriptor_table_Configuration_2eproto_once;
-const ::_pbi::DescriptorTable descriptor_table_Configuration_2eproto = {
-    false, false, 2710, descriptor_table_protodef_Configuration_2eproto,
-    "Configuration.proto",
-    &descriptor_table_Configuration_2eproto_once, nullptr, 0, 1,
-    schemas, file_default_instances, TableStruct_Configuration_2eproto::offsets,
-    file_level_metadata_Configuration_2eproto, file_level_enum_descriptors_Configuration_2eproto,
-    file_level_service_descriptors_Configuration_2eproto,
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_Configuration_2eproto_deps[1] = {
 };
-PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_Configuration_2eproto_getter() {
-  return &descriptor_table_Configuration_2eproto;
-}
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_Configuration_2eproto_sccs[1] = {
+  &scc_info_Configuration_Configuration_2eproto.base,
+};
+static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_Configuration_2eproto_once;
+static bool descriptor_table_Configuration_2eproto_initialized = false;
+const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Configuration_2eproto = {
+  &descriptor_table_Configuration_2eproto_initialized, descriptor_table_protodef_Configuration_2eproto, "Configuration.proto", 2710,
+  &descriptor_table_Configuration_2eproto_once, descriptor_table_Configuration_2eproto_sccs, descriptor_table_Configuration_2eproto_deps, 1, 0,
+  schemas, file_default_instances, TableStruct_Configuration_2eproto::offsets,
+  file_level_metadata_Configuration_2eproto, 1, file_level_enum_descriptors_Configuration_2eproto, file_level_service_descriptors_Configuration_2eproto,
+};
 
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_Configuration_2eproto(&descriptor_table_Configuration_2eproto);
+static bool dynamic_init_dummy_Configuration_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_Configuration_2eproto), true);
 namespace aapt {
 namespace pb {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_LayoutDirection_descriptor() {
@@ -209,14 +184,14 @@ bool Configuration_LayoutDirection_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_LayoutDirection Configuration::LAYOUT_DIRECTION_UNSET;
 constexpr Configuration_LayoutDirection Configuration::LAYOUT_DIRECTION_LTR;
 constexpr Configuration_LayoutDirection Configuration::LAYOUT_DIRECTION_RTL;
 constexpr Configuration_LayoutDirection Configuration::LayoutDirection_MIN;
 constexpr Configuration_LayoutDirection Configuration::LayoutDirection_MAX;
 constexpr int Configuration::LayoutDirection_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_ScreenLayoutSize_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[1];
@@ -234,7 +209,7 @@ bool Configuration_ScreenLayoutSize_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_ScreenLayoutSize Configuration::SCREEN_LAYOUT_SIZE_UNSET;
 constexpr Configuration_ScreenLayoutSize Configuration::SCREEN_LAYOUT_SIZE_SMALL;
 constexpr Configuration_ScreenLayoutSize Configuration::SCREEN_LAYOUT_SIZE_NORMAL;
@@ -243,7 +218,7 @@ constexpr Configuration_ScreenLayoutSize Configuration::SCREEN_LAYOUT_SIZE_XLARG
 constexpr Configuration_ScreenLayoutSize Configuration::ScreenLayoutSize_MIN;
 constexpr Configuration_ScreenLayoutSize Configuration::ScreenLayoutSize_MAX;
 constexpr int Configuration::ScreenLayoutSize_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_ScreenLayoutLong_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[2];
@@ -259,14 +234,14 @@ bool Configuration_ScreenLayoutLong_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_ScreenLayoutLong Configuration::SCREEN_LAYOUT_LONG_UNSET;
 constexpr Configuration_ScreenLayoutLong Configuration::SCREEN_LAYOUT_LONG_LONG;
 constexpr Configuration_ScreenLayoutLong Configuration::SCREEN_LAYOUT_LONG_NOTLONG;
 constexpr Configuration_ScreenLayoutLong Configuration::ScreenLayoutLong_MIN;
 constexpr Configuration_ScreenLayoutLong Configuration::ScreenLayoutLong_MAX;
 constexpr int Configuration::ScreenLayoutLong_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_ScreenRound_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[3];
@@ -282,14 +257,14 @@ bool Configuration_ScreenRound_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_ScreenRound Configuration::SCREEN_ROUND_UNSET;
 constexpr Configuration_ScreenRound Configuration::SCREEN_ROUND_ROUND;
 constexpr Configuration_ScreenRound Configuration::SCREEN_ROUND_NOTROUND;
 constexpr Configuration_ScreenRound Configuration::ScreenRound_MIN;
 constexpr Configuration_ScreenRound Configuration::ScreenRound_MAX;
 constexpr int Configuration::ScreenRound_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_WideColorGamut_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[4];
@@ -305,14 +280,14 @@ bool Configuration_WideColorGamut_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_WideColorGamut Configuration::WIDE_COLOR_GAMUT_UNSET;
 constexpr Configuration_WideColorGamut Configuration::WIDE_COLOR_GAMUT_WIDECG;
 constexpr Configuration_WideColorGamut Configuration::WIDE_COLOR_GAMUT_NOWIDECG;
 constexpr Configuration_WideColorGamut Configuration::WideColorGamut_MIN;
 constexpr Configuration_WideColorGamut Configuration::WideColorGamut_MAX;
 constexpr int Configuration::WideColorGamut_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_Hdr_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[5];
@@ -328,14 +303,14 @@ bool Configuration_Hdr_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_Hdr Configuration::HDR_UNSET;
 constexpr Configuration_Hdr Configuration::HDR_HIGHDR;
 constexpr Configuration_Hdr Configuration::HDR_LOWDR;
 constexpr Configuration_Hdr Configuration::Hdr_MIN;
 constexpr Configuration_Hdr Configuration::Hdr_MAX;
 constexpr int Configuration::Hdr_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_Orientation_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[6];
@@ -352,7 +327,7 @@ bool Configuration_Orientation_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_Orientation Configuration::ORIENTATION_UNSET;
 constexpr Configuration_Orientation Configuration::ORIENTATION_PORT;
 constexpr Configuration_Orientation Configuration::ORIENTATION_LAND;
@@ -360,7 +335,7 @@ constexpr Configuration_Orientation Configuration::ORIENTATION_SQUARE;
 constexpr Configuration_Orientation Configuration::Orientation_MIN;
 constexpr Configuration_Orientation Configuration::Orientation_MAX;
 constexpr int Configuration::Orientation_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_UiModeType_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[7];
@@ -381,7 +356,7 @@ bool Configuration_UiModeType_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_UiModeType Configuration::UI_MODE_TYPE_UNSET;
 constexpr Configuration_UiModeType Configuration::UI_MODE_TYPE_NORMAL;
 constexpr Configuration_UiModeType Configuration::UI_MODE_TYPE_DESK;
@@ -393,7 +368,7 @@ constexpr Configuration_UiModeType Configuration::UI_MODE_TYPE_VRHEADSET;
 constexpr Configuration_UiModeType Configuration::UiModeType_MIN;
 constexpr Configuration_UiModeType Configuration::UiModeType_MAX;
 constexpr int Configuration::UiModeType_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_UiModeNight_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[8];
@@ -409,14 +384,14 @@ bool Configuration_UiModeNight_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_UiModeNight Configuration::UI_MODE_NIGHT_UNSET;
 constexpr Configuration_UiModeNight Configuration::UI_MODE_NIGHT_NIGHT;
 constexpr Configuration_UiModeNight Configuration::UI_MODE_NIGHT_NOTNIGHT;
 constexpr Configuration_UiModeNight Configuration::UiModeNight_MIN;
 constexpr Configuration_UiModeNight Configuration::UiModeNight_MAX;
 constexpr int Configuration::UiModeNight_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_Touchscreen_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[9];
@@ -433,7 +408,7 @@ bool Configuration_Touchscreen_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_Touchscreen Configuration::TOUCHSCREEN_UNSET;
 constexpr Configuration_Touchscreen Configuration::TOUCHSCREEN_NOTOUCH;
 constexpr Configuration_Touchscreen Configuration::TOUCHSCREEN_STYLUS;
@@ -441,7 +416,7 @@ constexpr Configuration_Touchscreen Configuration::TOUCHSCREEN_FINGER;
 constexpr Configuration_Touchscreen Configuration::Touchscreen_MIN;
 constexpr Configuration_Touchscreen Configuration::Touchscreen_MAX;
 constexpr int Configuration::Touchscreen_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_KeysHidden_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[10];
@@ -458,7 +433,7 @@ bool Configuration_KeysHidden_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_KeysHidden Configuration::KEYS_HIDDEN_UNSET;
 constexpr Configuration_KeysHidden Configuration::KEYS_HIDDEN_KEYSEXPOSED;
 constexpr Configuration_KeysHidden Configuration::KEYS_HIDDEN_KEYSHIDDEN;
@@ -466,7 +441,7 @@ constexpr Configuration_KeysHidden Configuration::KEYS_HIDDEN_KEYSSOFT;
 constexpr Configuration_KeysHidden Configuration::KeysHidden_MIN;
 constexpr Configuration_KeysHidden Configuration::KeysHidden_MAX;
 constexpr int Configuration::KeysHidden_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_Keyboard_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[11];
@@ -483,7 +458,7 @@ bool Configuration_Keyboard_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_Keyboard Configuration::KEYBOARD_UNSET;
 constexpr Configuration_Keyboard Configuration::KEYBOARD_NOKEYS;
 constexpr Configuration_Keyboard Configuration::KEYBOARD_QWERTY;
@@ -491,7 +466,7 @@ constexpr Configuration_Keyboard Configuration::KEYBOARD_TWELVEKEY;
 constexpr Configuration_Keyboard Configuration::Keyboard_MIN;
 constexpr Configuration_Keyboard Configuration::Keyboard_MAX;
 constexpr int Configuration::Keyboard_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_NavHidden_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[12];
@@ -507,14 +482,14 @@ bool Configuration_NavHidden_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_NavHidden Configuration::NAV_HIDDEN_UNSET;
 constexpr Configuration_NavHidden Configuration::NAV_HIDDEN_NAVEXPOSED;
 constexpr Configuration_NavHidden Configuration::NAV_HIDDEN_NAVHIDDEN;
 constexpr Configuration_NavHidden Configuration::NavHidden_MIN;
 constexpr Configuration_NavHidden Configuration::NavHidden_MAX;
 constexpr int Configuration::NavHidden_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Configuration_Navigation_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_Configuration_2eproto);
   return file_level_enum_descriptors_Configuration_2eproto[13];
@@ -532,7 +507,7 @@ bool Configuration_Navigation_IsValid(int value) {
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 constexpr Configuration_Navigation Configuration::NAVIGATION_UNSET;
 constexpr Configuration_Navigation Configuration::NAVIGATION_NONAV;
 constexpr Configuration_Navigation Configuration::NAVIGATION_DPAD;
@@ -541,602 +516,994 @@ constexpr Configuration_Navigation Configuration::NAVIGATION_WHEEL;
 constexpr Configuration_Navigation Configuration::Navigation_MIN;
 constexpr Configuration_Navigation Configuration::Navigation_MAX;
 constexpr int Configuration::Navigation_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
 
+void Configuration::InitAsDefaultInstance() {
+}
 class Configuration::_Internal {
  public:
 };
 
-Configuration::Configuration(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:aapt.pb.Configuration)
+Configuration::Configuration()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:aapt.pb.Configuration)
 }
 Configuration::Configuration(const Configuration& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  Configuration* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.locale_){}
-    , decltype(_impl_.product_){}
-    , decltype(_impl_.mcc_){}
-    , decltype(_impl_.mnc_){}
-    , decltype(_impl_.layout_direction_){}
-    , decltype(_impl_.screen_width_){}
-    , decltype(_impl_.screen_height_){}
-    , decltype(_impl_.screen_width_dp_){}
-    , decltype(_impl_.screen_height_dp_){}
-    , decltype(_impl_.smallest_screen_width_dp_){}
-    , decltype(_impl_.screen_layout_size_){}
-    , decltype(_impl_.screen_layout_long_){}
-    , decltype(_impl_.screen_round_){}
-    , decltype(_impl_.wide_color_gamut_){}
-    , decltype(_impl_.hdr_){}
-    , decltype(_impl_.orientation_){}
-    , decltype(_impl_.ui_mode_type_){}
-    , decltype(_impl_.ui_mode_night_){}
-    , decltype(_impl_.density_){}
-    , decltype(_impl_.touchscreen_){}
-    , decltype(_impl_.keys_hidden_){}
-    , decltype(_impl_.keyboard_){}
-    , decltype(_impl_.nav_hidden_){}
-    , decltype(_impl_.navigation_){}
-    , decltype(_impl_.sdk_version_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_locale().empty()) {
-    _this->_impl_.locale_.Set(from._internal_locale(), 
-      _this->GetArenaForAllocation());
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  locale_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from.locale().empty()) {
+    locale_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.locale_);
   }
-  _impl_.product_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.product_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_product().empty()) {
-    _this->_impl_.product_.Set(from._internal_product(), 
-      _this->GetArenaForAllocation());
+  product_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from.product().empty()) {
+    product_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.product_);
   }
-  ::memcpy(&_impl_.mcc_, &from._impl_.mcc_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sdk_version_) -
-    reinterpret_cast<char*>(&_impl_.mcc_)) + sizeof(_impl_.sdk_version_));
+  ::memcpy(&mcc_, &from.mcc_,
+    static_cast<size_t>(reinterpret_cast<char*>(&sdk_version_) -
+    reinterpret_cast<char*>(&mcc_)) + sizeof(sdk_version_));
   // @@protoc_insertion_point(copy_constructor:aapt.pb.Configuration)
 }
 
-inline void Configuration::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.locale_){}
-    , decltype(_impl_.product_){}
-    , decltype(_impl_.mcc_){0u}
-    , decltype(_impl_.mnc_){0u}
-    , decltype(_impl_.layout_direction_){0}
-    , decltype(_impl_.screen_width_){0u}
-    , decltype(_impl_.screen_height_){0u}
-    , decltype(_impl_.screen_width_dp_){0u}
-    , decltype(_impl_.screen_height_dp_){0u}
-    , decltype(_impl_.smallest_screen_width_dp_){0u}
-    , decltype(_impl_.screen_layout_size_){0}
-    , decltype(_impl_.screen_layout_long_){0}
-    , decltype(_impl_.screen_round_){0}
-    , decltype(_impl_.wide_color_gamut_){0}
-    , decltype(_impl_.hdr_){0}
-    , decltype(_impl_.orientation_){0}
-    , decltype(_impl_.ui_mode_type_){0}
-    , decltype(_impl_.ui_mode_night_){0}
-    , decltype(_impl_.density_){0u}
-    , decltype(_impl_.touchscreen_){0}
-    , decltype(_impl_.keys_hidden_){0}
-    , decltype(_impl_.keyboard_){0}
-    , decltype(_impl_.nav_hidden_){0}
-    , decltype(_impl_.navigation_){0}
-    , decltype(_impl_.sdk_version_){0u}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.locale_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.locale_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.product_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.product_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+void Configuration::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Configuration_Configuration_2eproto.base);
+  locale_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  product_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&mcc_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&sdk_version_) -
+      reinterpret_cast<char*>(&mcc_)) + sizeof(sdk_version_));
 }
 
 Configuration::~Configuration() {
   // @@protoc_insertion_point(destructor:aapt.pb.Configuration)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
   SharedDtor();
 }
 
-inline void Configuration::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.locale_.Destroy();
-  _impl_.product_.Destroy();
+void Configuration::SharedDtor() {
+  locale_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  product_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void Configuration::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
+  _cached_size_.Set(size);
 }
+const Configuration& Configuration::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Configuration_Configuration_2eproto.base);
+  return *internal_default_instance();
+}
+
 
 void Configuration::Clear() {
 // @@protoc_insertion_point(message_clear_start:aapt.pb.Configuration)
-  ::uint32_t cached_has_bits = 0;
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.locale_.ClearToEmpty();
-  _impl_.product_.ClearToEmpty();
-  ::memset(&_impl_.mcc_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.sdk_version_) -
-      reinterpret_cast<char*>(&_impl_.mcc_)) + sizeof(_impl_.sdk_version_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  locale_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  product_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&mcc_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&sdk_version_) -
+      reinterpret_cast<char*>(&mcc_)) + sizeof(sdk_version_));
+  _internal_metadata_.Clear();
 }
 
-const char* Configuration::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* Configuration::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
-    ::uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
     switch (tag >> 3) {
       // uint32 mcc = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 8)) {
-          _impl_.mcc_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          mcc_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // uint32 mnc = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 16)) {
-          _impl_.mnc_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          mnc_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // string locale = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_locale();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_locale(), ptr, ctx, "aapt.pb.Configuration.locale");
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "aapt.pb.Configuration.locale"));
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.LayoutDirection layout_direction = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 32)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_layout_direction(static_cast<::aapt::pb::Configuration_LayoutDirection>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_layout_direction(static_cast<::aapt::pb::Configuration_LayoutDirection>(val));
+        } else goto handle_unusual;
         continue;
       // uint32 screen_width = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 40)) {
-          _impl_.screen_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          screen_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // uint32 screen_height = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 48)) {
-          _impl_.screen_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          screen_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // uint32 screen_width_dp = 7;
       case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 56)) {
-          _impl_.screen_width_dp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
+          screen_width_dp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // uint32 screen_height_dp = 8;
       case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 64)) {
-          _impl_.screen_height_dp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
+          screen_height_dp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // uint32 smallest_screen_width_dp = 9;
       case 9:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 72)) {
-          _impl_.smallest_screen_width_dp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
+          smallest_screen_width_dp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.ScreenLayoutSize screen_layout_size = 10;
       case 10:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 80)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_screen_layout_size(static_cast<::aapt::pb::Configuration_ScreenLayoutSize>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_screen_layout_size(static_cast<::aapt::pb::Configuration_ScreenLayoutSize>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.ScreenLayoutLong screen_layout_long = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 88)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_screen_layout_long(static_cast<::aapt::pb::Configuration_ScreenLayoutLong>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_screen_layout_long(static_cast<::aapt::pb::Configuration_ScreenLayoutLong>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.ScreenRound screen_round = 12;
       case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 96)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 96)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_screen_round(static_cast<::aapt::pb::Configuration_ScreenRound>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_screen_round(static_cast<::aapt::pb::Configuration_ScreenRound>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.WideColorGamut wide_color_gamut = 13;
       case 13:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 104)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 104)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_wide_color_gamut(static_cast<::aapt::pb::Configuration_WideColorGamut>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_wide_color_gamut(static_cast<::aapt::pb::Configuration_WideColorGamut>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.Hdr hdr = 14;
       case 14:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 112)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 112)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_hdr(static_cast<::aapt::pb::Configuration_Hdr>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_hdr(static_cast<::aapt::pb::Configuration_Hdr>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.Orientation orientation = 15;
       case 15:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 120)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 120)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_orientation(static_cast<::aapt::pb::Configuration_Orientation>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_orientation(static_cast<::aapt::pb::Configuration_Orientation>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.UiModeType ui_mode_type = 16;
       case 16:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 128)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 128)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_ui_mode_type(static_cast<::aapt::pb::Configuration_UiModeType>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_ui_mode_type(static_cast<::aapt::pb::Configuration_UiModeType>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.UiModeNight ui_mode_night = 17;
       case 17:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 136)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 136)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_ui_mode_night(static_cast<::aapt::pb::Configuration_UiModeNight>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_ui_mode_night(static_cast<::aapt::pb::Configuration_UiModeNight>(val));
+        } else goto handle_unusual;
         continue;
       // uint32 density = 18;
       case 18:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 144)) {
-          _impl_.density_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 144)) {
+          density_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.Touchscreen touchscreen = 19;
       case 19:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 152)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 152)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_touchscreen(static_cast<::aapt::pb::Configuration_Touchscreen>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_touchscreen(static_cast<::aapt::pb::Configuration_Touchscreen>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.KeysHidden keys_hidden = 20;
       case 20:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 160)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 160)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_keys_hidden(static_cast<::aapt::pb::Configuration_KeysHidden>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_keys_hidden(static_cast<::aapt::pb::Configuration_KeysHidden>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.Keyboard keyboard = 21;
       case 21:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 168)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 168)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_keyboard(static_cast<::aapt::pb::Configuration_Keyboard>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_keyboard(static_cast<::aapt::pb::Configuration_Keyboard>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.NavHidden nav_hidden = 22;
       case 22:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 176)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 176)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_nav_hidden(static_cast<::aapt::pb::Configuration_NavHidden>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_nav_hidden(static_cast<::aapt::pb::Configuration_NavHidden>(val));
+        } else goto handle_unusual;
         continue;
       // .aapt.pb.Configuration.Navigation navigation = 23;
       case 23:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 184)) {
-          ::uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 184)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_navigation(static_cast<::aapt::pb::Configuration_Navigation>(val));
-        } else {
-          goto handle_unusual;
-        }
+          set_navigation(static_cast<::aapt::pb::Configuration_Navigation>(val));
+        } else goto handle_unusual;
         continue;
       // uint32 sdk_version = 24;
       case 24:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 192)) {
-          _impl_.sdk_version_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 192)) {
+          sdk_version_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
       // string product = 25;
       case 25:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::uint8_t>(tag) == 202)) {
-          auto str = _internal_mutable_product();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 202)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8(mutable_product(), ptr, ctx, "aapt.pb.Configuration.product");
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "aapt.pb.Configuration.product"));
-        } else {
-          goto handle_unusual;
-        }
+        } else goto handle_unusual;
         continue;
-      default:
-        goto handle_unusual;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
     }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
   }  // while
-message_done:
+success:
   return ptr;
 failure:
   ptr = nullptr;
-  goto message_done;
+  goto success;
 #undef CHK_
 }
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool Configuration::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:aapt.pb.Configuration)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // uint32 mcc = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
 
-::uint8_t* Configuration::_InternalSerialize(
-    ::uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:aapt.pb.Configuration)
-  ::uint32_t cached_has_bits = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mcc_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 mnc = 2;
+      case 2: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &mnc_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string locale = 3;
+      case 3: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_locale()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->locale().data(), static_cast<int>(this->locale().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "aapt.pb.Configuration.locale"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.LayoutDirection layout_direction = 4;
+      case 4: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_layout_direction(static_cast< ::aapt::pb::Configuration_LayoutDirection >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 screen_width = 5;
+      case 5: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (40 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &screen_width_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 screen_height = 6;
+      case 6: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (48 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &screen_height_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 screen_width_dp = 7;
+      case 7: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (56 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &screen_width_dp_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 screen_height_dp = 8;
+      case 8: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (64 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &screen_height_dp_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 smallest_screen_width_dp = 9;
+      case 9: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (72 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &smallest_screen_width_dp_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.ScreenLayoutSize screen_layout_size = 10;
+      case 10: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (80 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_screen_layout_size(static_cast< ::aapt::pb::Configuration_ScreenLayoutSize >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.ScreenLayoutLong screen_layout_long = 11;
+      case 11: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (88 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_screen_layout_long(static_cast< ::aapt::pb::Configuration_ScreenLayoutLong >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.ScreenRound screen_round = 12;
+      case 12: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (96 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_screen_round(static_cast< ::aapt::pb::Configuration_ScreenRound >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.WideColorGamut wide_color_gamut = 13;
+      case 13: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (104 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_wide_color_gamut(static_cast< ::aapt::pb::Configuration_WideColorGamut >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.Hdr hdr = 14;
+      case 14: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (112 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_hdr(static_cast< ::aapt::pb::Configuration_Hdr >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.Orientation orientation = 15;
+      case 15: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (120 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_orientation(static_cast< ::aapt::pb::Configuration_Orientation >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.UiModeType ui_mode_type = 16;
+      case 16: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (128 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_ui_mode_type(static_cast< ::aapt::pb::Configuration_UiModeType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.UiModeNight ui_mode_night = 17;
+      case 17: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (136 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_ui_mode_night(static_cast< ::aapt::pb::Configuration_UiModeNight >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 density = 18;
+      case 18: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (144 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &density_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.Touchscreen touchscreen = 19;
+      case 19: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (152 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_touchscreen(static_cast< ::aapt::pb::Configuration_Touchscreen >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.KeysHidden keys_hidden = 20;
+      case 20: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (160 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_keys_hidden(static_cast< ::aapt::pb::Configuration_KeysHidden >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.Keyboard keyboard = 21;
+      case 21: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (168 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_keyboard(static_cast< ::aapt::pb::Configuration_Keyboard >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.NavHidden nav_hidden = 22;
+      case 22: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (176 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_nav_hidden(static_cast< ::aapt::pb::Configuration_NavHidden >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .aapt.pb.Configuration.Navigation navigation = 23;
+      case 23: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (184 & 0xFF)) {
+          int value = 0;
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_navigation(static_cast< ::aapt::pb::Configuration_Navigation >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 sdk_version = 24;
+      case 24: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (192 & 0xFF)) {
+
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &sdk_version_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string product = 25;
+      case 25: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (202 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
+                input, this->mutable_product()));
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+            this->product().data(), static_cast<int>(this->product().length()),
+            ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE,
+            "aapt.pb.Configuration.product"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:aapt.pb.Configuration)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:aapt.pb.Configuration)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void Configuration::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:aapt.pb.Configuration)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   // uint32 mcc = 1;
-  if (this->_internal_mcc() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_mcc(), target);
+  if (this->mcc() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(1, this->mcc(), output);
   }
 
   // uint32 mnc = 2;
-  if (this->_internal_mnc() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_mnc(), target);
+  if (this->mnc() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(2, this->mnc(), output);
   }
 
   // string locale = 3;
-  if (!this->_internal_locale().empty()) {
+  if (this->locale().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_locale().data(), static_cast<int>(this->_internal_locale().length()),
+      this->locale().data(), static_cast<int>(this->locale().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "aapt.pb.Configuration.locale");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_locale(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->locale(), output);
   }
 
   // .aapt.pb.Configuration.LayoutDirection layout_direction = 4;
-  if (this->_internal_layout_direction() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      4, this->_internal_layout_direction(), target);
+  if (this->layout_direction() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      4, this->layout_direction(), output);
   }
 
   // uint32 screen_width = 5;
-  if (this->_internal_screen_width() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(5, this->_internal_screen_width(), target);
+  if (this->screen_width() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(5, this->screen_width(), output);
   }
 
   // uint32 screen_height = 6;
-  if (this->_internal_screen_height() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(6, this->_internal_screen_height(), target);
+  if (this->screen_height() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(6, this->screen_height(), output);
   }
 
   // uint32 screen_width_dp = 7;
-  if (this->_internal_screen_width_dp() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(7, this->_internal_screen_width_dp(), target);
+  if (this->screen_width_dp() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(7, this->screen_width_dp(), output);
   }
 
   // uint32 screen_height_dp = 8;
-  if (this->_internal_screen_height_dp() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(8, this->_internal_screen_height_dp(), target);
+  if (this->screen_height_dp() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(8, this->screen_height_dp(), output);
   }
 
   // uint32 smallest_screen_width_dp = 9;
-  if (this->_internal_smallest_screen_width_dp() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(9, this->_internal_smallest_screen_width_dp(), target);
+  if (this->smallest_screen_width_dp() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(9, this->smallest_screen_width_dp(), output);
   }
 
   // .aapt.pb.Configuration.ScreenLayoutSize screen_layout_size = 10;
-  if (this->_internal_screen_layout_size() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      10, this->_internal_screen_layout_size(), target);
+  if (this->screen_layout_size() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      10, this->screen_layout_size(), output);
   }
 
   // .aapt.pb.Configuration.ScreenLayoutLong screen_layout_long = 11;
-  if (this->_internal_screen_layout_long() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      11, this->_internal_screen_layout_long(), target);
+  if (this->screen_layout_long() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      11, this->screen_layout_long(), output);
   }
 
   // .aapt.pb.Configuration.ScreenRound screen_round = 12;
-  if (this->_internal_screen_round() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      12, this->_internal_screen_round(), target);
+  if (this->screen_round() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      12, this->screen_round(), output);
   }
 
   // .aapt.pb.Configuration.WideColorGamut wide_color_gamut = 13;
-  if (this->_internal_wide_color_gamut() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      13, this->_internal_wide_color_gamut(), target);
+  if (this->wide_color_gamut() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      13, this->wide_color_gamut(), output);
   }
 
   // .aapt.pb.Configuration.Hdr hdr = 14;
-  if (this->_internal_hdr() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      14, this->_internal_hdr(), target);
+  if (this->hdr() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      14, this->hdr(), output);
   }
 
   // .aapt.pb.Configuration.Orientation orientation = 15;
-  if (this->_internal_orientation() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      15, this->_internal_orientation(), target);
+  if (this->orientation() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      15, this->orientation(), output);
   }
 
   // .aapt.pb.Configuration.UiModeType ui_mode_type = 16;
-  if (this->_internal_ui_mode_type() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      16, this->_internal_ui_mode_type(), target);
+  if (this->ui_mode_type() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      16, this->ui_mode_type(), output);
   }
 
   // .aapt.pb.Configuration.UiModeNight ui_mode_night = 17;
-  if (this->_internal_ui_mode_night() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      17, this->_internal_ui_mode_night(), target);
+  if (this->ui_mode_night() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      17, this->ui_mode_night(), output);
   }
 
   // uint32 density = 18;
-  if (this->_internal_density() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(18, this->_internal_density(), target);
+  if (this->density() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(18, this->density(), output);
   }
 
   // .aapt.pb.Configuration.Touchscreen touchscreen = 19;
-  if (this->_internal_touchscreen() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      19, this->_internal_touchscreen(), target);
+  if (this->touchscreen() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      19, this->touchscreen(), output);
   }
 
   // .aapt.pb.Configuration.KeysHidden keys_hidden = 20;
-  if (this->_internal_keys_hidden() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      20, this->_internal_keys_hidden(), target);
+  if (this->keys_hidden() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      20, this->keys_hidden(), output);
   }
 
   // .aapt.pb.Configuration.Keyboard keyboard = 21;
-  if (this->_internal_keyboard() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      21, this->_internal_keyboard(), target);
+  if (this->keyboard() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      21, this->keyboard(), output);
   }
 
   // .aapt.pb.Configuration.NavHidden nav_hidden = 22;
-  if (this->_internal_nav_hidden() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      22, this->_internal_nav_hidden(), target);
+  if (this->nav_hidden() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      22, this->nav_hidden(), output);
   }
 
   // .aapt.pb.Configuration.Navigation navigation = 23;
-  if (this->_internal_navigation() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteEnumToArray(
-      23, this->_internal_navigation(), target);
+  if (this->navigation() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      23, this->navigation(), output);
   }
 
   // uint32 sdk_version = 24;
-  if (this->_internal_sdk_version() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(24, this->_internal_sdk_version(), target);
+  if (this->sdk_version() != 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(24, this->sdk_version(), output);
   }
 
   // string product = 25;
-  if (!this->_internal_product().empty()) {
+  if (this->product().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_product().data(), static_cast<int>(this->_internal_product().length()),
+      this->product().data(), static_cast<int>(this->product().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "aapt.pb.Configuration.product");
-    target = stream->WriteStringMaybeAliased(
-        25, this->_internal_product(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      25, this->product(), output);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:aapt.pb.Configuration)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Configuration::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:aapt.pb.Configuration)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 mcc = 1;
+  if (this->mcc() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->mcc(), target);
+  }
+
+  // uint32 mnc = 2;
+  if (this->mnc() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->mnc(), target);
+  }
+
+  // string locale = 3;
+  if (this->locale().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->locale().data(), static_cast<int>(this->locale().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "aapt.pb.Configuration.locale");
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        3, this->locale(), target);
+  }
+
+  // .aapt.pb.Configuration.LayoutDirection layout_direction = 4;
+  if (this->layout_direction() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      4, this->layout_direction(), target);
+  }
+
+  // uint32 screen_width = 5;
+  if (this->screen_width() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->screen_width(), target);
+  }
+
+  // uint32 screen_height = 6;
+  if (this->screen_height() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(6, this->screen_height(), target);
+  }
+
+  // uint32 screen_width_dp = 7;
+  if (this->screen_width_dp() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(7, this->screen_width_dp(), target);
+  }
+
+  // uint32 screen_height_dp = 8;
+  if (this->screen_height_dp() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(8, this->screen_height_dp(), target);
+  }
+
+  // uint32 smallest_screen_width_dp = 9;
+  if (this->smallest_screen_width_dp() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(9, this->smallest_screen_width_dp(), target);
+  }
+
+  // .aapt.pb.Configuration.ScreenLayoutSize screen_layout_size = 10;
+  if (this->screen_layout_size() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      10, this->screen_layout_size(), target);
+  }
+
+  // .aapt.pb.Configuration.ScreenLayoutLong screen_layout_long = 11;
+  if (this->screen_layout_long() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      11, this->screen_layout_long(), target);
+  }
+
+  // .aapt.pb.Configuration.ScreenRound screen_round = 12;
+  if (this->screen_round() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      12, this->screen_round(), target);
+  }
+
+  // .aapt.pb.Configuration.WideColorGamut wide_color_gamut = 13;
+  if (this->wide_color_gamut() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      13, this->wide_color_gamut(), target);
+  }
+
+  // .aapt.pb.Configuration.Hdr hdr = 14;
+  if (this->hdr() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      14, this->hdr(), target);
+  }
+
+  // .aapt.pb.Configuration.Orientation orientation = 15;
+  if (this->orientation() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      15, this->orientation(), target);
+  }
+
+  // .aapt.pb.Configuration.UiModeType ui_mode_type = 16;
+  if (this->ui_mode_type() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      16, this->ui_mode_type(), target);
+  }
+
+  // .aapt.pb.Configuration.UiModeNight ui_mode_night = 17;
+  if (this->ui_mode_night() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      17, this->ui_mode_night(), target);
+  }
+
+  // uint32 density = 18;
+  if (this->density() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(18, this->density(), target);
+  }
+
+  // .aapt.pb.Configuration.Touchscreen touchscreen = 19;
+  if (this->touchscreen() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      19, this->touchscreen(), target);
+  }
+
+  // .aapt.pb.Configuration.KeysHidden keys_hidden = 20;
+  if (this->keys_hidden() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      20, this->keys_hidden(), target);
+  }
+
+  // .aapt.pb.Configuration.Keyboard keyboard = 21;
+  if (this->keyboard() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      21, this->keyboard(), target);
+  }
+
+  // .aapt.pb.Configuration.NavHidden nav_hidden = 22;
+  if (this->nav_hidden() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      22, this->nav_hidden(), target);
+  }
+
+  // .aapt.pb.Configuration.Navigation navigation = 23;
+  if (this->navigation() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      23, this->navigation(), target);
+  }
+
+  // uint32 sdk_version = 24;
+  if (this->sdk_version() != 0) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(24, this->sdk_version(), target);
+  }
+
+  // string product = 25;
+  if (this->product().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->product().data(), static_cast<int>(this->product().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "aapt.pb.Configuration.product");
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        25, this->product(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:aapt.pb.Configuration)
   return target;
@@ -1146,251 +1513,287 @@ size_t Configuration::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:aapt.pb.Configuration)
   size_t total_size = 0;
 
-  ::uint32_t cached_has_bits = 0;
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string locale = 3;
-  if (!this->_internal_locale().empty()) {
+  if (this->locale().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_locale());
+        this->locale());
   }
 
   // string product = 25;
-  if (!this->_internal_product().empty()) {
+  if (this->product().size() > 0) {
     total_size += 2 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_product());
+        this->product());
   }
 
   // uint32 mcc = 1;
-  if (this->_internal_mcc() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_mcc());
+  if (this->mcc() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->mcc());
   }
 
   // uint32 mnc = 2;
-  if (this->_internal_mnc() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_mnc());
+  if (this->mnc() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->mnc());
   }
 
   // .aapt.pb.Configuration.LayoutDirection layout_direction = 4;
-  if (this->_internal_layout_direction() != 0) {
+  if (this->layout_direction() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_layout_direction());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->layout_direction());
   }
 
   // uint32 screen_width = 5;
-  if (this->_internal_screen_width() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_screen_width());
+  if (this->screen_width() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->screen_width());
   }
 
   // uint32 screen_height = 6;
-  if (this->_internal_screen_height() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_screen_height());
+  if (this->screen_height() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->screen_height());
   }
 
   // uint32 screen_width_dp = 7;
-  if (this->_internal_screen_width_dp() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_screen_width_dp());
+  if (this->screen_width_dp() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->screen_width_dp());
   }
 
   // uint32 screen_height_dp = 8;
-  if (this->_internal_screen_height_dp() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_screen_height_dp());
+  if (this->screen_height_dp() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->screen_height_dp());
   }
 
   // uint32 smallest_screen_width_dp = 9;
-  if (this->_internal_smallest_screen_width_dp() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_smallest_screen_width_dp());
+  if (this->smallest_screen_width_dp() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->smallest_screen_width_dp());
   }
 
   // .aapt.pb.Configuration.ScreenLayoutSize screen_layout_size = 10;
-  if (this->_internal_screen_layout_size() != 0) {
+  if (this->screen_layout_size() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_screen_layout_size());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->screen_layout_size());
   }
 
   // .aapt.pb.Configuration.ScreenLayoutLong screen_layout_long = 11;
-  if (this->_internal_screen_layout_long() != 0) {
+  if (this->screen_layout_long() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_screen_layout_long());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->screen_layout_long());
   }
 
   // .aapt.pb.Configuration.ScreenRound screen_round = 12;
-  if (this->_internal_screen_round() != 0) {
+  if (this->screen_round() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_screen_round());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->screen_round());
   }
 
   // .aapt.pb.Configuration.WideColorGamut wide_color_gamut = 13;
-  if (this->_internal_wide_color_gamut() != 0) {
+  if (this->wide_color_gamut() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_wide_color_gamut());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->wide_color_gamut());
   }
 
   // .aapt.pb.Configuration.Hdr hdr = 14;
-  if (this->_internal_hdr() != 0) {
+  if (this->hdr() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_hdr());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->hdr());
   }
 
   // .aapt.pb.Configuration.Orientation orientation = 15;
-  if (this->_internal_orientation() != 0) {
+  if (this->orientation() != 0) {
     total_size += 1 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_orientation());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->orientation());
   }
 
   // .aapt.pb.Configuration.UiModeType ui_mode_type = 16;
-  if (this->_internal_ui_mode_type() != 0) {
+  if (this->ui_mode_type() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_ui_mode_type());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->ui_mode_type());
   }
 
   // .aapt.pb.Configuration.UiModeNight ui_mode_night = 17;
-  if (this->_internal_ui_mode_night() != 0) {
+  if (this->ui_mode_night() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_ui_mode_night());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->ui_mode_night());
   }
 
   // uint32 density = 18;
-  if (this->_internal_density() != 0) {
+  if (this->density() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::UInt32Size(
-        this->_internal_density());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->density());
   }
 
   // .aapt.pb.Configuration.Touchscreen touchscreen = 19;
-  if (this->_internal_touchscreen() != 0) {
+  if (this->touchscreen() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_touchscreen());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->touchscreen());
   }
 
   // .aapt.pb.Configuration.KeysHidden keys_hidden = 20;
-  if (this->_internal_keys_hidden() != 0) {
+  if (this->keys_hidden() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_keys_hidden());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->keys_hidden());
   }
 
   // .aapt.pb.Configuration.Keyboard keyboard = 21;
-  if (this->_internal_keyboard() != 0) {
+  if (this->keyboard() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_keyboard());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->keyboard());
   }
 
   // .aapt.pb.Configuration.NavHidden nav_hidden = 22;
-  if (this->_internal_nav_hidden() != 0) {
+  if (this->nav_hidden() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_nav_hidden());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->nav_hidden());
   }
 
   // .aapt.pb.Configuration.Navigation navigation = 23;
-  if (this->_internal_navigation() != 0) {
+  if (this->navigation() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::EnumSize(this->_internal_navigation());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->navigation());
   }
 
   // uint32 sdk_version = 24;
-  if (this->_internal_sdk_version() != 0) {
+  if (this->sdk_version() != 0) {
     total_size += 2 +
-      ::_pbi::WireFormatLite::UInt32Size(
-        this->_internal_sdk_version());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->sdk_version());
   }
 
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Configuration::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    Configuration::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Configuration::GetClassData() const { return &_class_data_; }
+void Configuration::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:aapt.pb.Configuration)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Configuration* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Configuration>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:aapt.pb.Configuration)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:aapt.pb.Configuration)
+    MergeFrom(*source);
+  }
+}
 
-
-void Configuration::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<Configuration*>(&to_msg);
-  auto& from = static_cast<const Configuration&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:aapt.pb.Configuration)
-  GOOGLE_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
+void Configuration::MergeFrom(const Configuration& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:aapt.pb.Configuration)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_locale().empty()) {
-    _this->_internal_set_locale(from._internal_locale());
+  if (from.locale().size() > 0) {
+
+    locale_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.locale_);
   }
-  if (!from._internal_product().empty()) {
-    _this->_internal_set_product(from._internal_product());
+  if (from.product().size() > 0) {
+
+    product_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.product_);
   }
-  if (from._internal_mcc() != 0) {
-    _this->_internal_set_mcc(from._internal_mcc());
+  if (from.mcc() != 0) {
+    set_mcc(from.mcc());
   }
-  if (from._internal_mnc() != 0) {
-    _this->_internal_set_mnc(from._internal_mnc());
+  if (from.mnc() != 0) {
+    set_mnc(from.mnc());
   }
-  if (from._internal_layout_direction() != 0) {
-    _this->_internal_set_layout_direction(from._internal_layout_direction());
+  if (from.layout_direction() != 0) {
+    set_layout_direction(from.layout_direction());
   }
-  if (from._internal_screen_width() != 0) {
-    _this->_internal_set_screen_width(from._internal_screen_width());
+  if (from.screen_width() != 0) {
+    set_screen_width(from.screen_width());
   }
-  if (from._internal_screen_height() != 0) {
-    _this->_internal_set_screen_height(from._internal_screen_height());
+  if (from.screen_height() != 0) {
+    set_screen_height(from.screen_height());
   }
-  if (from._internal_screen_width_dp() != 0) {
-    _this->_internal_set_screen_width_dp(from._internal_screen_width_dp());
+  if (from.screen_width_dp() != 0) {
+    set_screen_width_dp(from.screen_width_dp());
   }
-  if (from._internal_screen_height_dp() != 0) {
-    _this->_internal_set_screen_height_dp(from._internal_screen_height_dp());
+  if (from.screen_height_dp() != 0) {
+    set_screen_height_dp(from.screen_height_dp());
   }
-  if (from._internal_smallest_screen_width_dp() != 0) {
-    _this->_internal_set_smallest_screen_width_dp(from._internal_smallest_screen_width_dp());
+  if (from.smallest_screen_width_dp() != 0) {
+    set_smallest_screen_width_dp(from.smallest_screen_width_dp());
   }
-  if (from._internal_screen_layout_size() != 0) {
-    _this->_internal_set_screen_layout_size(from._internal_screen_layout_size());
+  if (from.screen_layout_size() != 0) {
+    set_screen_layout_size(from.screen_layout_size());
   }
-  if (from._internal_screen_layout_long() != 0) {
-    _this->_internal_set_screen_layout_long(from._internal_screen_layout_long());
+  if (from.screen_layout_long() != 0) {
+    set_screen_layout_long(from.screen_layout_long());
   }
-  if (from._internal_screen_round() != 0) {
-    _this->_internal_set_screen_round(from._internal_screen_round());
+  if (from.screen_round() != 0) {
+    set_screen_round(from.screen_round());
   }
-  if (from._internal_wide_color_gamut() != 0) {
-    _this->_internal_set_wide_color_gamut(from._internal_wide_color_gamut());
+  if (from.wide_color_gamut() != 0) {
+    set_wide_color_gamut(from.wide_color_gamut());
   }
-  if (from._internal_hdr() != 0) {
-    _this->_internal_set_hdr(from._internal_hdr());
+  if (from.hdr() != 0) {
+    set_hdr(from.hdr());
   }
-  if (from._internal_orientation() != 0) {
-    _this->_internal_set_orientation(from._internal_orientation());
+  if (from.orientation() != 0) {
+    set_orientation(from.orientation());
   }
-  if (from._internal_ui_mode_type() != 0) {
-    _this->_internal_set_ui_mode_type(from._internal_ui_mode_type());
+  if (from.ui_mode_type() != 0) {
+    set_ui_mode_type(from.ui_mode_type());
   }
-  if (from._internal_ui_mode_night() != 0) {
-    _this->_internal_set_ui_mode_night(from._internal_ui_mode_night());
+  if (from.ui_mode_night() != 0) {
+    set_ui_mode_night(from.ui_mode_night());
   }
-  if (from._internal_density() != 0) {
-    _this->_internal_set_density(from._internal_density());
+  if (from.density() != 0) {
+    set_density(from.density());
   }
-  if (from._internal_touchscreen() != 0) {
-    _this->_internal_set_touchscreen(from._internal_touchscreen());
+  if (from.touchscreen() != 0) {
+    set_touchscreen(from.touchscreen());
   }
-  if (from._internal_keys_hidden() != 0) {
-    _this->_internal_set_keys_hidden(from._internal_keys_hidden());
+  if (from.keys_hidden() != 0) {
+    set_keys_hidden(from.keys_hidden());
   }
-  if (from._internal_keyboard() != 0) {
-    _this->_internal_set_keyboard(from._internal_keyboard());
+  if (from.keyboard() != 0) {
+    set_keyboard(from.keyboard());
   }
-  if (from._internal_nav_hidden() != 0) {
-    _this->_internal_set_nav_hidden(from._internal_nav_hidden());
+  if (from.nav_hidden() != 0) {
+    set_nav_hidden(from.nav_hidden());
   }
-  if (from._internal_navigation() != 0) {
-    _this->_internal_set_navigation(from._internal_navigation());
+  if (from.navigation() != 0) {
+    set_navigation(from.navigation());
   }
-  if (from._internal_sdk_version() != 0) {
-    _this->_internal_set_sdk_version(from._internal_sdk_version());
+  if (from.sdk_version() != 0) {
+    set_sdk_version(from.sdk_version());
   }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Configuration::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:aapt.pb.Configuration)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void Configuration::CopyFrom(const Configuration& from) {
@@ -1406,38 +1809,47 @@ bool Configuration::IsInitialized() const {
 
 void Configuration::InternalSwap(Configuration* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.locale_, lhs_arena,
-      &other->_impl_.locale_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.product_, lhs_arena,
-      &other->_impl_.product_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Configuration, _impl_.sdk_version_)
-      + sizeof(Configuration::_impl_.sdk_version_)  // NOLINT
-      - PROTOBUF_FIELD_OFFSET(Configuration, _impl_.mcc_)>(
-          reinterpret_cast<char*>(&_impl_.mcc_),
-          reinterpret_cast<char*>(&other->_impl_.mcc_));
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  locale_.Swap(&other->locale_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  product_.Swap(&other->product_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(mcc_, other->mcc_);
+  swap(mnc_, other->mnc_);
+  swap(layout_direction_, other->layout_direction_);
+  swap(screen_width_, other->screen_width_);
+  swap(screen_height_, other->screen_height_);
+  swap(screen_width_dp_, other->screen_width_dp_);
+  swap(screen_height_dp_, other->screen_height_dp_);
+  swap(smallest_screen_width_dp_, other->smallest_screen_width_dp_);
+  swap(screen_layout_size_, other->screen_layout_size_);
+  swap(screen_layout_long_, other->screen_layout_long_);
+  swap(screen_round_, other->screen_round_);
+  swap(wide_color_gamut_, other->wide_color_gamut_);
+  swap(hdr_, other->hdr_);
+  swap(orientation_, other->orientation_);
+  swap(ui_mode_type_, other->ui_mode_type_);
+  swap(ui_mode_night_, other->ui_mode_night_);
+  swap(density_, other->density_);
+  swap(touchscreen_, other->touchscreen_);
+  swap(keys_hidden_, other->keys_hidden_);
+  swap(keyboard_, other->keyboard_);
+  swap(nav_hidden_, other->nav_hidden_);
+  swap(navigation_, other->navigation_);
+  swap(sdk_version_, other->sdk_version_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Configuration::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_Configuration_2eproto_getter, &descriptor_table_Configuration_2eproto_once,
-      file_level_metadata_Configuration_2eproto[0]);
+  return GetMetadataStatic();
 }
+
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace pb
 }  // namespace aapt
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::aapt::pb::Configuration*
-Arena::CreateMaybeMessage< ::aapt::pb::Configuration >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::aapt::pb::Configuration >(arena);
+template<> PROTOBUF_NOINLINE ::aapt::pb::Configuration* Arena::CreateMaybeMessage< ::aapt::pb::Configuration >(Arena* arena) {
+  return Arena::CreateInternal< ::aapt::pb::Configuration >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

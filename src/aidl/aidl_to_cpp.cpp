@@ -35,6 +35,7 @@ namespace aidl {
 namespace cpp {
 
 namespace {
+
 std::string RawParcelMethod(const AidlTypeSpecifier& type, const AidlTypenames& typenames,
                             bool readMethod) {
   static map<string, string> kBuiltin = {
@@ -69,6 +70,10 @@ std::string RawParcelMethod(const AidlTypeSpecifier& type, const AidlTypenames& 
   const bool nullable = type.IsNullable();
   const bool isVector = type.IsArray() || typenames.IsList(type);
   const bool utf8 = type.IsUtf8InCpp();
+
+  if (type.IsFixedSizeArray()) {
+    return "FixedArray";
+  }
 
   if (auto enum_decl = typenames.GetEnumDeclaration(type); enum_decl != nullptr) {
     if (isVector) {
@@ -147,6 +152,9 @@ std::string WrapIfNullable(const std::string type_str, const AidlTypeSpecifier& 
 
   if (raw_type.IsNullable() && !AidlTypenames::IsPrimitiveTypename(type.GetName()) &&
       type.GetName() != "IBinder" && typenames.GetEnumDeclaration(type) == nullptr) {
+    if (raw_type.IsHeapNullable()) {
+      return "::std::unique_ptr<" + type_str + ">";
+    }
     return "::std::optional<" + type_str + ">";
   }
   return type_str;
@@ -197,41 +205,39 @@ std::string GetCppName(const AidlTypeSpecifier& raw_type, const AidlTypenames& t
   return WrapIfNullable(cpp_name, raw_type, typenames);
 }
 }  // namespace
-std::string ConstantValueDecorator(const AidlTypeSpecifier& type, const std::string& raw_value) {
-  if (type.IsArray()) {
-    return raw_value;
-  }
-
-  if (type.GetName() == "long") {
-    return raw_value + "L";
-  }
-
-  if (type.GetName() == "String" && !type.IsUtf8InCpp()) {
-    return "::android::String16(" + raw_value + ")";
-  }
-
-  if (auto defined_type = type.GetDefinedType(); defined_type) {
-    auto enum_type = defined_type->AsEnumDeclaration();
-    AIDL_FATAL_IF(!enum_type, type) << "Invalid type for \"" << raw_value << "\"";
-    return GetRawCppName(type) + "::" + raw_value.substr(raw_value.find_last_of('.') + 1);
-  }
-
-  return raw_value;
+std::string ConstantValueDecorator(
+    const AidlTypeSpecifier& type,
+    const std::variant<std::string, std::vector<std::string>>& raw_value) {
+  return CppConstantValueDecorator(type, raw_value, /*is_ndk=*/false);
 };
 
-std::string GetTransactionIdFor(const AidlInterface& iface, const AidlMethod& method) {
-  return ClassName(iface, ClassNames::SERVER) + "::TRANSACTION_" + method.GetName();
+std::string GetTransactionIdFor(const std::string& clazz, const AidlMethod& method) {
+  return clazz + "::TRANSACTION_" + method.GetName();
 }
 
 std::string CppNameOf(const AidlTypeSpecifier& type, const AidlTypenames& typenames) {
+  // get base type's cpp_name with nullable processed.
+  std::string cpp_name = GetCppName(type, typenames);
+
   if (type.IsArray() || typenames.IsList(type)) {
-    std::string cpp_name = GetCppName(type, typenames);
-    if (type.IsNullable()) {
-      return "::std::optional<::std::vector<" + cpp_name + ">>";
+    if (type.IsFixedSizeArray()) {
+      auto dimensions = type.GetFixedSizeArrayDimensions();
+      for (auto it = rbegin(dimensions), end = rend(dimensions); it != end; it++) {
+        cpp_name = "std::array<" + cpp_name + ", " + std::to_string(*it) + ">";
+      }
+    } else {
+      cpp_name = "::std::vector<" + cpp_name + ">";
     }
-    return "::std::vector<" + cpp_name + ">";
+
+    // wrap nullable again because @nullable applies to BOTH array type(outermost type) AND base
+    // type(innermost type)
+    if (type.IsHeapNullable()) {
+      cpp_name = "::std::unique_ptr<" + cpp_name + ">";
+    } else if (type.IsNullable()) {
+      cpp_name = "::std::optional<" + cpp_name + ">";
+    }
   }
-  return GetCppName(type, typenames);
+  return cpp_name;
 }
 
 bool IsNonCopyableType(const AidlTypeSpecifier& type, const AidlTypenames& typenames) {
@@ -274,40 +280,34 @@ std::string ParcelWriteCastOf(const AidlTypeSpecifier& type, const AidlTypenames
                         CppNameOf(enum_decl->GetBackingType(), typenames).c_str(),
                         variable_name.c_str());
   }
-
-  if (typenames.GetInterface(type) != nullptr) {
-    return GetRawCppName(type) + "::asBinder(" + variable_name + ")";
-  }
-
   return variable_name;
 }
 
+// Add includes for a type ref. Note that this is non-recursive.
 void AddHeaders(const AidlTypeSpecifier& type, const AidlTypenames& typenames,
                 std::set<std::string>* headers) {
-  AIDL_FATAL_IF(typenames.IsList(type) && type.GetTypeParameters().size() != 1, type);
-  bool isVector = type.IsArray() || typenames.IsList(type);
-  bool isNullable = type.IsNullable();
-  bool utf8 = type.IsUtf8InCpp();
-
-  if (isVector) {
-    headers->insert("vector");
-  }
-  if (type.IsGeneric()) {
-    for (const auto& parameter : type.GetTypeParameters()) {
-      AddHeaders(*parameter, typenames, headers);
+  if (type.IsArray()) {
+    if (type.IsFixedSizeArray()) {
+      headers->insert("array");
+    } else {
+      headers->insert("vector");
     }
   }
-  if (isNullable) {
+  if (type.IsNullable()) {
     if (type.GetName() != "IBinder") {
       headers->insert("optional");
     }
   }
   if (typenames.IsList(type)) {
-    // Nothing else to do for List.
+    headers->insert("vector");
     return;
   }
   if (type.GetName() == "String") {
-    headers->insert(utf8 ? "string" : "utils/String16.h");
+    if (type.IsUtf8InCpp()) {
+      headers->insert("string");
+    } else {
+      headers->insert("utils/String16.h");
+    }
     return;
   }
   if (type.GetName() == "IBinder") {
@@ -337,26 +337,21 @@ void AddHeaders(const AidlTypeSpecifier& type, const AidlTypenames& typenames,
     return;
   }
 
-  auto definedType = typenames.TryGetDefinedType(type.GetName());
-  AIDL_FATAL_IF(definedType == nullptr, type) << "Unexpected type: " << type.GetName();
+  auto defined_type = typenames.TryGetDefinedType(type.GetName());
+  AIDL_FATAL_IF(defined_type == nullptr, type) << "Unexpected type: " << type.GetName();
 
-  if (definedType->AsInterface() != nullptr || definedType->AsStructuredParcelable() != nullptr ||
-      definedType->AsEnumDeclaration() != nullptr || definedType->AsUnionDeclaration() != nullptr) {
-    AddHeaders(*definedType, headers);
-  } else if (definedType->AsParcelable() != nullptr) {
-    const std::string cpp_header = definedType->AsParcelable()->GetCppHeader();
-    AIDL_FATAL_IF(cpp_header.empty(), definedType->AsParcelable())
-        << "Parcelable " << definedType->AsParcelable()->GetCanonicalName()
-        << " has no C++ header defined.";
-    headers->insert(cpp_header);
-  }
+  headers->insert(CppHeaderForType(*defined_type));
 }
 
-void AddHeaders(const AidlDefinedType& definedType, std::set<std::string>* headers) {
-  vector<string> name = definedType.GetSplitPackage();
-  name.push_back(definedType.GetName());
-  const std::string cpp_header = Join(name, '/') + ".h";
-  headers->insert(cpp_header);
+std::string CppHeaderForType(const AidlDefinedType& defined_type) {
+  // Unstructured parcelable should set its cpp_header. use it.
+  if (auto unstructured = AidlCast<AidlParcelable>(defined_type); unstructured) {
+    const std::string cpp_header = unstructured->GetCppHeader();
+    AIDL_FATAL_IF(cpp_header.empty(), unstructured)
+        << "Parcelable " << unstructured->GetCanonicalName() << " has no C++ header defined.";
+    return cpp_header;
+  }
+  return HeaderFile(defined_type, ClassNames::RAW, /*use_os_sep=*/false);
 }
 
 }  // namespace cpp

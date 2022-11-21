@@ -6,6 +6,7 @@
 #include "Main.h"
 #include "Bundle.h"
 
+#include <build/version.h>
 #include <utils/Compat.h>
 #include <utils/Log.h>
 #include <utils/threads.h>
@@ -15,8 +16,6 @@
 #include <cstdlib>
 #include <getopt.h>
 #include <cassert>
-
-#include "platform_tools_version.h"
 
 using namespace android;
 
@@ -30,7 +29,7 @@ int doVersion(Bundle* bundle)
     if (bundle->getFileSpecCount() != 0) {
         printf("(ignoring extra arguments)\n");
     }
-    printf("Android Asset Packaging Tool, v0.2-%s\n", PLATFORM_TOOLS_VERSION);
+    printf("Android Asset Packaging Tool, v0.2-%s\n", android::build::GetBuildNumber().c_str());
 
     return 0;
 }

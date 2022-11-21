@@ -28,6 +28,7 @@ namespace aapt {
 
 struct CompileOptions {
   std::string output_path;
+  Maybe<std::string> source_path;
   Maybe<std::string> res_dir;
   Maybe<std::string> res_zip;
   Maybe<std::string> generate_text_symbols_path;
@@ -35,8 +36,6 @@ struct CompileOptions {
   bool pseudolocalize = false;
   bool no_png_crunch = false;
   bool legacy_mode = false;
-  // --source-path option
-  bool source_path = false;
   // See comments on aapt::ResourceParserOptions.
   bool preserve_visibility_of_styleables = false;
   bool verbose = false;
@@ -60,9 +59,6 @@ class CompileCommand : public Command {
     AddOptionalSwitch("--no-crunch", "Disables PNG processing", &options_.no_png_crunch);
     AddOptionalSwitch("--legacy", "Treat errors that used to be valid in AAPT as warnings",
         &options_.legacy_mode);
-    // --source-path do nothing
-    AddOptionalSwitch("--source-path", "Currently this option do nothing",
-    &options_.source_path);
     AddOptionalSwitch("--preserve-visibility-of-styleables",
                       "If specified, apply the same visibility rules for\n"
                       "styleables as are used for all other resources.\n"
@@ -74,6 +70,9 @@ class CompileCommand : public Command {
     AddOptionalSwitch("-v", "Enables verbose logging", &options_.verbose);
     AddOptionalFlag("--trace-folder", "Generate systrace json trace fragment to specified folder.",
                     &trace_folder_);
+    AddOptionalFlag("--source-path",
+                      "Sets the compiled resource file source file path to the given string.",
+                      &options_.source_path);
   }
 
   int Action(const std::vector<std::string>& args) override;

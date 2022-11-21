@@ -40,6 +40,7 @@ namespace {
 
 static const std::string_view kLineCommentBegin = "//";
 static const std::string_view kBlockCommentBegin = "/*";
+static const std::string_view kBlockCommentMid = " *";
 static const std::string_view kBlockCommentEnd = "*/";
 static const std::string_view kDocCommentBegin = "/**";
 static const std::string kTagDeprecated = "@deprecated";
@@ -222,11 +223,27 @@ std::string FormatCommentsForJava(const Comments& comments) {
   std::stringstream out;
   for (auto it = begin(comments); it != end(comments); it++) {
     const bool last = next(it) == end(comments);
-    // We only re-format the last/block comment which is not already a doc-style comment.
-    if (last && it->type == Comment::Type::BLOCK && !StartsWith(it->body, kDocCommentBegin)) {
-      out << kDocCommentBegin << ConsumePrefix(it->body, kBlockCommentBegin);
+    auto lines = TrimmedLines(*it);
+
+    if (it->type == Comment::Type::LINE) {
+      for (const auto& line : lines) {
+        out << kLineCommentBegin << line;
+      }
     } else {
-      out << it->body;
+      if (last || StartsWith(it->body, kDocCommentBegin)) {
+        out << kDocCommentBegin;
+      } else {
+        out << kBlockCommentBegin;
+      }
+      bool multiline = lines.size() > 1;
+
+      if (multiline) out << "\n";
+      for (const auto& line : lines) {
+        if (multiline) out << kBlockCommentMid;
+        out << " " << line;
+        if (multiline) out << "\n";
+      }
+      out << " " << kBlockCommentEnd << "\n";
     }
   }
   return out.str();

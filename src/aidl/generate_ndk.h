@@ -29,28 +29,6 @@ namespace ndk {
 void GenerateNdk(const string& output_file, const Options& options, const AidlTypenames& types,
                  const AidlDefinedType& defined_type, const IoDelegate& io_delegate);
 
-namespace internals {
-void GenerateSource(CodeWriter& out, const AidlTypenames& types, const AidlInterface& defined_type,
-                    const Options& options);
-void GenerateClassSource(CodeWriter& out, const AidlTypenames& types,
-                         const AidlInterface& defined_type, const Options& options);
-void GenerateClientSource(CodeWriter& out, const AidlTypenames& types,
-                          const AidlInterface& defined_type, const Options& options);
-void GenerateServerSource(CodeWriter& out, const AidlTypenames& types,
-                          const AidlInterface& defined_type, const Options& options);
-void GenerateInterfaceSource(CodeWriter& out, const AidlTypenames& types,
-                             const AidlInterface& defined_type, const Options& options);
-void GenerateClientHeader(CodeWriter& out, const AidlTypenames& types,
-                          const AidlInterface& defined_type, const Options& options);
-void GenerateServerHeader(CodeWriter& out, const AidlTypenames& types,
-                          const AidlInterface& defined_type, const Options& options);
-void GenerateInterfaceHeader(CodeWriter& out, const AidlTypenames& types,
-                             const AidlInterface& defined_type, const Options& options);
-
-void GenerateEnumHeader(CodeWriter& out, const AidlTypenames& types,
-                        const AidlEnumDeclaration& enum_decl, const Options& options);
-
-}  // namespace internals
 }  // namespace ndk
 }  // namespace aidl
 }  // namespace android

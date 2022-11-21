@@ -59,7 +59,9 @@ struct EocdRecord {
   uint32_t cd_start_offset;
   // Length of the central directory comment.
   uint16_t comment_length;
+
   EocdRecord() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(EocdRecord);
 } __attribute__((packed));
@@ -113,7 +115,9 @@ struct CentralDirectoryRecord {
   // The offset to the local file header for this entry, from the
   // beginning of this archive.
   uint32_t local_file_header_offset;
+
   CentralDirectoryRecord() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(CentralDirectoryRecord);
 } __attribute__((packed));
@@ -151,7 +155,9 @@ struct LocalFileHeader {
   // The length of the extra field info (in bytes). This data
   // will appear immediately after the entry file name.
   uint16_t extra_field_length;
+
   LocalFileHeader() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(LocalFileHeader);
 } __attribute__((packed));
@@ -175,7 +181,9 @@ struct DataDescriptor {
   // Uncompressed size of the entry, the field can be either 4 bytes or 8 bytes
   // in the zip file.
   uint64_t uncompressed_size;
+
   DataDescriptor() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(DataDescriptor);
 };
@@ -194,7 +202,9 @@ struct Zip64EocdLocator {
   // The total number of disks. This implementation assumes that each archive
   // spans a single disk only.
   uint32_t num_of_disks;
+
   Zip64EocdLocator() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(Zip64EocdLocator);
 } __attribute__((packed));
@@ -229,7 +239,9 @@ struct Zip64EocdRecord {
   // The offset of the start of the central directory, relative to the start of
   // the file.
   uint64_t cd_start_offset;
+
   Zip64EocdRecord() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(Zip64EocdRecord);
 } __attribute__((packed));
@@ -257,6 +269,7 @@ struct Zip64ExtendedInfo {
   // the disk_number is not used.
   // uint32_t disk_num;
   Zip64ExtendedInfo() = default;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(Zip64ExtendedInfo);
 };

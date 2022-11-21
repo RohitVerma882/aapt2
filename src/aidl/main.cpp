@@ -31,10 +31,6 @@ constexpr Options::Language kDefaultLang = Options::Language::JAVA;
 
 int main(int argc, char* argv[]) {
   Options options(argc, argv, kDefaultLang);
-  if (!options.Ok()) {
-    AIDL_ERROR(options.GetErrorMessage()) << options.GetUsage();
-    return 1;
-  }
 
   // Only minimal functionality should go here, so that as much of possible of
   // the aidl compiler is mocked with the single function `aidl_entry`

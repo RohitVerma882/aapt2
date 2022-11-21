@@ -31,12 +31,12 @@
 // version 2.2 of Bison.
 
 /**
- ** \file /storage/emulated/0/AppProjects/aapt/src/aidl/location.hh
+ ** \file /data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/location.hh
  ** Define the yy::location class.
  */
 
-#ifndef YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_LOCATION_HH_INCLUDED
-# define YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_LOCATION_HH_INCLUDED
+#ifndef YY_YY_DATA_DATA_COM_TERMUX_FILES_HOME_PROJ_SDK_TOOLS_SOURCE_SRC_AIDL_LOCATION_HH_INCLUDED
+# define YY_YY_DATA_DATA_COM_TERMUX_FILES_HOME_PROJ_SDK_TOOLS_SOURCE_SRC_AIDL_LOCATION_HH_INCLUDED
 
 # include <iostream>
 # include <string>
@@ -54,7 +54,7 @@
 # endif
 
 namespace yy {
-#line 58 "/storage/emulated/0/AppProjects/aapt/src/aidl/location.hh"
+#line 58 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/location.hh"
 
   /// A point in a source file.
   class position
@@ -268,6 +268,6 @@ namespace yy {
   }
 
 } // yy
-#line 272 "/storage/emulated/0/AppProjects/aapt/src/aidl/location.hh"
+#line 272 "/data/data/com.termux/files/home/proj/sdk-tools-source/src/aidl/location.hh"
 
-#endif // !YY_YY_STORAGE_EMULATED_0_APPPROJECTS_AAPT_SRC_AIDL_LOCATION_HH_INCLUDED
+#endif // !YY_YY_DATA_DATA_COM_TERMUX_FILES_HOME_PROJ_SDK_TOOLS_SOURCE_SRC_AIDL_LOCATION_HH_INCLUDED
