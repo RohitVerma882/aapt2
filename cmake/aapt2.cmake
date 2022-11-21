@@ -124,7 +124,6 @@ add_executable(aapt2
     ${SRC_PATH}/aapt2/xml/XmlDom.cpp
     ${SRC_PATH}/aapt2/xml/XmlPullParser.cpp
     ${SRC_PATH}/aapt2/xml/XmlUtil.cpp
-    ${SRC_PATH}/aapt2/Configuration.pb.cc
     ${AAPT2_PROTO_SRC} ${AAPT2_PROTO_HDRS})
     
 target_include_directories(aapt2 PRIVATE

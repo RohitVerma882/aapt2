@@ -39,8 +39,8 @@ add_executable(aidl
     ${SRC_PATH}/aidl/aidl_to_rust.cpp
     ${SRC_PATH}/aidl/aidl_typenames.cpp
     ${SRC_PATH}/aidl/aidl.cpp
-    ${SRC_PATH}/aidl/ast_cpp.cpp
     ${SRC_PATH}/aidl/ast_java.cpp
+    ${SRC_PATH}/aidl/check_valid.cpp
     ${SRC_PATH}/aidl/code_writer.cpp
     ${SRC_PATH}/aidl/comments.cpp
     ${SRC_PATH}/aidl/diagnostics.cpp
@@ -56,13 +56,11 @@ add_executable(aidl
     ${SRC_PATH}/aidl/logging.cpp
     ${SRC_PATH}/aidl/options.cpp
     ${SRC_PATH}/aidl/parser.cpp
+    ${SRC_PATH}/aidl/permission.cpp
     ${SRC_PATH}/aidl/preprocess.cpp
     ${SRC_PATH}/aidl/main.cpp
     ${BISON_LangParser_OUTPUTS}
     ${FLEX_LangScanner_OUTPUTS})
-
-target_compile_definitions(aidl PRIVATE
-    -DPLATFORM_TOOLS_VERSION="${TOOLS_VERSION}")
     
 target_include_directories(aidl PRIVATE
     ${SRC_PATH}/libbase/include
@@ -72,5 +70,5 @@ target_include_directories(aidl PRIVATE
 target_link_libraries(aidl
     libbase
     liblog
-    fmt::fmt
-    gtest)
+    gtest
+    fmt::fmt)
