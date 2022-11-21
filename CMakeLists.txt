@@ -1,17 +1,24 @@
 cmake_minimum_required(VERSION 3.14.2)
 project(aapt)
 
-enable_language(ASM)
+# Use C11 with GNU extensions.
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_EXTENSIONS ON)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Use C++20 with GNU extensions.
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_EXTENSIONS ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Android seems to use various attributes supported by clang but not by
+# GCC which causes it to emit lots of warnings. Since these attributes
+# don't seem to effect runtime behaviour simply disable the warnings.
+add_compile_options(-Wno-attributes)
 
 # set global cflags and cxxflags
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fcolor-diagnostics -fPIC -Wno-attributes -std=c11")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics -fPIC -Wno-attributes -std=c++20")
-
-# static link
-# set(CMAKE_EXE_LINKER_FLAGS "-static")
-
-# 64-bit off_t for lseek.
-add_definitions(-D_FILE_OFFSET_BITS=64)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fcolor-diagnostics -fPIC")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fcolor-diagnostics -fPIC")
 
 set(SRC_PATH ${PROJECT_SOURCE_DIR}/src)
 set(TOOLS_VERSION "33.0.3")
