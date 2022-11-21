@@ -11,8 +11,8 @@ target_include_directories(zipalign PRIVATE
     ${SRC_PATH}/libziparchive/include)
 
 target_include_directories(zipalign PRIVATE
-    ${SRC}/zipalign/include
-    ${SRC}/zopfli/src)
+    ${SRC_PATH}/zipalign/include
+    ${SRC_PATH}/zopfli/src)
     
 target_link_libraries(zipalign  
     libbase

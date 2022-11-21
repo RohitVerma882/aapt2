@@ -13,7 +13,7 @@ target_compile_definitions(libziparchive PRIVATE
     
 target_include_directories(libziparchive PRIVATE
     ${SRC_PATH}/libziparchive/include
-    ${SRC}/libziparchive/incfs_support/include
+    ${SRC_PATH}/libziparchive/incfs_support/include
     ${SRC_PATH}/libbase/include 
     ${SRC_PATH}/liblog/include
     ${SRC_PATH}/googletest/googletest/include)

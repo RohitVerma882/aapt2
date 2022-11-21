@@ -11,9 +11,10 @@ set(CMAKE_CPP_FLAGS "${CMAKE_CPP_FLAGS} -DNDEBUG -D__ANDROID_SDK_VERSION__=__AND
 # don't seem to effect runtime behaviour simply disable the warnings.
 add_compile_options(-Wno-attributes)
 
-# Sources and version
+# Tools and version
 set(SRC_PATH ${PROJECT_SOURCE_DIR}/src)
 set(TOOLS_VERSION "33.0.3")
+set(PROTOC_COMPILER tools/protoc-termux-aarch64)
 
 # Building
 add_subdirectory(src/googletest EXCLUDE_FROM_ALL)
