@@ -4,7 +4,7 @@
 	shallow = true
 [submodule "src/zlib"]
 	path = src/zlib
-	url = https://github.com/madler/zlib.git
+	url = https://android.googlesource.com/platform/external/zlib
 	shallow = true
 [submodule "src/libpng"]
 	path = src/libpng
