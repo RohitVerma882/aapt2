@@ -1,0 +1,14 @@
+diff --git a/src/base/tools/aapt2/io/Util.h b/src/base/tools/aapt2/io/Util.h
+index 5cb8206..1b48a28 100644
+--- a/src/base/tools/aapt2/io/Util.h
++++ b/src/base/tools/aapt2/io/Util.h
+@@ -131,8 +131,7 @@ class ProtoInputStreamReader {
+   template <typename T> bool ReadMessage(T *message) {
+     ZeroCopyInputAdaptor adapter(in_);
+     google::protobuf::io::CodedInputStream coded_stream(&adapter);
+-    coded_stream.SetTotalBytesLimit(std::numeric_limits<int32_t>::max(),
+-                                    coded_stream.BytesUntilTotalBytesLimit());
++    coded_stream.SetTotalBytesLimit(std::numeric_limits<int32_t>::max());
+     return message->ParseFromCodedStream(&coded_stream);
+   }
+ 

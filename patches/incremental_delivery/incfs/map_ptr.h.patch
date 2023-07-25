@@ -1,0 +1,13 @@
+diff --git a/src/incremental_delivery/incfs/util/include/util/map_ptr.h b/src/incremental_delivery/incfs/util/include/util/map_ptr.h
+index 304540f..c328add 100644
+--- a/src/incremental_delivery/incfs/util/include/util/map_ptr.h
++++ b/src/incremental_delivery/incfs/util/include/util/map_ptr.h
+@@ -26,6 +26,8 @@
+ #include <type_traits>
+ #include <vector>
+ 
++#undef __ANDROID__
++
+ #ifdef __ANDROID__
+ #include <linux/incrementalfs.h>
+ #endif

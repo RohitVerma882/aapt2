@@ -1,0 +1,22 @@
+diff --git a/src/base/tools/aapt2/util/Util.cpp b/src/base/tools/aapt2/util/Util.cpp
+index 3763acd..015fe8c 100644
+--- a/src/base/tools/aapt2/util/Util.cpp
++++ b/src/base/tools/aapt2/util/Util.cpp
+@@ -30,8 +30,6 @@
+ #include "util/Maybe.h"
+ #include "utils/Unicode.h"
+ 
+-#include "build/version.h"
+-
+ using ::aapt::text::Utf8Iterator;
+ using ::android::StringPiece;
+ using ::android::StringPiece16;
+@@ -233,7 +231,7 @@ std::string GetToolFingerprint() {
+   static const char* const sMinorVersion = "19";
+ 
+   // The build id of aapt2 binary.
+-  static const std::string sBuildId = android::build::GetBuildNumber();
++  static const std::string sBuildId = "@rohitkumar882333@gmail.com";
+ 
+   return android::base::StringPrintf("%s.%s-%s", sMajorVersion, sMinorVersion, sBuildId.c_str());
+ }

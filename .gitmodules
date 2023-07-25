@@ -1,0 +1,24 @@
+[submodule "src/third_party/expat"]
+	path = src/third_party/expat
+	url = https://android.googlesource.com/platform/external/expat
+	shallow = true
+[submodule "src/third_party/libpng"]
+	path = src/third_party/libpng
+	url = https://android.googlesource.com/platform/external/libpng
+	shallow = true
+[submodule "src/third_party/zlib"]
+	path = src/third_party/zlib
+	url = https://android.googlesource.com/platform/external/zlib
+	shallow = true
+[submodule "src/third_party/fmtlib"]
+	path = src/third_party/fmtlib
+	url = https://android.googlesource.com/platform/external/fmtlib
+	shallow = true
+[submodule "src/third_party/zopfli"]
+	path = src/third_party/zopfli
+	url = https://android.googlesource.com/platform/external/zopfli
+	shallow = true
+[submodule "src/third_party/protobuf"]
+	path = src/third_party/protobuf
+	url = https://android.googlesource.com/platform/external/protobuf
+	shallow = true

@@ -1,0 +1,88 @@
+name: aapt2 build
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+      - LICENSE
+      - .github/**
+      - patches/**
+  workflow_dispatch:
+
+jobs:
+  android:
+    name: Build for Android
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target_arch:
+          - arm
+          - aarch64
+          - i686
+          - x86_64
+      fail-fast: false
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          submodules: true
+        
+      - name: Setup ndk r25b
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r25b
+          add-to-path: false
+          
+      - name: Prerequisites
+        run: |
+          sudo apt-get install \
+          git tar \
+          ninja-build \
+          autogen \
+          autoconf \
+          automake \
+          libtool \
+          build-essential \
+          cmake m4 \
+          -y || exit 1
+
+      - name: Setup protoc
+        run: |
+          TOOLS_PATH=${{ github.workspace }}/tools
+          mkdir $TOOLS_PATH || exit 1
+          cd src/third_party/protobuf/cmake || exit 1
+          mkdir build && cd build
+          cmake -Dprotobuf_BUILD_TESTS=OFF ..
+          make -j$(nproc)
+          cp $(find . -name protoc-*) $TOOLS_PATH || exit 1
+          echo "PROTOC VERSION: $($(find $TOOLS_PATH -name protoc-*) --version)"
+          
+      - name: Setup elf-cleaner
+        run: |
+          git clone --depth 1 https://github.com/termux/termux-elf-cleaner.git src/third_party/elf-cleaner
+          cd src/third_party/elf-cleaner || exit 1
+          autoreconf -vfi
+          ./configure
+          make -j$(nproc)
+          make check
+          sudo make install
+
+      - name: Grant execute permission for build.sh
+        run: chmod +x build.sh
+
+      - name: Build aapt2 and zipalign
+        run: ./build.sh ${{ matrix.target_arch }}
+        env:
+          NDK_PATH: ${{ steps.setup-ndk.outputs.ndk-path }}
+          TOOLS_PATH: ${{ github.workspace }}/tools
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: aapt2-android-${{ matrix.target_arch }}
+          path: build/bin

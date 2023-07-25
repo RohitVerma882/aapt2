@@ -1,0 +1,18 @@
+diff --git a/src/base/libs/androidfw/AssetManager.cpp b/src/base/libs/androidfw/AssetManager.cpp
+index fb2b571..444dd9a 100644
+--- a/src/base/libs/androidfw/AssetManager.cpp
++++ b/src/base/libs/androidfw/AssetManager.cpp
+@@ -940,13 +940,9 @@ Asset* AssetManager::openAssetFromZipLocked(const ZipFileRO* pZipFile,
+ 
+     if (method == ZipFileRO::kCompressStored) {
+         pAsset = Asset::createFromUncompressedMap(std::move(*dataMap), mode);
+-        ALOGV("Opened uncompressed entry %s in zip %s mode %d: %p", entryName.string(),
+-                dataMap->file_name(), mode, pAsset.get());
+     } else {
+         pAsset = Asset::createFromCompressedMap(std::move(*dataMap),
+             static_cast<size_t>(uncompressedLen), mode);
+-        ALOGV("Opened compressed entry %s in zip %s mode %d: %p", entryName.string(),
+-                dataMap->file_name(), mode, pAsset.get());
+     }
+     if (pAsset == NULL) {
+         /* unexpected */

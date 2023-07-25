@@ -1,0 +1,13 @@
+diff --git a/src/incremental_delivery/incfs/util/map_ptr.cpp b/src/incremental_delivery/incfs/util/map_ptr.cpp
+index f391506..92de5b6 100644
+--- a/src/incremental_delivery/incfs/util/map_ptr.cpp
++++ b/src/incremental_delivery/incfs/util/map_ptr.cpp
+@@ -18,6 +18,8 @@
+ #include <android-base/stringprintf.h>
+ #include <utils/FileMap.h>
+ 
++#undef __ANDROID__
++
+ #ifdef __ANDROID__
+ #include "incfs_inline.h"
+ #endif

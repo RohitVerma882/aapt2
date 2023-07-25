@@ -1,0 +1,13 @@
+diff --git a/src/logging/liblog/logger_write.cpp b/src/logging/liblog/logger_write.cpp
+index 9a9a126..2645dcb 100644
+--- a/src/logging/liblog/logger_write.cpp
++++ b/src/logging/liblog/logger_write.cpp
+@@ -39,6 +39,8 @@
+ #include "logger.h"
+ #include "uio.h"
+ 
++#undef __ANDROID__
++
+ #ifdef __ANDROID__
+ #include "logd_writer.h"
+ #include "pmsg_writer.h"
