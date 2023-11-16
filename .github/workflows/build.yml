@@ -31,11 +31,11 @@ jobs:
           fetch-depth: 1
           submodules: true
         
-      - name: Setup ndk r25b
+      - name: Setup ndk r26b
         uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
-          ndk-version: r25b
+          ndk-version: r26b
           add-to-path: false
           
       - name: Prerequisites
@@ -53,14 +53,14 @@ jobs:
 
       - name: Setup protoc
         run: |
-          TOOLS_PATH=${{ github.workspace }}/tools
-          mkdir $TOOLS_PATH || exit 1
+          tools_path=${{ github.workspace }}/tools
+          mkdir $tools_path || exit 1
           cd src/third_party/protobuf/cmake || exit 1
           mkdir build && cd build
           cmake -Dprotobuf_BUILD_TESTS=OFF ..
           make -j$(nproc)
-          cp $(find . -name protoc-*) $TOOLS_PATH || exit 1
-          echo "PROTOC VERSION: $($(find $TOOLS_PATH -name protoc-*) --version)"
+          cp $(find . -name protoc-*) $tools_path || exit 1
+          echo "PROTOC VERSION: $($(find $tools_path -name protoc-*) --version)"
           
       - name: Setup elf-cleaner
         run: |

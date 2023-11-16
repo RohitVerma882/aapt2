@@ -79,9 +79,14 @@ add_library(libprotobuf STATIC
     ${SRC}/third_party/protobuf/src/google/protobuf/util/type_resolver_util.cc
     ${SRC}/third_party/protobuf/src/google/protobuf/wire_format.cc
     ${SRC}/third_party/protobuf/src/google/protobuf/wrappers.pb.cc)
+
 target_compile_definitions(libprotobuf PRIVATE -DHAVE_ZLIB=1)
+
 target_include_directories(libprotobuf PRIVATE 
     ${SRC}/third_party/protobuf/android
     ${SRC}/third_party/protobuf/src)
-target_include_directories(libprotobuf PRIVATE ${SRC}/third_party/protobuf/src)
+
+target_include_directories(libprotobuf PUBLIC
+    ${SRC}/third_party/protobuf/src)
+
 target_link_libraries(libprotobuf PRIVATE libz)

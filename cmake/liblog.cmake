@@ -6,10 +6,12 @@ add_library(liblog STATIC
     ${SRC}/logging/liblog/logger_write.cpp
     ${SRC}/logging/liblog/properties.cpp
     ${SRC}/logging/liblog/logprint.cpp)
+
 target_compile_definitions(liblog PRIVATE
     -DLIBLOG_LOG_TAG=1006 
     -D_XOPEN_SOURCE=700
     -DFAKE_LOG_DEVICE=1)
+
 target_include_directories(liblog PUBLIC
     ${SRC}/core/include
     ${SRC}/core/libcutils/include

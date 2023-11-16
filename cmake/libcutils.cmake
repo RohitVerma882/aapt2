@@ -21,7 +21,9 @@ add_library(libcutils STATIC
 	${SRC}/core/libcutils/record_stream.cpp
 	${SRC}/core/libcutils/strlcpy.c
 	${SRC}/core/libcutils/threads.cpp)
+
 target_compile_definitions(libcutils PRIVATE -D_GNU_SOURCE)
+
 target_include_directories(libcutils PUBLIC
     ${SRC}/libbase/include
     ${SRC}/core/libutils/include

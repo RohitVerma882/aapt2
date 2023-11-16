@@ -16,8 +16,10 @@ add_library(libbase STATIC
 	${SRC}/libbase/strings.cpp
 	${SRC}/libbase/threads.cpp
 	${SRC}/libbase/test_utils.cpp)
+
 target_include_directories(libbase PUBLIC
     ${SRC}/libbase/include 
     ${SRC}/core/include
     ${SRC}/logging/liblog/include)
+
 target_link_libraries(libbase PUBLIC fmt::fmt)

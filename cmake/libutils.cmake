@@ -18,6 +18,7 @@ add_library(libutils STATIC
 	${SRC}/core/libutils/Unicode.cpp
 	${SRC}/core/libutils/VectorImpl.cpp
 	${SRC}/core/libutils/misc.cpp)
+
 target_include_directories(libutils PUBLIC
     ${SRC}/core/include
     ${SRC}/logging/liblog/include 

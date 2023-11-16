@@ -120,6 +120,7 @@ add_executable(aapt2
     ${SRC}/base/tools/aapt2/xml/XmlUtil.cpp
     ${SRC}/base/tools/aapt2/ValueTransformer.cpp
     ${AAPT2_PROTO_SRC} ${AAPT2_PROTO_HDRS})
+
 target_include_directories(aapt2 PRIVATE
     ${SRC}/base/tools/aapt2
     ${SRC}/libbase/include
@@ -133,11 +134,13 @@ target_include_directories(aapt2 PRIVATE
     ${SRC}/third_party/expat/lib
     ${SRC}/third_party/fmtlib/include
     ${SRC}/third_party/libpng)
+
 target_compile_options(aapt2 PRIVATE
     -Wno-unused-parameter
     -Wno-missing-field-initializers
     -fno-exceptions 
     -fno-rtti)
+
 target_link_libraries(aapt2
     libbase libutils libcutils liblog libandroidfw libziparchive
     libincfs libprotobuf libpng libexpat libz)

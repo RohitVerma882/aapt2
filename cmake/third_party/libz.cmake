@@ -15,5 +15,10 @@ add_library(libz STATIC
     ${SRC}/third_party/zlib/trees.c
     ${SRC}/third_party/zlib/uncompr.c
     ${SRC}/third_party/zlib/zutil.c)
-target_compile_definitions(libz PRIVATE -DHAVE_HIDDEN -DZLIB_CONST)
-target_include_directories(libz PUBLIC ${SRC}/third_party/zlib)
+
+target_compile_definitions(libz PRIVATE
+    -DHAVE_HIDDEN
+    -DZLIB_CONST)
+
+target_include_directories(libz PUBLIC
+    ${SRC}/third_party/zlib)
